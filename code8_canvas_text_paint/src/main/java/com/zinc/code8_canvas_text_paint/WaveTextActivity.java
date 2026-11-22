@@ -1,8 +1,8 @@
-package com.zinc.code8_canvas_text_paint;
+﻿package com.zinc.code8_canvas_text_paint;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -12,7 +12,7 @@ import com.zinc.code8_canvas_text_paint.widget.WaveTextView;
 
 /**
  * author       : zinc
- * time         : 2019/5/21 上午9:18
+ * time         : 2019/5/21 涓婂崍9:18
  * desc         :
  * version      :
  */
@@ -50,3 +50,4 @@ public class WaveTextActivity extends Activity {
 
     }
 }
+

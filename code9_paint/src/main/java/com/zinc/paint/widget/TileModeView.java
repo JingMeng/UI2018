@@ -1,4 +1,4 @@
-package com.zinc.paint.widget;
+﻿package com.zinc.paint.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,7 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ShapeDrawable;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -17,7 +17,7 @@ import com.zinc.paint.R;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/18
+ * @date 鍒涘缓鏃堕棿锛?018/10/18
  * @description TileMode
  */
 public class TileModeView extends View {
@@ -91,3 +91,4 @@ public class TileModeView extends View {
         invalidate();
     }
 }
+

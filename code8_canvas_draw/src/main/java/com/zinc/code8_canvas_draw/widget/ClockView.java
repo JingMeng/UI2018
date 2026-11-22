@@ -1,4 +1,4 @@
-package com.zinc.code8_canvas_draw.widget;
+﻿package com.zinc.code8_canvas_draw.widget;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -18,9 +18,8 @@ import com.zinc.code8_canvas_draw.R;
 
 /**
  * author       : zinc
- * time         : 2019/4/21 下午8:35
- * desc         : 时钟与指针
- * version      : 1.2.0
+ * time         : 2019/4/21 涓嬪崍8:35
+ * desc         : 鏃堕挓涓庢寚閽? * version      : 1.2.0
  */
 public class ClockView extends View {
 
@@ -164,11 +163,9 @@ public class ClockView extends View {
     }
 
     /**
-     * 转换 dp 至 px
+     * 杞崲 dp 鑷?px
      *
-     * @param dpValue dp值
-     * @return px值
-     */
+     * @param dpValue dp鍊?     * @return px鍊?     */
     protected int dpToPx(float dpValue) {
         DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
         return (int) (dpValue * metrics.density + 0.5f);
@@ -184,3 +181,4 @@ public class ClockView extends View {
         postInvalidate();
     }
 }
+

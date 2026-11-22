@@ -1,7 +1,7 @@
-package com.zinc.xfermode.adapter;
+﻿package com.zinc.xfermode.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/29
+ * @date 鍒涘缓鏃堕棿锛?019/1/29
  * @description
  */
 public class XFerModeAdapter extends RecyclerView.Adapter<XFerModeAdapter.ViewHolder> {
@@ -81,3 +81,4 @@ public class XFerModeAdapter extends RecyclerView.Adapter<XFerModeAdapter.ViewHo
     }
 
 }
+

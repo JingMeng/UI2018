@@ -1,4 +1,4 @@
-package com.zinc.bezier.widget;
+﻿package com.zinc.bezier.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,7 +14,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -26,8 +26,8 @@ import com.zinc.bezier.utils.MathUtils;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/11
- * @description 粘性小红点
+ * @date 鍒涘缓鏃堕棿锛?019/1/11
+ * @description 绮樻€у皬绾㈢偣
  */
 
 public class StickDotView extends android.support.v7.widget.AppCompatTextView {
@@ -59,39 +59,36 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        //获得根View
+        //鑾峰緱鏍筕iew
         View rootView = getRootView();
 
-        //获得触摸位置在全屏所在位置
-        float mRawX = event.getRawX();
+        //鑾峰緱瑙︽懜浣嶇疆鍦ㄥ叏灞忔墍鍦ㄤ綅缃?        float mRawX = event.getRawX();
         float mRawY = event.getRawY();
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                //请求父View不拦截
-                getParent().requestDisallowInterceptTouchEvent(true);
+                //璇锋眰鐖禫iew涓嶆嫤鎴?                getParent().requestDisallowInterceptTouchEvent(true);
 
-                //获得当前View在屏幕上的位置
-                int[] cLocation = new int[2];
+                //鑾峰緱褰撳墠View鍦ㄥ睆骞曚笂鐨勪綅缃?                int[] cLocation = new int[2];
                 getLocationOnScreen(cLocation);
 
                 if (rootView instanceof ViewGroup) {
-                    //初始化拖拽时显示的View
+                    //鍒濆鍖栨嫋鎷芥椂鏄剧ず鐨刅iew
                     mDragView = new DragView(getContext());
 
-                    //设置固定圆的圆心坐标
+                    //璁剧疆鍥哄畾鍦嗙殑鍦嗗績鍧愭爣
                     mDragView.setStickyPoint(cLocation[0] + mWidth / 2,
                             cLocation[1] + mHeight / 2,
                             mRawX,
                             mRawY);
 
-                    //获得缓存的bitmap，滑动时直接通过drawBitmap绘制出来
+                    //鑾峰緱缂撳瓨鐨刡itmap锛屾粦鍔ㄦ椂鐩存帴閫氳繃drawBitmap缁樺埗鍑烘潵
                     setDrawingCacheEnabled(true);
                     Bitmap bitmap = getDrawingCache();
 
                     if (bitmap != null) {
                         mDragView.setCacheBitmap(bitmap);
-                        //将DragView添加到RootView中，这样就可以全屏滑动了
+                        //灏咲ragView娣诲姞鍒癛ootView涓紝杩欐牱灏卞彲浠ュ叏灞忔粦鍔ㄤ簡
                         ((ViewGroup) rootView).addView(mDragView);
                         setVisibility(INVISIBLE);
                     }
@@ -102,11 +99,9 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
 
             case MotionEvent.ACTION_MOVE:
 
-                //请求父View不拦截
-                getParent().requestDisallowInterceptTouchEvent(true);
+                //璇锋眰鐖禫iew涓嶆嫤鎴?                getParent().requestDisallowInterceptTouchEvent(true);
                 if (mDragView != null) {
-                    //更新DragView的位置
-                    mDragView.setDragViewLocation(mRawX, mRawY);
+                    //鏇存柊DragView鐨勪綅缃?                    mDragView.setDragViewLocation(mRawX, mRawY);
                 }
 
                 break;
@@ -115,8 +110,7 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
 
                 getParent().requestDisallowInterceptTouchEvent(false);
                 if (mDragView != null) {
-                    //手抬起时来判断各种情况
-                    mDragView.setDragUp();
+                    //鎵嬫姮璧锋椂鏉ュ垽鏂悇绉嶆儏鍐?                    mDragView.setDragUp();
                 }
 
                 break;
@@ -140,38 +134,30 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
     }
 
     /**
-     * 拖拽时的椭圆
+     * 鎷栨嫿鏃剁殑妞渾
      */
     public class DragView extends View {
-        private static final int STATE_INIT = 0;//默认静止状态
-        private static final int STATE_DRAG = 1;//拖拽状态
-        private static final int STATE_MOVE = 2;//移动状态
-        private static final int STATE_DISMISS = 3;//消失状态
-
+        private static final int STATE_INIT = 0;//榛樿闈欐鐘舵€?        private static final int STATE_DRAG = 1;//鎷栨嫿鐘舵€?        private static final int STATE_MOVE = 2;//绉诲姩鐘舵€?        private static final int STATE_DISMISS = 3;//娑堝け鐘舵€?
         private Path mPath;
         private Paint mPaint;
         private Bitmap mCacheBitmap;
-        // 拖拽圆的圆点
+        // 鎷栨嫿鍦嗙殑鍦嗙偣
         private PointF mDragPointF;
-        // 固定圆的圆点
+        // 鍥哄畾鍦嗙殑鍦嗙偣
         private PointF mStickyPointF;
-        // 二阶贝塞尔曲线控制点
+        // 浜岄樁璐濆灏旀洸绾挎帶鍒剁偣
         private PointF mControlPoint;
-        // 拖拽的距离
-        private float mDragDistance;
-        // 最大拖拽距离
-        private float mMaxDistance = dpToPx(100);
-        // View的宽和高
+        // 鎷栨嫿鐨勮窛绂?        private float mDragDistance;
+        // 鏈€澶ф嫋鎷借窛绂?        private float mMaxDistance = dpToPx(100);
+        // View鐨勫鍜岄珮
         private float mWidth, mHeight;
 
-        // 当前红点的状态
-        private int mState;
+        // 褰撳墠绾㈢偣鐨勭姸鎬?        private int mState;
 
-        // 固定圆的半径
+        // 鍥哄畾鍦嗙殑鍗婂緞
         private int mStickRadius;
-        // 固定小圆的默认半径
-        private int mDefaultRadius = dpToPx(10);
-        // 拖拽圆的半径
+        // 鍥哄畾灏忓渾鐨勯粯璁ゅ崐寰?        private int mDefaultRadius = dpToPx(10);
+        // 鎷栨嫿鍦嗙殑鍗婂緞
         private int mDragRadius = dpToPx(15);
 
         private int[] mExplodeRes = {R.drawable.explode1,
@@ -198,25 +184,23 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
         }
 
         private void init() {
-            // 初始化Path
+            // 鍒濆鍖朠ath
             mPath = new Path();
 
-            // 初始化Paint
+            // 鍒濆鍖朠aint
             mPaint = new Paint();
             mPaint.setAntiAlias(true);
             mPaint.setDither(true);
             mPaint.setColor(Color.RED);
 
-            // 初始化拖拽点
+            // 鍒濆鍖栨嫋鎷界偣
             mDragPointF = new PointF();
-            // 初始化固定点
+            // 鍒濆鍖栧浐瀹氱偣
             mStickyPointF = new PointF();
 
-            // 初始化状态
-            mState = STATE_INIT;
+            // 鍒濆鍖栫姸鎬?            mState = STATE_INIT;
 
-            // 初始化消失动画资源
-            mBitmaps = new Bitmap[mExplodeRes.length];
+            // 鍒濆鍖栨秷澶卞姩鐢昏祫婧?            mBitmaps = new Bitmap[mExplodeRes.length];
             for (int i = 0; i < mExplodeRes.length; i++) {
                 mBitmaps[i] = BitmapFactory.decodeResource(getResources(), mExplodeRes[i]);
             }
@@ -228,22 +212,19 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
 
             if (isInsideRange() && mState == STATE_DRAG) {
 
-                // 绘制固定的小圆
-                canvas.drawCircle(mStickyPointF.x, mStickyPointF.y, mStickRadius, mPaint);
+                // 缁樺埗鍥哄畾鐨勫皬鍦?                canvas.drawCircle(mStickyPointF.x, mStickyPointF.y, mStickRadius, mPaint);
 
-                // 首先获得两圆心之间的斜率
+                // 棣栧厛鑾峰緱涓ゅ渾蹇冧箣闂寸殑鏂滅巼
                 Float linK = MathUtils.getLineSlope(mDragPointF, mStickyPointF);
 
-                // 然后通过两个圆心和半径、斜率来获得外切线的切点
+                // 鐒跺悗閫氳繃涓や釜鍦嗗績鍜屽崐寰勩€佹枩鐜囨潵鑾峰緱澶栧垏绾跨殑鍒囩偣
                 PointF[] stickyPoints = MathUtils.getIntersectionPoints(mStickyPointF, mStickRadius, linK);
                 mDragRadius = (int) Math.min(mWidth, mHeight) / 2;
                 PointF[] dragPoints = MathUtils.getIntersectionPoints(mDragPointF, mDragRadius, linK);
 
-                // 二阶贝塞尔曲线的控制点取得两圆心的中点
-                mControlPoint = MathUtils.getMiddlePoint(mDragPointF, mStickyPointF);
+                // 浜岄樁璐濆灏旀洸绾跨殑鎺у埗鐐瑰彇寰椾袱鍦嗗績鐨勪腑鐐?                mControlPoint = MathUtils.getMiddlePoint(mDragPointF, mStickyPointF);
 
-                // 绘制贝塞尔曲线
-                mPath.reset();
+                // 缁樺埗璐濆灏旀洸绾?                mPath.reset();
                 mPath.moveTo(stickyPoints[0].x, stickyPoints[0].y);
                 mPath.quadTo(mControlPoint.x, mControlPoint.y, dragPoints[0].x, dragPoints[0].y);
                 mPath.lineTo(dragPoints[1].x, dragPoints[1].y);
@@ -253,7 +234,7 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
                 canvas.drawPath(mPath, mPaint);
             }
 
-            // 绘制 StickDotView 内容
+            // 缁樺埗 StickDotView 鍐呭
             if (mCacheBitmap != null && mState != STATE_DISMISS) {
                 canvas.drawBitmap(mCacheBitmap,
                         mDragPointF.x - mWidth / 2,
@@ -262,8 +243,7 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
             }
 
             if (mState == STATE_DISMISS && mExplodeIndex < mExplodeRes.length) {
-                // 绘制小红点消失时的爆炸动画
-                canvas.drawBitmap(mBitmaps[mExplodeIndex],
+                // 缁樺埗灏忕孩鐐规秷澶辨椂鐨勭垎鐐稿姩鐢?                canvas.drawBitmap(mBitmaps[mExplodeIndex],
                         mDragPointF.x - mWidth / 2,
                         mDragPointF.y - mHeight / 2,
                         mPaint);
@@ -271,9 +251,8 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
         }
 
         /**
-         * 设置缓存Bitmap，即 StickDotView 的视图
-         *
-         * @param mCacheBitmap 缓存Bitmap
+         * 璁剧疆缂撳瓨Bitmap锛屽嵆 StickDotView 鐨勮鍥?         *
+         * @param mCacheBitmap 缂撳瓨Bitmap
          */
         public void setCacheBitmap(Bitmap mCacheBitmap) {
             this.mCacheBitmap = mCacheBitmap;
@@ -284,26 +263,23 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
 
 
         /**
-         * 设置固定圆的圆心和半径
-         *
-         * @param stickyX 固定圆的X坐标
-         * @param stickyY 固定圆的Y坐标
+         * 璁剧疆鍥哄畾鍦嗙殑鍦嗗績鍜屽崐寰?         *
+         * @param stickyX 鍥哄畾鍦嗙殑X鍧愭爣
+         * @param stickyY 鍥哄畾鍦嗙殑Y鍧愭爣
          */
         public void setStickyPoint(float stickyX,
                                    float stickyY,
                                    float touchX,
                                    float touchY) {
-            //分别设置固定圆和拖拽圆的坐标
+            //鍒嗗埆璁剧疆鍥哄畾鍦嗗拰鎷栨嫿鍦嗙殑鍧愭爣
             mStickyPointF.set(stickyX, stickyY);
             mDragPointF.set(touchX, touchY);
 
-            //通过两个圆点算出圆心距，也是拖拽的距离
-            mDragDistance = MathUtils.getTwoPointDistance(mDragPointF, mStickyPointF);
+            //閫氳繃涓や釜鍦嗙偣绠楀嚭鍦嗗績璺濓紝涔熸槸鎷栨嫿鐨勮窛绂?            mDragDistance = MathUtils.getTwoPointDistance(mDragPointF, mStickyPointF);
 
             if (mDragDistance <= mMaxDistance) {
 
-                //如果拖拽距离小于规定最大距离，则固定的圆应该越来越小，这样看着才符合实际
-                mStickRadius = (int) (mDefaultRadius - mDragDistance / 10) < 10 ? 10 : (int) (mDefaultRadius - mDragDistance / 10);
+                //濡傛灉鎷栨嫿璺濈灏忎簬瑙勫畾鏈€澶ц窛绂伙紝鍒欏浐瀹氱殑鍦嗗簲璇ヨ秺鏉ヨ秺灏忥紝杩欐牱鐪嬬潃鎵嶇鍚堝疄闄?                mStickRadius = (int) (mDefaultRadius - mDragDistance / 10) < 10 ? 10 : (int) (mDefaultRadius - mDragDistance / 10);
                 mState = STATE_DRAG;
 
             } else {
@@ -314,15 +290,13 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
         }
 
         /**
-         * 设置拖拽的坐标位置
-         *
-         * @param touchX 拖拽时的X坐标
-         * @param touchY 拖拽时的Y坐标
+         * 璁剧疆鎷栨嫿鐨勫潗鏍囦綅缃?         *
+         * @param touchX 鎷栨嫿鏃剁殑X鍧愭爣
+         * @param touchY 鎷栨嫿鏃剁殑Y鍧愭爣
          */
         public void setDragViewLocation(float touchX, float touchY) {
             mDragPointF.set(touchX, touchY);
-            //随时更改圆心距
-            mDragDistance = MathUtils.getTwoPointDistance(mDragPointF, mStickyPointF);
+            //闅忔椂鏇存敼鍦嗗績璺?            mDragDistance = MathUtils.getTwoPointDistance(mDragPointF, mStickyPointF);
             if (mState == STATE_DRAG) {
                 if (isInsideRange()) {
                     mStickRadius = (int) (mDefaultRadius - mDragDistance / 10) < 10 ? 10 : (int) (mDefaultRadius - mDragDistance / 10);
@@ -340,16 +314,15 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
 
             if (mState == STATE_DRAG && isInsideRange()) {
 
-                //拖拽状态且在范围之内
-                startResetAnimator();
+                //鎷栨嫿鐘舵€佷笖鍦ㄨ寖鍥翠箣鍐?                startResetAnimator();
 
             } else if (mState == STATE_MOVE) {
 
                 if (isInsideRange()) {
-                    //在范围之内 需要RESET
+                    //鍦ㄨ寖鍥翠箣鍐?闇€瑕丷ESET
                     startResetAnimator();
                 } else {
-                    //在范围之外 消失动画
+                    //鍦ㄨ寖鍥翠箣澶?娑堝け鍔ㄧ敾
                     mState = STATE_DISMISS;
                     startExplodeAnim();
                 }
@@ -359,16 +332,15 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
 
 
         /**
-         * 是否在最大拖拽范围之内
-         *
-         * @return true 范围之内 false 范围之外
+         * 鏄惁鍦ㄦ渶澶ф嫋鎷借寖鍥翠箣鍐?         *
+         * @return true 鑼冨洿涔嬪唴 false 鑼冨洿涔嬪
          */
         private boolean isInsideRange() {
             return mDragDistance <= mMaxDistance;
         }
 
         /**
-         * 爆炸动画
+         * 鐖嗙偢鍔ㄧ敾
          */
         private void startExplodeAnim() {
             ValueAnimator animator = ValueAnimator.ofInt(0, mExplodeRes.length);
@@ -392,7 +364,7 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
         }
 
         /**
-         * 拖拽红点reset动画
+         * 鎷栨嫿绾㈢偣reset鍔ㄧ敾
          */
         private void startResetAnimator() {
 
@@ -431,7 +403,7 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
 
             } else if (mState == STATE_MOVE) {
 
-                //先拖拽到范围之外 在拖拽回范围之内
+                //鍏堟嫋鎷藉埌鑼冨洿涔嬪 鍦ㄦ嫋鎷藉洖鑼冨洿涔嬪唴
                 mDragPointF.set(mStickyPointF.x, mStickyPointF.y);
                 invalidate();
                 clearDragView();
@@ -460,9 +432,9 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
     }
 
     /**
-     * 转换 dp 至 px
+     * 杞崲 dp 鑷?px
      *
-     * @param dp dp像素
+     * @param dp dp鍍忕礌
      * @return
      */
     protected int dpToPx(float dp) {
@@ -472,3 +444,4 @@ public class StickDotView extends android.support.v7.widget.AppCompatTextView {
 
 
 }
+

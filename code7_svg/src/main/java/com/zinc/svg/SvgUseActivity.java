@@ -1,18 +1,18 @@
-package com.zinc.svg;
+﻿package com.zinc.svg;
 
 import android.graphics.drawable.Animatable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.widget.ImageView;
 
 /**
  * author       : zinc
- * time         : 2019/4/5 下午4:35
+ * time         : 2019/4/5 涓嬪崍4:35
  * desc         :
  * version      :
  */
@@ -44,3 +44,4 @@ public class SvgUseActivity extends AppCompatActivity {
 
     }
 }
+

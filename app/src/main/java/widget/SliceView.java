@@ -1,4 +1,4 @@
-//package widget;
+﻿//package widget;
 //
 //import android.content.Context;
 //import android.graphics.Canvas;
@@ -7,8 +7,8 @@
 //import android.graphics.Path;
 //import android.graphics.Point;
 //import android.graphics.PointF;
-//import android.support.annotation.Nullable;
-//import android.support.v4.content.ContextCompat;
+//import androidx.annotation.Nullable;
+//import androidx.core.content.ContextCompat;
 //import android.util.AttributeSet;
 //import android.util.Log;
 //import android.view.MotionEvent;
@@ -21,9 +21,8 @@
 //
 ///**
 // * @author Jiang zinc
-// * @date 创建时间：2018/11/22
-// * @description 切换按钮，互嵌
-// */
+// * @date 鍒涘缓鏃堕棿锛?018/11/22
+// * @description 鍒囨崲鎸夐挳锛屼簰宓?// */
 //public class SliceView extends View {
 //
 //    private final static String TAG = SliceView.class.getSimpleName();
@@ -31,32 +30,29 @@
 //    private final static int RIGHT = 2;
 //    private final static int NONE = 0;
 //
-//    // 斜面高度
+//    // 鏂滈潰楂樺害
 //    private final static double ANGLE = 2.67;
-//    // 线宽
+//    // 绾垮
 //    private float mLineWidth;
-//    // 字体大小
+//    // 瀛椾綋澶у皬
 //    private float mTextSize;
-//    // 间隔
+//    // 闂撮殧
 //    private int mSpace;
-//    // 是否已经初始化了
+//    // 鏄惁宸茬粡鍒濆鍖栦簡
 //    private boolean mIsInit = false;
 //
-//    // 可绘制部分的 高、宽
+//    // 鍙粯鍒堕儴鍒嗙殑 楂樸€佸
 //    private float mHeight;
 //    private float mWidth;
 //
-//    // 突出部分的长度
-//    private float mSharpWidth;
+//    // 绐佸嚭閮ㄥ垎鐨勯暱搴?//    private float mSharpWidth;
 //
 //    private float mShortLine;
 //    private float mLongLine;
 //
-//    // 右边的正常颜色
-//    private int mRightColor;
-//    // 左边的正常颜色
-//    private int mLeftColor;
-//    // 未被选中颜色
+//    // 鍙宠竟鐨勬甯搁鑹?//    private int mRightColor;
+//    // 宸﹁竟鐨勬甯搁鑹?//    private int mLeftColor;
+//    // 鏈閫変腑棰滆壊
 //    private int mUnSelectColor;
 //
 //    private Paint mRightPaint;
@@ -67,18 +63,18 @@
 //    private Path mRightPath;
 //    private Path mLeftPath;
 //
-//    // 右边文字
+//    // 鍙宠竟鏂囧瓧
 //    private String mRightText;
-//    // 左边文字
+//    // 宸﹁竟鏂囧瓧
 //    private String mLeftText;
 //
 //    private List<PointF> mLeftPoint = new ArrayList<>();
 //    private List<PointF> mRightPoint = new ArrayList<>();
 //
-//    // 默认选择左边
+//    // 榛樿閫夋嫨宸﹁竟
 //    private boolean isSelectLeft = true;
 //
-//    // 触碰到的是哪一边，用于抬起时判读是否为选中
+//    // 瑙︾鍒扮殑鏄摢涓€杈癸紝鐢ㄤ簬鎶捣鏃跺垽璇绘槸鍚︿负閫変腑
 //    private int mTouchIndex = 0;
 //
 //    private ClickListener mListener;
@@ -129,8 +125,8 @@
 //        mLeftPath = new Path();
 //        mRightPath = new Path();
 //
-//        mLeftText = "增加保证金";
-//        mRightText = "减少保证金";
+//        mLeftText = "澧炲姞淇濊瘉閲?;
+//        mRightText = "鍑忓皯淇濊瘉閲?;
 //
 //    }
 //
@@ -200,7 +196,7 @@
 //    }
 //
 //    /**
-//     * 构建按钮路径
+//     * 鏋勫缓鎸夐挳璺緞
 //     */
 //    private void buildBtnPath() {
 //
@@ -268,20 +264,18 @@
 //                    upIndex = RIGHT;
 //                }
 //
-//                // 抬起点不再范围内
+//                // 鎶捣鐐逛笉鍐嶈寖鍥村唴
 //                if(upIndex == NONE){
 //                    break;
 //                }
 //
-//                // 按下和抬起要在同一个控件，才可以
-//                if (upIndex != mTouchIndex) {
+//                // 鎸変笅鍜屾姮璧疯鍦ㄥ悓涓€涓帶浠讹紝鎵嶅彲浠?//                if (upIndex != mTouchIndex) {
 //                    break;
 //                }
 //
 //                boolean result = upIndex == LEFT;
 //
-//                // 如果和之前一样的话，不回调
-//                if(result == isSelectLeft){
+//                // 濡傛灉鍜屼箣鍓嶄竴鏍风殑璇濓紝涓嶅洖璋?//                if(result == isSelectLeft){
 //                    break;
 //                }
 //
@@ -325,3 +319,4 @@
 //    }
 //
 //}
+

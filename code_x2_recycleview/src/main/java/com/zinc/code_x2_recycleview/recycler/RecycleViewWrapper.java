@@ -1,13 +1,13 @@
-package com.zinc.code_x2_recycleview.recycler;
+﻿package com.zinc.code_x2_recycleview.recycler;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/2/27
+ * @date 鍒涘缓鏃堕棿锛?019/2/27
  * @description
  */
 public class RecycleViewWrapper extends RecyclerView {
@@ -49,3 +49,4 @@ public class RecycleViewWrapper extends RecyclerView {
         void afterLayout();
     }
 }
+

@@ -1,19 +1,19 @@
-package com.zinc.xfermode.activity;
+﻿package com.zinc.xfermode.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.zinc.xfermode.R;
 import com.zinc.xfermode.fragment.XFerModeFragment;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/12/26
+ * @date 鍒涘缓鏃堕棿锛?018/12/26
  * @description
  */
 public class XFerModeItemActivity extends AppCompatActivity {

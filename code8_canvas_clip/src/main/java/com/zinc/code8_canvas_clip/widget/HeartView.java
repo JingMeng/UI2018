@@ -1,4 +1,4 @@
-package com.zinc.code8_canvas_clip.widget;
+﻿package com.zinc.code8_canvas_clip.widget;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -12,8 +12,8 @@ import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -26,13 +26,13 @@ import java.util.List;
 
 /**
  * author       : zinc
- * time         : 2019/4/20 上午10:05
+ * time         : 2019/4/20 涓婂崍10:05
  * desc         :
  * version      :
  */
 public class HeartView extends View {
 
-    private static final String SHOW_CONTENT = "猛猛的小盆友";
+    private static final String SHOW_CONTENT = "鐚涚寷鐨勫皬鐩嗗弸";
 
     private Paint mPaint;
 
@@ -53,9 +53,9 @@ public class HeartView extends View {
     private int mTopBgColor;
     private int mBottomBgColor;
 
-    // 当前的偏移量
+    // 褰撳墠鐨勫亸绉婚噺
     private int mCurOffset = 0;
-    // 每次的偏移量
+    // 姣忔鐨勫亸绉婚噺
     private int mOffset;
 
     private Path mTopPath;
@@ -77,29 +77,25 @@ public class HeartView extends View {
     }
 
     private void init(Context context) {
-        // 初始化变量
-        mTextSize = dpToPx(16);
+        // 鍒濆鍖栧彉閲?        mTextSize = dpToPx(16);
         mOffset = dpToPx(2.5f);
         mBezierHeight = dpToPx(10);
 
         mTopBgColor = ContextCompat.getColor(context, R.color.canvas_pink_color);
         mBottomBgColor = ContextCompat.getColor(context, R.color.canvas_light_blue_color);
 
-        // 初始化对象
-        mPaint = new Paint();
+        // 鍒濆鍖栧璞?        mPaint = new Paint();
         mPaint.setAntiAlias(true);
 
         mHeartRect = new RectF();
         mTopPath = new Path();
         mBottomPath = new Path();
 
-        // 初始化心形路径
-        mHeartPath = new Path();
+        // 鍒濆鍖栧績褰㈣矾寰?        mHeartPath = new Path();
         createHeart(mHeartPath);
         mCurPos = mHeartRect.bottom;
 
-        // 贝塞尔曲线动画
-        mBezierAnim = ValueAnimator.ofFloat(0, 1f);
+        // 璐濆灏旀洸绾垮姩鐢?        mBezierAnim = ValueAnimator.ofFloat(0, 1f);
         mBezierAnim.setDuration(4_000);
         mBezierAnim.setRepeatCount(ValueAnimator.INFINITE);
         mBezierAnim.setInterpolator(new LinearInterpolator());
@@ -110,14 +106,13 @@ public class HeartView extends View {
             }
         });
 
-        // 初始化 增加的动画
-        mUpAnim = ObjectAnimator.ofFloat(this, "process", 0, 1);
+        // 鍒濆鍖?澧炲姞鐨勫姩鐢?        mUpAnim = ObjectAnimator.ofFloat(this, "process", 0, 1);
         mUpAnim.setInterpolator(new LinearInterpolator());
         mUpAnim.setDuration(6_000);
     }
 
     /**
-     * 构建心形
+     * 鏋勫缓蹇冨舰
      */
     private void createHeart(Path path) {
         List<PointF> pointList = new ArrayList<>();
@@ -171,13 +166,12 @@ public class HeartView extends View {
     }
 
     /**
-     * 当前进度
+     * 褰撳墠杩涘害
      *
-     * @param process 范围 [0-1]
+     * @param process 鑼冨洿 [0-1]
      */
     public void setProcess(float process) {
-        // 如果心形的rect为空，直接中止
-        if (mHeartRect.isEmpty()) {
+        // 濡傛灉蹇冨舰鐨剅ect涓虹┖锛岀洿鎺ヤ腑姝?        if (mHeartRect.isEmpty()) {
             if (mUpAnim != null) {
                 mUpAnim.cancel();
             }
@@ -201,7 +195,7 @@ public class HeartView extends View {
         int waveLength = width / 3;
         int totalLength = width * 2 + waveLength;
 
-        // 初始化 浪的路径
+        // 鍒濆鍖?娴殑璺緞
         initPath(mTopPath,
                 waveLength,
                 mBezierHeight,
@@ -210,7 +204,7 @@ public class HeartView extends View {
                 height,
                 true);
 
-        // 初始化 浪的路径
+        // 鍒濆鍖?娴殑璺緞
         initPath(mBottomPath, waveLength,
                 mBezierHeight,
                 totalLength,
@@ -276,13 +270,9 @@ public class HeartView extends View {
     }
 
     /**
-     * @param path         路径
-     * @param length       曲线的宽度
-     * @param height       贝塞尔曲线的高度
-     * @param totalLength  总长度
-     * @param screenWidth  屏幕宽
-     * @param screenHeight 屏幕高
-     * @param isTop        是否为上部份
+     * @param path         璺緞
+     * @param length       鏇茬嚎鐨勫搴?     * @param height       璐濆灏旀洸绾跨殑楂樺害
+     * @param totalLength  鎬婚暱搴?     * @param screenWidth  灞忓箷瀹?     * @param screenHeight 灞忓箷楂?     * @param isTop        鏄惁涓轰笂閮ㄤ唤
      */
     private void initPath(Path path,
                           int length,
@@ -312,8 +302,8 @@ public class HeartView extends View {
         }
 
         for (int i = -length; i < totalLength; i += length) {
-            // rQuadTo 和 quadTo 区别在于
-            // rQuadTo 是相对上一个点 而 quadTo是相对于画布
+            // rQuadTo 鍜?quadTo 鍖哄埆鍦ㄤ簬
+            // rQuadTo 鏄浉瀵逛笂涓€涓偣 鑰?quadTo鏄浉瀵逛簬鐢诲竷
             path.rQuadTo(length / 4,
                     -height,
                     length / 2,
@@ -336,13 +326,12 @@ public class HeartView extends View {
     }
 
     /**
-     * 转换 dp 至 px
+     * 杞崲 dp 鑷?px
      *
-     * @param dpValue dp值
-     * @return px值
-     */
+     * @param dpValue dp鍊?     * @return px鍊?     */
     protected int dpToPx(float dpValue) {
         DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
         return (int) (dpValue * metrics.density + 0.5f);
     }
 }
+

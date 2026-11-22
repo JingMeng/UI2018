@@ -1,17 +1,16 @@
-package com.zinc.code8_canvas_draw.widget.draw;
+﻿package com.zinc.code8_canvas_draw.widget.draw;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 /**
  * author       : zinc
- * time         : 2019/4/22 上午9:23
- * desc         : 画圆弧
- * version      : 1.2.0
+ * time         : 2019/4/22 涓婂崍9:23
+ * desc         : 鐢诲渾寮? * version      : 1.2.0
  */
 public class ArcView extends BaseDrawView {
 
@@ -36,10 +35,10 @@ public class ArcView extends BaseDrawView {
             canvas.translate(0, -mRectF.height() * 3 / 2);
 
             mPaint.setStrokeWidth(mLineWidth);
-            // STROKE 只画线不填充，FILL 会将区域填充
+            // STROKE 鍙敾绾夸笉濉厖锛孎ILL 浼氬皢鍖哄煙濉厖
             mPaint.setStyle(Paint.Style.STROKE);
             mPaint.setColor(mColor1);
-            // 第四个参数，设置为false，不连接中心
+            // 绗洓涓弬鏁帮紝璁剧疆涓篺alse锛屼笉杩炴帴涓績
             canvas.drawArc(-150, -150, 400, 150,
                     0, 120, false, mPaint);
 
@@ -54,8 +53,7 @@ public class ArcView extends BaseDrawView {
         mPaint.setStrokeWidth(mLineWidth);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(mColor1);
-        // 第四个参数，设置为true，连接中心
-        canvas.drawArc(mRectF, 0, 120,
+        // 绗洓涓弬鏁帮紝璁剧疆涓簍rue锛岃繛鎺ヤ腑蹇?        canvas.drawArc(mRectF, 0, 120,
                 true, mPaint);
 
         mPaint.setStyle(Paint.Style.STROKE);
@@ -64,3 +62,4 @@ public class ArcView extends BaseDrawView {
         canvas.drawRect(mRectF, mPaint);
     }
 }
+

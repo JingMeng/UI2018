@@ -1,8 +1,8 @@
-package com.zinc.velocitytracker_scroller;
+﻿package com.zinc.velocitytracker_scroller;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -17,7 +17,7 @@ import java.util.Random;
 /**
  * author       : zinc
  * email        : 56002982@qq.com
- * time         : 2019/3/2 上午8:57
+ * time         : 2019/3/2 涓婂崍8:57
  * desc         :
  * version      :
  */
@@ -99,10 +99,11 @@ public class BarActivity extends AppCompatActivity {
         List<BarChart.BarInfo> data = new ArrayList<>();
 
         for (int i = 1; i <= mDataCount; ++i) {
-            data.add(new BarChart.BarInfo(i + "日", mRandom.nextFloat()));
+            data.add(new BarChart.BarInfo(i + "鏃?, mRandom.nextFloat()));
         }
 
         return data;
     }
 
 }
+

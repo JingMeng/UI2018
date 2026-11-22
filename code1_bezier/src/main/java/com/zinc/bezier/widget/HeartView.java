@@ -1,4 +1,4 @@
-package com.zinc.bezier.widget;
+﻿package com.zinc.bezier.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.zinc.lib_base.BaseView;
@@ -17,9 +17,8 @@ import java.util.List;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/10
- * @description 心
- */
+ * @date 鍒涘缓鏃堕棿锛?019/1/10
+ * @description 蹇? */
 public class HeartView extends BaseView {
 
     private Path mPath;
@@ -160,3 +159,4 @@ public class HeartView extends BaseView {
     }
 
 }
+

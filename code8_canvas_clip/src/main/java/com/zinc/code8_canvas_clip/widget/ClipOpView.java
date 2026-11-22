@@ -1,4 +1,4 @@
-package com.zinc.code8_canvas_clip.widget;
+﻿package com.zinc.code8_canvas_clip.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,7 +8,7 @@ import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.Region;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.zinc.lib_base.BaseView;
@@ -18,24 +18,20 @@ import java.util.List;
 
 /**
  * author       : zinc
- * time         : 2019/4/26 上午12:22
+ * time         : 2019/4/26 涓婂崍12:22
  * desc         :
  * version      :
  */
 public class ClipOpView extends BaseView {
 
-    // 是A形状中不同于B的部分显示出来
-    public static final String DIFFERENCE = "DIFFERENCE";
-    // 是A和B交集的形状
-    public static final String INTERSECT = "INTERSECT";
-    // 是A和B的全集
-    public static final String UNION = "UNION";
-    // 是全集形状减去交集形状之后的部分
+    // 鏄疉褰㈢姸涓笉鍚屼簬B鐨勯儴鍒嗘樉绀哄嚭鏉?    public static final String DIFFERENCE = "DIFFERENCE";
+    // 鏄疉鍜孊浜ら泦鐨勫舰鐘?    public static final String INTERSECT = "INTERSECT";
+    // 鏄疉鍜孊鐨勫叏闆?    public static final String UNION = "UNION";
+    // 鏄叏闆嗗舰鐘跺噺鍘讳氦闆嗗舰鐘朵箣鍚庣殑閮ㄥ垎
     public static final String XOR = "XOR";
-    // 是B形状中不同于A的部分显示出来，这是没有设置时候默认的
+    // 鏄疊褰㈢姸涓笉鍚屼簬A鐨勯儴鍒嗘樉绀哄嚭鏉ワ紝杩欐槸娌℃湁璁剧疆鏃跺€欓粯璁ょ殑
     public static final String REVERSE_DIFFERENCE = "REVERSE_DIFFERENCE";
-    // 是只显示B的形状
-    public static final String REPLACE = "REPLACE";
+    // 鏄彧鏄剧ずB鐨勫舰鐘?    public static final String REPLACE = "REPLACE";
 
     private Path mHeartPath;
     private Path mCirclePath;
@@ -153,24 +149,21 @@ public class ClipOpView extends BaseView {
             case DIFFERENCE:
                 op = Region.Op.DIFFERENCE;
                 break;
-            // 是A和B交集的形状
-            case INTERSECT:
+            // 鏄疉鍜孊浜ら泦鐨勫舰鐘?            case INTERSECT:
                 op = Region.Op.INTERSECT;
                 break;
-            // 是A和B的全集
-            case UNION:
+            // 鏄疉鍜孊鐨勫叏闆?            case UNION:
                 op = Region.Op.UNION;
                 break;
-            // 是全集形状减去交集形状之后的部分
+            // 鏄叏闆嗗舰鐘跺噺鍘讳氦闆嗗舰鐘朵箣鍚庣殑閮ㄥ垎
             case XOR:
                 op = Region.Op.XOR;
                 break;
-            // 是B形状中不同于A的部分显示出来，这是没有设置时候默认的
+            // 鏄疊褰㈢姸涓笉鍚屼簬A鐨勯儴鍒嗘樉绀哄嚭鏉ワ紝杩欐槸娌℃湁璁剧疆鏃跺€欓粯璁ょ殑
             case REVERSE_DIFFERENCE:
                 op = Region.Op.REVERSE_DIFFERENCE;
                 break;
-            // 是只显示B的形状
-            case REPLACE:
+            // 鏄彧鏄剧ずB鐨勫舰鐘?            case REPLACE:
                 op = Region.Op.REPLACE;
                 break;
             default:
@@ -182,7 +175,7 @@ public class ClipOpView extends BaseView {
     }
 
     /**
-     * 构建心形
+     * 鏋勫缓蹇冨舰
      */
     private void createHeart(Path path) {
         List<PointF> pointList = new ArrayList<>();
@@ -222,3 +215,4 @@ public class ClipOpView extends BaseView {
     }
 
 }
+

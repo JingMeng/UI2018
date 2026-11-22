@@ -1,10 +1,10 @@
-package com.zinc.drawable_gravity;
+﻿package com.zinc.drawable_gravity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/29
+ * @date 鍒涘缓鏃堕棿锛?018/10/29
  * @description
  */
 public class ClientActivity extends AppCompatActivity implements View.OnClickListener {
@@ -52,7 +52,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             try {
                 int level = Integer.parseInt(levelString);
                 if (level < 0 || level > 10000) {
-                    Toast.makeText(this, "范围0-10000", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "鑼冨洿0-10000", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -65,3 +65,4 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 }
+

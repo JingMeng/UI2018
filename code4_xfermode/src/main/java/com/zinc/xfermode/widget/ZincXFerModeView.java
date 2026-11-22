@@ -1,4 +1,4 @@
-package com.zinc.xfermode.widget;
+﻿package com.zinc.xfermode.widget;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Xfermode;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,14 +22,11 @@ import com.zinc.xfermode.activity.XFerModeItemActivity;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/22
- * @description FerMode 的 样式使用
+ * @date 鍒涘缓鏃堕棿锛?018/10/22
+ * @description FerMode 鐨?鏍峰紡浣跨敤
  * <p>
- * 注意的是，要和google的示例一模一样需要在manifest中增加
- * android:hardwareAccelerated="false"
- * 关闭硬件加速，其实就是避开 openGL 的绘制
- * 否则Clear、Darken、Lighten会和示例中的不太一样
- */
+ * 娉ㄦ剰鐨勬槸锛岃鍜実oogle鐨勭ず渚嬩竴妯′竴鏍烽渶瑕佸湪manifest涓鍔? * android:hardwareAccelerated="false"
+ * 鍏抽棴纭欢鍔犻€燂紝鍏跺疄灏辨槸閬垮紑 openGL 鐨勭粯鍒? * 鍚﹀垯Clear銆丏arken銆丩ighten浼氬拰绀轰緥涓殑涓嶅お涓€鏍? */
 public class ZincXFerModeView extends View {
 
     private String TAG = "XFerModeView";
@@ -76,22 +73,22 @@ public class ZincXFerModeView extends View {
         init(context);
     }
 
-    // 边框画笔
+    // 杈规鐢荤瑪
     private Paint borderPaint;
-    // 字体画笔
+    // 瀛椾綋鐢荤瑪
     private Paint textPaint;
 
-    // 每个框的宽度
+    // 姣忎釜妗嗙殑瀹藉害
     private float itemWidth;
-    // 横向边界
+    // 妯悜杈圭晫
     private float horizontalOffset = 10;
-    // 纵向边界
+    // 绾靛悜杈圭晫
     private float verticalOffset = 10;
 
-    // 边框的宽
+    // 杈规鐨勫
     private int itemBorderWidth = 2;
 
-    // 字体大小
+    // 瀛椾綋澶у皬
     private int textSize = 25;
 
     private int dst;
@@ -105,7 +102,7 @@ public class ZincXFerModeView extends View {
 
     private RectF mRangeRectF;
 
-    // 背景
+    // 鑳屾櫙
     private Shader itemBackground;
 
     private int mDownSelIndex = -1;
@@ -120,11 +117,10 @@ public class ZincXFerModeView extends View {
         textPaint.setAntiAlias(true);
         textPaint.setColor(Color.BLACK);
         textPaint.setTextSize(textSize);
-        // 字体居中[即画的点为字体中间]
+        // 瀛椾綋灞呬腑[鍗崇敾鐨勭偣涓哄瓧浣撲腑闂碷
         textPaint.setTextAlign(Paint.Align.CENTER);
 
-        // 图的绘制笔
-        bitmapPaint = new Paint();
+        // 鍥剧殑缁樺埗绗?        bitmapPaint = new Paint();
         bitmapPaint.setAntiAlias(true);
 
         Bitmap bm = Bitmap.createBitmap(new int[]{0xFFFFFFFF, 0xFFCCCCCC, 0xFFCCCCCC, 0xFFFFFFFF},
@@ -158,12 +154,12 @@ public class ZincXFerModeView extends View {
         float width = Math.min(w, h);
         boolean isHorMin = w < h;
 
-        // 计算每个宽的大小
+        // 璁＄畻姣忎釜瀹界殑澶у皬
         if (isHorMin) {
-            // 横向较短
+            // 妯悜杈冪煭
             itemWidth = (width - 4 * horizontalOffset) / 4;
         } else {
-            // 纵向较短
+            // 绾靛悜杈冪煭
             itemWidth = (width - 4 * horizontalOffset - 4 * textSize) / 4;
         }
 
@@ -191,7 +187,7 @@ public class ZincXFerModeView extends View {
 
                 float translateYItem = textSize + verticalOffset;
 
-                // 绘制边框
+                // 缁樺埗杈规
                 borderPaint.setShader(null);
                 borderPaint.setStyle(Paint.Style.STROKE);
                 canvas.drawRect(translateX,
@@ -200,7 +196,7 @@ public class ZincXFerModeView extends View {
                         translateY + itemWidth + translateYItem,
                         borderPaint);
 
-                // 绘制背景
+                // 缁樺埗鑳屾櫙
                 borderPaint.setShader(itemBackground);
                 borderPaint.setStyle(Paint.Style.FILL);
                 canvas.drawRect(translateX,
@@ -209,13 +205,13 @@ public class ZincXFerModeView extends View {
                         translateY + itemWidth + translateYItem,
                         borderPaint);
 
-                // 存储图层
+                // 瀛樺偍鍥惧眰
                 int layer = canvas.saveLayer(0, 0, getWidth(), getHeight(), null,
                         Canvas.ALL_SAVE_FLAG);
 
                 canvas.translate(translateX, translateY);
 
-                // 绘制字体
+                // 缁樺埗瀛椾綋
                 canvas.drawText(sLabels[row * 4 + col],
                         itemWidth / 2,
                         (textSize + verticalOffset) / 2 + 10,
@@ -224,11 +220,10 @@ public class ZincXFerModeView extends View {
                 canvas.translate(0, translateYItem);
 
                 bitmapPaint.setXfermode(null);
-                // 画圆
+                // 鐢诲渾
                 canvas.drawBitmap(dstBitmap, null, rectF, bitmapPaint);
                 bitmapPaint.setXfermode(sModes[row * 4 + col]);
-                // 画矩形
-                canvas.drawBitmap(srcBitmap, null, rectF, bitmapPaint);
+                // 鐢荤煩褰?                canvas.drawBitmap(srcBitmap, null, rectF, bitmapPaint);
 
                 canvas.restoreToCount(layer);
             }
@@ -297,3 +292,4 @@ public class ZincXFerModeView extends View {
         return -1;
     }
 }
+

@@ -1,13 +1,13 @@
-package com.zinc.animation.activity;
+﻿package com.zinc.animation.activity;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +20,7 @@ import com.zinc.animation.widget.ShoppingView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/26
+ * @date 鍒涘缓鏃堕棿锛?019/1/26
  * @description
  */
 public class ShoppingActivity extends AppCompatActivity implements ShoppingView.AnimatorListener {
@@ -79,8 +79,7 @@ public class ShoppingActivity extends AppCompatActivity implements ShoppingView.
     }
 
     /**
-     * 获取在整个屏幕内的绝对坐标
-     */
+     * 鑾峰彇鍦ㄦ暣涓睆骞曞唴鐨勭粷瀵瑰潗鏍?     */
     private PointF getScreenPoint(View view) {
         int[] location = new int[2];
         view.getLocationOnScreen(location);
@@ -113,3 +112,4 @@ public class ShoppingActivity extends AppCompatActivity implements ShoppingView.
     }
 
 }
+

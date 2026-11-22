@@ -1,22 +1,22 @@
-package com.zinc.code8_canvas_text_paint.text;
+﻿package com.zinc.code8_canvas_text_paint.text;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 /**
  * author       : zinc
- * time         : 2019/4/22 下午5:05
+ * time         : 2019/4/22 涓嬪崍5:05
  * desc         :
  * version      :
  */
 public class TextOnPathView extends BaseDrawView {
 
-    private static final String CONTENT = "zinc 猛猛的小盆友";
+    private static final String CONTENT = "zinc 鐚涚寷鐨勫皬鐩嗗弸";
     private static final char[] C = "https://blog.csdn.net/weixin_37625173".toCharArray();
 
     private Path mPath;
@@ -75,11 +75,9 @@ public class TextOnPathView extends BaseDrawView {
     }
 
     /**
-     * @param path        路径
-     * @param length      曲线的宽度
-     * @param height      贝塞尔曲线的高度
-     * @param screenWidth 屏幕宽
-     */
+     * @param path        璺緞
+     * @param length      鏇茬嚎鐨勫搴?     * @param height      璐濆灏旀洸绾跨殑楂樺害
+     * @param screenWidth 灞忓箷瀹?     */
     private void initPath(Path path,
                           int length,
                           int height,
@@ -100,3 +98,4 @@ public class TextOnPathView extends BaseDrawView {
     }
 
 }
+

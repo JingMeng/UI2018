@@ -1,4 +1,4 @@
-package com.zinc.paint.widget;
+﻿package com.zinc.paint.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,8 +8,8 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -22,36 +22,33 @@ import java.util.Random;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/30
+ * @date 鍒涘缓鏃堕棿锛?019/1/30
  * @description
  */
 public class RadarView extends View {
 
-    // 最多显示的小点
+    // 鏈€澶氭樉绀虹殑灏忕偣
     private static int DOT_COUNT = 3;
 
-    // 雷达图宽 和 高
-    private float mWidth;
-    // 圈的间隔
+    // 闆疯揪鍥惧 鍜?楂?    private float mWidth;
+    // 鍦堢殑闂撮殧
     private float[] pots = new float[]{0.2f, 0.4f, 0.6f, 0.8f, 1f};
-    // 圈的画笔
+    // 鍦堢殑鐢荤瑪
     private Paint circlePaint;
-    // 扫描的画笔
-    private Paint scanPaint;
-    // 圈的画笔的粗细
-    private float circlePaintWidth;
-    // 扫描渲染 shader
+    // 鎵弿鐨勭敾绗?    private Paint scanPaint;
+    // 鍦堢殑鐢荤瑪鐨勭矖缁?    private float circlePaintWidth;
+    // 鎵弿娓叉煋 shader
     private Shader scanShader;
-    // 旋转矩阵
+    // 鏃嬭浆鐭╅樀
     private Matrix matrix;
-    // 扫描线程
+    // 鎵弿绾跨▼
     private Runnable scanRunnable;
-    // 扫描速度
+    // 鎵弿閫熷害
     private float speed;
-    // 更新间隔
+    // 鏇存柊闂撮殧
     private static final int INTERVAL = 20;
 
-    // 范围
+    // 鑼冨洿
     private RectF mRect;
 
     private float mViewWidth;
@@ -73,8 +70,7 @@ public class RadarView extends View {
     }
 
     /**
-     * 初始化
-     *
+     * 鍒濆鍖?     *
      * @param context
      */
     public void init(Context context) {
@@ -90,25 +86,22 @@ public class RadarView extends View {
 
         matrix = new Matrix();
 
-        // 初始化圈画笔
+        // 鍒濆鍖栧湀鐢荤瑪
         circlePaint = new Paint();
-        // 设置宽
-        circlePaint.setStrokeWidth(circlePaintWidth);
-        // 设置抗锯齿
-        circlePaint.setAntiAlias(true);
-        // 设置颜色
+        // 璁剧疆瀹?        circlePaint.setStrokeWidth(circlePaintWidth);
+        // 璁剧疆鎶楅敮榻?        circlePaint.setAntiAlias(true);
+        // 璁剧疆棰滆壊
         circlePaint.setColor(ContextCompat.getColor(context, R.color.color_circle));
-        // 设置样式，只画线，不填充
+        // 璁剧疆鏍峰紡锛屽彧鐢荤嚎锛屼笉濉厖
         circlePaint.setStyle(Paint.Style.STROKE);
 
-        // 初始化扫描笔
+        // 鍒濆鍖栨壂鎻忕瑪
         scanPaint = new Paint();
-        // 设置样式，即画线，又填充
+        // 璁剧疆鏍峰紡锛屽嵆鐢荤嚎锛屽張濉厖
         scanPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        // 设置抗锯齿
-        scanPaint.setAntiAlias(true);
+        // 璁剧疆鎶楅敮榻?        scanPaint.setAntiAlias(true);
 
-        // 初始化速度
+        // 鍒濆鍖栭€熷害
         speed = 5;
 
         post(scanRunnable);
@@ -127,7 +120,7 @@ public class RadarView extends View {
 
         mWidth = Math.min(tempHeight, tempWidth);
 
-        // 初始化样式；判空是因为，7.0之后的onMeasure会走两次，避免不必要的初始化
+        // 鍒濆鍖栨牱寮忥紱鍒ょ┖鏄洜涓猴紝7.0涔嬪悗鐨刼nMeasure浼氳蛋涓ゆ锛岄伩鍏嶄笉蹇呰鐨勫垵濮嬪寲
         if (scanShader == null) {
             scanShader = new SweepGradient(0,
                     0,
@@ -148,8 +141,7 @@ public class RadarView extends View {
     }
 
     public void start() {
-        // 初始化扫描线程
-        scanRunnable = new Runnable() {
+        // 鍒濆鍖栨壂鎻忕嚎绋?        scanRunnable = new Runnable() {
             @Override
             public void run() {
                 matrix.postRotate(speed, 0, 0);
@@ -165,7 +157,7 @@ public class RadarView extends View {
 
         canvas.translate(mViewWidth / 2, mViewHeight / 2);
 
-        // 循环画圈
+        // 寰幆鐢诲湀
         for (float pot : pots) {
             canvas.drawCircle(0, 0, pot * mWidth / 2, circlePaint);
         }
@@ -192,23 +184,20 @@ public class RadarView extends View {
 
         private Random random;
 
-        // 可用范围
+        // 鍙敤鑼冨洿
         private RectF rectF;
 
-        // 该点所在 x轴 坐标
+        // 璇ョ偣鎵€鍦?x杞?鍧愭爣
         private float x;
-        // 该点所在 y轴 坐标
+        // 璇ョ偣鎵€鍦?y杞?鍧愭爣
         private float y;
 
-        // 该点的动画时长
-        private int duration;
-        // 当前点已经运行的时长
+        // 璇ョ偣鐨勫姩鐢绘椂闀?        private int duration;
+        // 褰撳墠鐐瑰凡缁忚繍琛岀殑鏃堕暱
         private int curTime;
-        // 上次运行的时间
-        private long beforeTime;
+        // 涓婃杩愯鐨勬椂闂?        private long beforeTime;
 
-        // 点半径
-        private float radius;
+        // 鐐瑰崐寰?        private float radius;
 
         public DotInfo() {
             this.random = new Random();
@@ -238,3 +227,4 @@ public class RadarView extends View {
         }
     }
 }
+

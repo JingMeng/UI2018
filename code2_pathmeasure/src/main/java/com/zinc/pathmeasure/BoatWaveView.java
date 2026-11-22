@@ -1,4 +1,4 @@
-package com.zinc.pathmeasure;
+﻿package com.zinc.pathmeasure;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -9,15 +9,15 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 
 import com.zinc.lib_base.BaseView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/12/7
+ * @date 鍒涘缓鏃堕棿锛?018/12/7
  * @description
  */
 public class BoatWaveView extends BaseView {
@@ -34,17 +34,14 @@ public class BoatWaveView extends BaseView {
         super(context, attrs, defStyleAttr);
     }
 
-    // 小船浪花的宽度
-    private static final int BOAT_LENGTH = 200;
-    // 浪花的宽度
-    private int WAVE_LENGTH;
+    // 灏忚埞娴姳鐨勫搴?    private static final int BOAT_LENGTH = 200;
+    // 娴姳鐨勫搴?    private int WAVE_LENGTH;
 
-    // 小船浪花的高度
-    private static final int BOAT_WAVE_HEIGHT = 20;
-    // 波浪高度
+    // 灏忚埞娴姳鐨勯珮搴?    private static final int BOAT_WAVE_HEIGHT = 20;
+    // 娉㈡氮楂樺害
     private static final int WAVE_HEIGHT = 35;
 
-    // 浪花每次的偏移量
+    // 娴姳姣忔鐨勫亸绉婚噺
     private final static int WAVE_OFFSET = 5;
 
     private boolean isInit = false;
@@ -53,33 +50,26 @@ public class BoatWaveView extends BaseView {
     private int mHeight;
 
     public Paint mWavePaint;
-    // 海浪的路径
-    public Path mWavePath;
-    // 小船的浪路径
+    // 娴锋氮鐨勮矾寰?    public Path mWavePath;
+    // 灏忚埞鐨勬氮璺緞
     public Path mBoatWavePath;
-    // 小船的路径
-    public Path mBoatPath;
+    // 灏忚埞鐨勮矾寰?    public Path mBoatPath;
 
     private PathMeasure mBoatPathMeasure;
 
-    // 小船的浪色值
-    private int mBoatBlue;
-    // 浪花的色值
-    private int mWaveBlue;
+    // 灏忚埞鐨勬氮鑹插€?    private int mBoatBlue;
+    // 娴姳鐨勮壊鍊?    private int mWaveBlue;
 
-    // 小船当前所处的值
-    private float mCurValue = 0f;
+    // 灏忚埞褰撳墠鎵€澶勭殑鍊?    private float mCurValue = 0f;
 
-    // 浪花当前的偏移量
+    // 娴姳褰撳墠鐨勫亸绉婚噺
     private int mCurWaveOffset = 0;
-    // 小船的浪花偏移量
+    // 灏忚埞鐨勬氮鑺卞亸绉婚噺
     private int mBoatWaveOffset = 0;
 
-    // 用于变换小船的
-    private Matrix mMatrix;
+    // 鐢ㄤ簬鍙樻崲灏忚埞鐨?    private Matrix mMatrix;
 
-    // 小船的图片
-    private Bitmap mBoatBitmap;
+    // 灏忚埞鐨勫浘鐗?    private Bitmap mBoatBitmap;
 
     private ValueAnimator mAnimator;
 
@@ -100,7 +90,7 @@ public class BoatWaveView extends BaseView {
 
         mMatrix = new Matrix();
 
-        // 加载图片
+        // 鍔犺浇鍥剧墖
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 1;
         mBoatBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.boat, options);
@@ -122,18 +112,14 @@ public class BoatWaveView extends BaseView {
     }
 
     /**
-     * @param path       路径
-     * @param length     浪花的宽度
-     * @param height     浪花的高度
-     * @param isClose    是否要闭合
-     * @param lengthTime 浪花长的倍数
+     * @param path       璺緞
+     * @param length     娴姳鐨勫搴?     * @param height     娴姳鐨勯珮搴?     * @param isClose    鏄惁瑕侀棴鍚?     * @param lengthTime 娴姳闀跨殑鍊嶆暟
      */
     private void initPath(Path path, int length, int height, boolean isClose, float lengthTime) {
-        // 初始化 小船的路径
-        path.moveTo(-length, mHeight / 2);
+        // 鍒濆鍖?灏忚埞鐨勮矾寰?        path.moveTo(-length, mHeight / 2);
         for (int i = -length; i < mWidth * lengthTime + length; i += length) {
-            // rQuadTo 和 quadTo 区别在于
-            // rQuadTo 是相对上一个点 而 quadTo是相对于画布
+            // rQuadTo 鍜?quadTo 鍖哄埆鍦ㄤ簬
+            // rQuadTo 鏄浉瀵逛笂涓€涓偣 鑰?quadTo鏄浉瀵逛簬鐢诲竷
             path.rQuadTo(length / 4,
                     -height,
                     length / 2,
@@ -164,16 +150,15 @@ public class BoatWaveView extends BaseView {
 
             WAVE_LENGTH = mWidth / 3;
 
-            // 初始化 小船的浪路径
+            // 鍒濆鍖?灏忚埞鐨勬氮璺緞
             initPath(mBoatWavePath, WAVE_LENGTH, BOAT_WAVE_HEIGHT, true, 2);
 
-            // 初始化 浪的路径
+            // 鍒濆鍖?娴殑璺緞
             initPath(mWavePath, WAVE_LENGTH, WAVE_HEIGHT, true, 2);
 
-            // 初始化 小船的路径
-            initPath(mBoatPath, WAVE_LENGTH, BOAT_WAVE_HEIGHT, false, 1);
+            // 鍒濆鍖?灏忚埞鐨勮矾寰?            initPath(mBoatPath, WAVE_LENGTH, BOAT_WAVE_HEIGHT, false, 1);
 
-            // 让 PathMeasure 与 Path 关联
+            // 璁?PathMeasure 涓?Path 鍏宠仈
             mBoatPathMeasure.setPath(mBoatPath, false);
         }
 
@@ -191,15 +176,13 @@ public class BoatWaveView extends BaseView {
 
         canvas.drawBitmap(mBoatBitmap, mMatrix, null);
 
-        // 画船的浪花
-        canvas.save();
+        // 鐢昏埞鐨勬氮鑺?        canvas.save();
         canvas.translate(-mBoatWaveOffset, 0);
         mWavePaint.setColor(mBoatBlue);
         canvas.drawPath(mBoatWavePath, mWavePaint);
         canvas.restore();
 
-        // 画浪花
-        canvas.save();
+        // 鐢绘氮鑺?        canvas.save();
         canvas.translate(-mCurWaveOffset, 0);
         mWavePaint.setColor(mWaveBlue);
         canvas.drawPath(mWavePath, mWavePaint);
@@ -216,3 +199,4 @@ public class BoatWaveView extends BaseView {
     }
 
 }
+

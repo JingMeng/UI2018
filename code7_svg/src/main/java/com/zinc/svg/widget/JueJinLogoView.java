@@ -1,4 +1,4 @@
-package com.zinc.svg.widget;
+﻿package com.zinc.svg.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -13,7 +13,7 @@ import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -41,7 +41,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * author       : zinc
- * time         : 2019/4/5 下午6:01
+ * time         : 2019/4/5 涓嬪崍6:01
  * desc         :
  * version      :
  */
@@ -64,12 +64,11 @@ public class JueJinLogoView extends View {
     private PathMeasure mPathMeasure;
 
     /**
-     * 画布的矩阵
-     */
+     * 鐢诲竷鐨勭煩闃?     */
     private final Matrix mCanvasMatrix = new Matrix();
 
     /**
-     * svg 的 rect
+     * svg 鐨?rect
      */
     private final RectF mSvgRect = new RectF();
 
@@ -95,8 +94,7 @@ public class JueJinLogoView extends View {
 
     private void initView(Context context) {
 
-        // 关闭硬件加速，否则会模糊
-        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        // 鍏抽棴纭欢鍔犻€燂紝鍚﹀垯浼氭ā绯?        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
         mSvgRes = R.raw.juejin;
 
@@ -124,7 +122,7 @@ public class JueJinLogoView extends View {
 
         float mScale = calculateScale(mSvgRect.width(), mSvgRect.height(), getWidth(), getHeight());
 
-        // 移至中心
+        // 绉昏嚦涓績
         mCanvasMatrix.preTranslate(getWidth() / 2, getHeight() / 2);
         mCanvasMatrix.preTranslate(-mSvgRect.width() / 2, -mSvgRect.height() / 2);
 
@@ -196,8 +194,7 @@ public class JueJinLogoView extends View {
     }
 
     /**
-     * 用于计算缩放的大小
-     */
+     * 鐢ㄤ簬璁＄畻缂╂斁鐨勫ぇ灏?     */
     private float calculateScale(float fromWidth,
                                  float fromHeight,
                                  float toWidth,
@@ -209,8 +206,7 @@ public class JueJinLogoView extends View {
     }
 
     /**
-     * 解析地图的线程
-     */
+     * 瑙ｆ瀽鍦板浘鐨勭嚎绋?     */
     private class ParserSvgThread extends Thread {
 
         private static final String WIDTH = "android:width";
@@ -227,7 +223,7 @@ public class JueJinLogoView extends View {
         private static final String FILL_COLOR = "android:fillColor";
 
         /**
-         * 地图资源id
+         * 鍦板浘璧勬簮id
          */
         private final int mSvgResourceId;
         private final WeakReference<Context> mContext;
@@ -239,7 +235,7 @@ public class JueJinLogoView extends View {
 
         @Override
         public void run() {
-            // 打开 svg 的输入流
+            // 鎵撳紑 svg 鐨勮緭鍏ユ祦
             InputStream inputStream = null;
             try {
                 inputStream = getContext().getResources().openRawResource(mSvgResourceId);
@@ -247,14 +243,13 @@ public class JueJinLogoView extends View {
                 e.printStackTrace();
             }
 
-            // 地图输入流打开失败
+            // 鍦板浘杈撳叆娴佹墦寮€澶辫触
             if (inputStream == null) {
                 mHandle.sendEmptyMessage(InnerHandler.ERROR);
                 return;
             }
 
-            // 从 XML文档 生成 DOM对象树
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            // 浠?XML鏂囨。 鐢熸垚 DOM瀵硅薄鏍?            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             Document document = null;
             try {
                 document = factory.newDocumentBuilder().parse(inputStream);
@@ -270,17 +265,14 @@ public class JueJinLogoView extends View {
                 }
             }
 
-            // 出错则关闭流，发送提示信息
-            if (document == null) {
+            // 鍑洪敊鍒欏叧闂祦锛屽彂閫佹彁绀轰俊鎭?            if (document == null) {
                 mHandle.sendEmptyMessage(InnerHandler.ERROR);
                 return;
             }
 
-            // 获取根结点
-            Element root = document.getDocumentElement();
+            // 鑾峰彇鏍圭粨鐐?            Element root = document.getDocumentElement();
 
-            // 装载我们解析的数据
-            List<PathData> pathDataList = new ArrayList<>();
+            // 瑁呰浇鎴戜滑瑙ｆ瀽鐨勬暟鎹?            List<PathData> pathDataList = new ArrayList<>();
 
             float viewportWidth = 0;
             float viewportHeight = 0;
@@ -299,7 +291,7 @@ public class JueJinLogoView extends View {
                 return;
             }
 
-            // 获取 <group> 节点
+            // 鑾峰彇 <group> 鑺傜偣
             NodeList groupNodeList = root.getElementsByTagName(GROUP);
 
             Element group = (Element) groupNodeList.item(0);
@@ -335,24 +327,23 @@ public class JueJinLogoView extends View {
 
             NodeList pathNodeList = group.getElementsByTagName(PATH);
 
-            // 用于记录整个 svg 的实际大小
-            float left = -1;
+            // 鐢ㄤ簬璁板綍鏁翠釜 svg 鐨勫疄闄呭ぇ灏?            float left = -1;
             float top = -1;
             float right = -1;
             float bottom = -1;
 
-            // 计算出 path 的 rect
+            // 璁＄畻鍑?path 鐨?rect
             RectF rect = new RectF();
 
-            // 遍历所有的 Path 节点
+            // 閬嶅巻鎵€鏈夌殑 Path 鑺傜偣
             for (int i = 0; i < pathNodeList.getLength(); ++i) {
                 Element pathNode = (Element) pathNodeList.item(i);
-                // path 的 svg 路径
+                // path 鐨?svg 璺緞
                 String pathData = pathNode.getAttribute(PATH_DATA);
-                // path 的 颜色
+                // path 鐨?棰滆壊
                 String colorData = pathNode.getAttribute(FILL_COLOR);
 
-                // 解析 path
+                // 瑙ｆ瀽 path
                 Path path = null;
                 try {
                     path = PathParser.createPathFromPathData(pathData);
@@ -360,8 +351,7 @@ public class JueJinLogoView extends View {
                     e.printStackTrace();
                 }
 
-                // path 解析出错，退出
-                if (path == null) {
+                // path 瑙ｆ瀽鍑洪敊锛岄€€鍑?                if (path == null) {
                     mHandle.sendEmptyMessage(InnerHandler.ERROR);
                     return;
                 }
@@ -413,20 +403,20 @@ public class JueJinLogoView extends View {
     }
 
     /**
-     * 内部handler
+     * 鍐呴儴handler
      */
     private static class InnerHandler extends Handler {
 
         /**
-         * 解析成功
+         * 瑙ｆ瀽鎴愬姛
          */
         static final int SUCCESS = 1;
         /**
-         * 解析失败
+         * 瑙ｆ瀽澶辫触
          */
         static final int ERROR = 2;
 
-        static final String ERROR_MSG = "地图资源有误，载入失败";
+        static final String ERROR_MSG = "鍦板浘璧勬簮鏈夎锛岃浇鍏ュけ璐?;
 
         private WeakReference<Context> mContext;
         private WeakReference<View> mView;
@@ -461,3 +451,4 @@ public class JueJinLogoView extends View {
     }
 
 }
+

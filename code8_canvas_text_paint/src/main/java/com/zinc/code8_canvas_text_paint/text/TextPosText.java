@@ -1,19 +1,19 @@
-package com.zinc.code8_canvas_text_paint.text;
+﻿package com.zinc.code8_canvas_text_paint.text;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 /**
  * author       : zinc
- * time         : 2019/4/25 下午11:19
+ * time         : 2019/4/25 涓嬪崍11:19
  * desc         :
  * version      :
  */
 public class TextPosText extends BaseDrawView {
 
-    private static final String CONTENT = "猛猛的小盆友";
+    private static final String CONTENT = "鐚涚寷鐨勫皬鐩嗗弸";
 
     private static final float[] pos1 = new float[]{
             -300, -600,
@@ -68,3 +68,4 @@ public class TextPosText extends BaseDrawView {
     }
 
 }
+

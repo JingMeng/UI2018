@@ -1,10 +1,10 @@
-package com.zinc.xfermode.fragment;
+﻿package com.zinc.xfermode.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +17,7 @@ import com.zinc.xfermode.widget.ZincXFerModeView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/29
+ * @date 鍒涘缓鏃堕棿锛?019/1/29
  * @description
  */
 public class XFerModeFragment extends Fragment {
@@ -75,3 +75,4 @@ public class XFerModeFragment extends Fragment {
     }
 
 }
+

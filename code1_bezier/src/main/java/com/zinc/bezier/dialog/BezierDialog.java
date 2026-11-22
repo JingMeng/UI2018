@@ -1,10 +1,10 @@
-package com.zinc.bezier.dialog;
+﻿package com.zinc.bezier.dialog;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatDialogFragment;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,19 +24,16 @@ import com.zinc.bezier.activity.BezierActivity;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/11/2
+ * @date 鍒涘缓鏃堕棿锛?018/11/2
  * @description
  */
 public class BezierDialog extends AppCompatDialogFragment {
 
     private Animation dismissAnim;
 
-    // 阶级最大值
-    private static final int ORDER_MAX = 7;
-    // 速率最大值
-    private static final int RATE_MAX = 5;
-    // 速率的间隔
-    private static final int RATE_INTERVAL = 5;
+    // 闃剁骇鏈€澶у€?    private static final int ORDER_MAX = 7;
+    // 閫熺巼鏈€澶у€?    private static final int RATE_MAX = 5;
+    // 閫熺巼鐨勯棿闅?    private static final int RATE_INTERVAL = 5;
 
     private RelativeLayout rlBackground;
     private LinearLayout llMenu;
@@ -49,13 +46,12 @@ public class BezierDialog extends AppCompatDialogFragment {
 
     private boolean isDismissing = false;
 
-    // 是否显示降阶线
-    private boolean isShowReduceOrderLine;
-    // 是否循环播放
+    // 鏄惁鏄剧ず闄嶉樁绾?    private boolean isShowReduceOrderLine;
+    // 鏄惁寰幆鎾斁
     private boolean isLoopPlay;
-    // 阶数
+    // 闃舵暟
     private int order;
-    // 速率
+    // 閫熺巼
     private int rate;
 
     public static BezierDialog getInstance() {
@@ -130,11 +126,9 @@ public class BezierDialog extends AppCompatDialogFragment {
         rateSeekbar.setProgress(rate);
         tvRate.setText(getString(R.string.rate, (rate + 1) * RATE_INTERVAL));
 
-        // 设置阶数最大值
-        orderSeekbar.setMax(ORDER_MAX - 1);
+        // 璁剧疆闃舵暟鏈€澶у€?        orderSeekbar.setMax(ORDER_MAX - 1);
 
-        // 设置速率最大值
-        rateSeekbar.setMax(RATE_MAX - 1);
+        // 璁剧疆閫熺巼鏈€澶у€?        rateSeekbar.setMax(RATE_MAX - 1);
 
         this.getDialog().getWindow()
                 .setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
@@ -260,3 +254,4 @@ public class BezierDialog extends AppCompatDialogFragment {
     }
 
 }
+

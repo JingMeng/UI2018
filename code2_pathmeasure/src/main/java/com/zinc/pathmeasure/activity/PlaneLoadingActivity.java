@@ -1,8 +1,8 @@
-package com.zinc.pathmeasure.activity;
+﻿package com.zinc.pathmeasure.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.zinc.pathmeasure.PlaneLoadingView;
@@ -10,7 +10,7 @@ import com.zinc.pathmeasure.R;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/11/5
+ * @date 鍒涘缓鏃堕棿锛?018/11/5
  * @description
  */
 public class PlaneLoadingActivity extends AppCompatActivity {
@@ -34,3 +34,4 @@ public class PlaneLoadingActivity extends AppCompatActivity {
     }
 
 }
+

@@ -1,12 +1,12 @@
-package com.zinc.pathmeasure;
+﻿package com.zinc.pathmeasure;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 
@@ -14,13 +14,12 @@ import com.zinc.lib_base.BaseView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/12/6
+ * @date 鍒涘缓鏃堕棿锛?018/12/6
  * @description
  */
 public class NextCounterView extends BaseView {
 
-    // 用于验证 nextContour 方法的路径
-    Path mNextContourPath;
+    // 鐢ㄤ簬楠岃瘉 nextContour 鏂规硶鐨勮矾寰?    Path mNextContourPath;
     PathMeasure mNextContourPathMeasure;
 
     boolean isInit = false;
@@ -77,7 +76,7 @@ public class NextCounterView extends BaseView {
             int i = 0;
             while (mNextContourPathMeasure.nextContour()) {
                 ++i;
-                Log.i(TAG, "第" + i + "个轮廓的 Length:" + mNextContourPathMeasure.getLength());
+                Log.i(TAG, "绗? + i + "涓疆寤撶殑 Length:" + mNextContourPathMeasure.getLength());
             }
 
         }
@@ -88,13 +87,12 @@ public class NextCounterView extends BaseView {
     protected void onDraw(Canvas canvas) {
         drawCoordinate(canvas);
 
-        // 平移至画布中间
-        canvas.translate(mWidth / 2, mHeight / 2);
+        // 骞崇Щ鑷崇敾甯冧腑闂?        canvas.translate(mWidth / 2, mHeight / 2);
 
-        // 画 测试nextContour 的路径
-        mPaint.setColor(ContextCompat.getColor(getContext(), R.color.color_purple));
+        // 鐢?娴嬭瘯nextContour 鐨勮矾寰?        mPaint.setColor(ContextCompat.getColor(getContext(), R.color.color_purple));
         mPaint.setStrokeWidth(2.5f);
         canvas.drawPath(mNextContourPath, mPaint);
     }
 
 }
+

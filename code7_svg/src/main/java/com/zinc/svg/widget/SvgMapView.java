@@ -1,4 +1,4 @@
-package com.zinc.svg.widget;
+﻿package com.zinc.svg.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -15,8 +15,8 @@ import android.graphics.Region;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -43,15 +43,15 @@ import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * author       : Jiang zinc
- * time         : 2019/3/28 上午11:23
+ * time         : 2019/3/28 涓婂崍11:23
  * email        : 56002982@qq.com
- * desc         : svg 的地图 View
+ * desc         : svg 鐨勫湴鍥?View
  * version      : 1.0.0
  */
 public class SvgMapView extends View {
 
     /**
-     * 默认颜色
+     * 榛樿棰滆壊
      */
     private static final int[] DEFAULT_COLOR = new int[]{
             R.color.t1_color1,
@@ -69,13 +69,11 @@ public class SvgMapView extends View {
     private InnerHandler mHandle;
 
     /**
-     * 填充地图的颜色
-     */
+     * 濉厖鍦板浘鐨勯鑹?     */
     private int[] mMapColor = DEFAULT_COLOR;
 
     /**
-     * 选中的区域颜色
-     */
+     * 閫変腑鐨勫尯鍩熼鑹?     */
     private int mSelColor;
     private int mOutlineColor;
 
@@ -83,114 +81,105 @@ public class SvgMapView extends View {
     private Paint mTextPaint;
 
     /**
-     * 缩放倍数
+     * 缂╂斁鍊嶆暟
      */
     private float mScale;
 
     /**
-     * 是否在播放
-     */
+     * 鏄惁鍦ㄦ挱鏀?     */
     private boolean isPlaying;
 
     /**
-     * 用于存储已经解析完的数据
+     * 鐢ㄤ簬瀛樺偍宸茬粡瑙ｆ瀽瀹岀殑鏁版嵁
      */
     private final List<ItemData> mMapItemDataList = new ArrayList<>();
 
     /**
-     * 画布的矩阵
-     */
+     * 鐢诲竷鐨勭煩闃?     */
     private final Matrix mCanvasMatrix = new Matrix();
     /**
-     * 触碰点的矩阵
+     * 瑙︾鐐圭殑鐭╅樀
      */
     private final Matrix mTouchChangeMatrix = new Matrix();
 
     /**
-     * 用于判断获取触碰区域的rect
+     * 鐢ㄤ簬鍒ゆ柇鑾峰彇瑙︾鍖哄煙鐨剅ect
      */
     private final RectF mTouchRectF = new RectF();
 
     /**
-     * 描述的文字
-     */
+     * 鎻忚堪鐨勬枃瀛?     */
     private final RectF mDesRect = new RectF();
 
     /**
-     * 用于记录触碰去的范围
+     * 鐢ㄤ簬璁板綍瑙︾鍘荤殑鑼冨洿
      */
     private final Region mTouchRegion = new Region();
 
     /**
-     * 触碰点，第一个为x轴，第二个为y轴
-     */
+     * 瑙︾鐐癸紝绗竴涓负x杞达紝绗簩涓负y杞?     */
     private final float[] mTouchPoints = new float[]{0, 0};
 
     /**
-     * 选中的区域
-     */
+     * 閫変腑鐨勫尯鍩?     */
     private ItemData mSelItem;
 
     /**
-     * svg 的 rect
+     * svg 鐨?rect
      */
     private final RectF mSvgRect = new RectF();
 
     /**
-     * 当前显示的主 rect
+     * 褰撳墠鏄剧ず鐨勪富 rect
      */
     private final RectF mCurRect = new RectF();
 
     /**
-     * 上次选中的 rect
+     * 涓婃閫変腑鐨?rect
      */
     private final RectF mLastRectF = new RectF();
 
     /**
-     * 动画中的缩放比例
+     * 鍔ㄧ敾涓殑缂╂斁姣斾緥
      */
     private float mAnimScale;
 
     private ValueAnimator mValueAnim;
 
     /**
-     * 解析线程
+     * 瑙ｆ瀽绾跨▼
      */
     private ParserMapThread mParserThread;
 
     /**
-     * 地图资源
+     * 鍦板浘璧勬簮
      */
     private int mMapResource;
 
     /**
-     * 描述框的外边距
-     */
+     * 鎻忚堪妗嗙殑澶栬竟璺?     */
     private int mDesMargin;
 
     /**
-     * 描述文字的大小
-     */
+     * 鎻忚堪鏂囧瓧鐨勫ぇ灏?     */
     private int mDesTextSize;
 
     /**
-     * 描述文字的颜色
-     */
+     * 鎻忚堪鏂囧瓧鐨勯鑹?     */
     private int mDesTextColor;
 
     /**
-     * 描述文字背景颜色
+     * 鎻忚堪鏂囧瓧鑳屾櫙棰滆壊
      */
     private int mDesBgColor;
 
     /**
-     * 描述框的圆角半径
+     * 鎻忚堪妗嗙殑鍦嗚鍗婂緞
      */
     private int mDesRoundRadius;
 
     /**
-     * 文字那边距
-     */
+     * 鏂囧瓧閭ｈ竟璺?     */
     private int mDesPadding;
 
     public SvgMapView(Context context) {
@@ -208,8 +197,7 @@ public class SvgMapView extends View {
 
     private void init(Context context) {
 
-        // 关闭硬件加速，否则会模糊
-        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        // 鍏抽棴纭欢鍔犻€燂紝鍚﹀垯浼氭ā绯?        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
         mHandle = new InnerHandler(context, this);
 
@@ -233,8 +221,7 @@ public class SvgMapView extends View {
         mTextPaint.setTextSize(mDesTextSize);
         mTextPaint.setColor(mDesTextColor);
 
-        // 初始化动画
-        mValueAnim = ValueAnimator.ofFloat(0, 1);
+        // 鍒濆鍖栧姩鐢?        mValueAnim = ValueAnimator.ofFloat(0, 1);
         mValueAnim.setInterpolator(new LinearInterpolator());
         mValueAnim.setDuration(ANIM_DURATION);
         mValueAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -277,9 +264,9 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 设置地图资源
+     * 璁剧疆鍦板浘璧勬簮
      *
-     * @param mapResource 地图资源
+     * @param mapResource 鍦板浘璧勬簮
      */
     public void setMapResource(int mapResource) {
         if (mParserThread != null && mParserThread.isAlive()) {
@@ -290,27 +277,26 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 设置地图颜色
+     * 璁剧疆鍦板浘棰滆壊
      *
-     * @param mapColor 地图颜色数组
+     * @param mapColor 鍦板浘棰滆壊鏁扮粍
      */
     public void setMapColor(int[] mapColor) {
         this.mMapColor = mapColor;
     }
 
     /**
-     * 设置选中颜色
+     * 璁剧疆閫変腑棰滆壊
      *
-     * @param selColor 选中的颜色资源
-     */
+     * @param selColor 閫変腑鐨勯鑹茶祫婧?     */
     public void setSelColor(int selColor) {
         this.mSelColor = ContextCompat.getColor(getContext(), selColor);
     }
 
     /**
-     * 设置勾勒颜色
+     * 璁剧疆鍕惧嫆棰滆壊
      *
-     * @param outlineColor 勾勒颜色
+     * @param outlineColor 鍕惧嫆棰滆壊
      */
     public void setOutlineColor(int outlineColor) {
         this.mOutlineColor = ContextCompat.getColor(getContext(), outlineColor);
@@ -320,18 +306,17 @@ public class SvgMapView extends View {
     protected void onDraw(Canvas canvas) {
 
         canvas.save();
-        // 重置矩阵
+        // 閲嶇疆鐭╅樀
         mCanvasMatrix.reset();
         mTouchChangeMatrix.reset();
 
         handleLastState();
         handleCurState();
 
-        // 将矩阵施加于画布
+        // 灏嗙煩闃垫柦鍔犱簬鐢诲竷
         canvas.setMatrix(mCanvasMatrix);
 
-        // 画地图
-        for (ItemData itemData : mMapItemDataList) {
+        // 鐢诲湴鍥?        for (ItemData itemData : mMapItemDataList) {
             drawItem(canvas, itemData);
         }
 
@@ -342,7 +327,7 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 描述文字
+     * 鎻忚堪鏂囧瓧
      */
     private void drawDesTest(Canvas canvas) {
 
@@ -377,8 +362,7 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 处理当前状态
-     */
+     * 澶勭悊褰撳墠鐘舵€?     */
     private void handleCurState() {
         if (mCurRect.equals(mLastRectF)) {
             return;
@@ -393,7 +377,7 @@ public class SvgMapView extends View {
         float dx = curCenterX - lastCenterX;
         float dy = curCenterY - lastCenterY;
 
-        // 进行缩放
+        // 杩涜缂╂斁
         if (!mCurRect.isEmpty()) {
 
             mScale = calculateScale(mCurRect.width(), mCurRect.height(),
@@ -406,7 +390,7 @@ public class SvgMapView extends View {
             }
         }
 
-        // 需要 多偏移区域 与 整地图 的外区域
+        // 闇€瑕?澶氬亸绉诲尯鍩?涓?鏁村湴鍥?鐨勫鍖哄煙
         mCanvasMatrix.preTranslate(-dx * mAnimScale, -dy * mAnimScale);
         mCanvasMatrix.preScale(
                 mScale,
@@ -423,21 +407,19 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 处理上一次的状态
-     */
+     * 澶勭悊涓婁竴娆＄殑鐘舵€?     */
     private void handleLastState() {
-        // 移至画布中心
+        // 绉昏嚦鐢诲竷涓績
         mCanvasMatrix.preTranslate(getWidth() / 2, getHeight() / 2);
 
-        // 移外边
-        float lastLeftMargin = mLastRectF.left - mSvgRect.left;
+        // 绉诲杈?        float lastLeftMargin = mLastRectF.left - mSvgRect.left;
         float lastTopMargin = mLastRectF.top - mSvgRect.top;
         mCanvasMatrix.preTranslate(-lastLeftMargin, -lastTopMargin);
 
-        // 移至中心
+        // 绉昏嚦涓績
         mCanvasMatrix.preTranslate(-mLastRectF.width() / 2, -mLastRectF.height() / 2);
 
-        // 进行缩放
+        // 杩涜缂╂斁
         if (!mLastRectF.isEmpty()) {
             mScale = calculateScale(
                     mLastRectF.width(),
@@ -464,25 +446,24 @@ public class SvgMapView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        // 正在播放则不处理
+        // 姝ｅ湪鎾斁鍒欎笉澶勭悊
         if (isPlaying) {
             return true;
         }
 
-        // 处理拦截事件
+        // 澶勭悊鎷︽埅浜嬩欢
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
             mTouchPoints[0] = event.getX();
             mTouchPoints[1] = event.getY();
 
-            // 将点坐标进行转换
+            // 灏嗙偣鍧愭爣杩涜杞崲
             mTouchChangeMatrix.mapPoints(mTouchPoints);
 
-            // 重置选项
+            // 閲嶇疆閫夐」
             mSelItem = null;
 
-            // 置入地图选中状态
-            for (ItemData item : mMapItemDataList) {
+            // 缃叆鍦板浘閫変腑鐘舵€?            for (ItemData item : mMapItemDataList) {
                 if (isTouch(item, mTouchPoints[0], mTouchPoints[1])) {
                     mSelItem = item;
                     break;
@@ -491,15 +472,14 @@ public class SvgMapView extends View {
 
             mLastRectF.set(mCurRect);
 
-            // 如果当前已经显示该区域就不再执行
+            // 濡傛灉褰撳墠宸茬粡鏄剧ず璇ュ尯鍩熷氨涓嶅啀鎵ц
             if (mTouchRectF.equals(mCurRect)) {
                 mSelItem = null;
                 startAnim(mSvgRect);
                 return true;
             }
 
-            //  选中的为空
-            if (mSelItem == null) {
+            //  閫変腑鐨勪负绌?            if (mSelItem == null) {
                 startAnim(mSvgRect);
                 return true;
             }
@@ -511,9 +491,8 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 开始动画
-     *
-     * @param rectF 将要到达的 rect
+     * 寮€濮嬪姩鐢?     *
+     * @param rectF 灏嗚鍒拌揪鐨?rect
      */
     private void startAnim(RectF rectF) {
         mCurRect.set(rectF);
@@ -522,13 +501,9 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 是否在触碰的范围内
-     *
-     * @param item 地图的每个数据项
-     * @param x    触碰点的x轴
-     * @param y    触碰点的y轴
-     * @return true：在范围内；false：在范围外
-     */
+     * 鏄惁鍦ㄨЕ纰扮殑鑼冨洿鍐?     *
+     * @param item 鍦板浘鐨勬瘡涓暟鎹」
+     * @param x    瑙︾鐐圭殑x杞?     * @param y    瑙︾鐐圭殑y杞?     * @return true锛氬湪鑼冨洿鍐咃紱false锛氬湪鑼冨洿澶?     */
     private boolean isTouch(ItemData item, float x, float y) {
 
         item.path.computeBounds(mTouchRectF, true);
@@ -545,8 +520,7 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 画每个区域
-     */
+     * 鐢绘瘡涓尯鍩?     */
     private void drawItem(Canvas canvas, ItemData itemData) {
 
         if (itemData == mSelItem) {
@@ -565,8 +539,7 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 用于计算缩放的大小
-     */
+     * 鐢ㄤ簬璁＄畻缂╂斁鐨勫ぇ灏?     */
     private float calculateScale(float fromWidth,
                                  float fromHeight,
                                  float toWidth,
@@ -578,8 +551,7 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 解析地图的线程
-     */
+     * 瑙ｆ瀽鍦板浘鐨勭嚎绋?     */
     private class ParserMapThread extends Thread {
 
         private static final String PATH = "path";
@@ -587,13 +559,12 @@ public class SvgMapView extends View {
         private static final String TITLE = "title";
 
         /**
-         * 地图资源id
+         * 鍦板浘璧勬簮id
          */
         private final int mMapResourceId;
 
         /**
-         * 是否要取消
-         */
+         * 鏄惁瑕佸彇娑?         */
         private boolean mIsCancel;
 
         ParserMapThread(int mapResourceId) {
@@ -603,7 +574,7 @@ public class SvgMapView extends View {
 
         @Override
         public void run() {
-            // 打开地图的输入流
+            // 鎵撳紑鍦板浘鐨勮緭鍏ユ祦
             InputStream inputStream = null;
             try {
                 inputStream = getContext().getResources().openRawResource(mMapResourceId);
@@ -611,7 +582,7 @@ public class SvgMapView extends View {
                 e.printStackTrace();
             }
 
-            // 地图输入流打开失败
+            // 鍦板浘杈撳叆娴佹墦寮€澶辫触
             if (inputStream == null) {
                 if (!mIsCancel) {
                     mHandle.sendEmptyMessage(InnerHandler.ERROR);
@@ -619,8 +590,7 @@ public class SvgMapView extends View {
                 return;
             }
 
-            // 从 XML文档 生成 DOM对象树
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            // 浠?XML鏂囨。 鐢熸垚 DOM瀵硅薄鏍?            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             Document document = null;
             try {
                 document = factory.newDocumentBuilder().parse(inputStream);
@@ -636,43 +606,39 @@ public class SvgMapView extends View {
                 }
             }
 
-            // 出错则关闭流，发送提示信息
-            if (document == null) {
+            // 鍑洪敊鍒欏叧闂祦锛屽彂閫佹彁绀轰俊鎭?            if (document == null) {
                 if (!mIsCancel) {
                     mHandle.sendEmptyMessage(InnerHandler.ERROR);
                 }
                 return;
             }
 
-            // 获取根结点
-            Element root = document.getDocumentElement();
+            // 鑾峰彇鏍圭粨鐐?            Element root = document.getDocumentElement();
 
-            // 装载我们解析的数据
-            List<ItemData> mapDataList = new ArrayList<>();
+            // 瑁呰浇鎴戜滑瑙ｆ瀽鐨勬暟鎹?            List<ItemData> mapDataList = new ArrayList<>();
 
-            // 获取 <path/> 节点
+            // 鑾峰彇 <path/> 鑺傜偣
             NodeList pathNodeList = root.getElementsByTagName(PATH);
 
             int colorSize = mMapColor.length;
 
-            // 用于记录整个 svg 的实际大小
-            float left = -1;
+            // 鐢ㄤ簬璁板綍鏁翠釜 svg 鐨勫疄闄呭ぇ灏?            float left = -1;
             float top = -1;
             float right = -1;
             float bottom = -1;
 
-            // 计算出 path 的 rect
+            // 璁＄畻鍑?path 鐨?rect
             RectF rect = new RectF();
 
-            // 遍历所有的 Path 节点
+            // 閬嶅巻鎵€鏈夌殑 Path 鑺傜偣
             for (int i = 0; i < pathNodeList.getLength(); ++i) {
                 Element pathNode = (Element) pathNodeList.item(i);
-                // path 的 svg 路径
+                // path 鐨?svg 璺緞
                 String pathData = pathNode.getAttribute(DATA);
-                // path 的 title
+                // path 鐨?title
                 String title = pathNode.getAttribute(TITLE);
 
-                // 解析 path
+                // 瑙ｆ瀽 path
                 Path path = null;
                 try {
                     path = PathParser.createPathFromPathData(pathData);
@@ -680,8 +646,7 @@ public class SvgMapView extends View {
                     e.printStackTrace();
                 }
 
-                // path 解析出错，退出
-                if (path == null) {
+                // path 瑙ｆ瀽鍑洪敊锛岄€€鍑?                if (path == null) {
                     if (!mIsCancel) {
                         mHandle.sendEmptyMessage(InnerHandler.ERROR);
                     }
@@ -707,7 +672,7 @@ public class SvgMapView extends View {
             mSvgRect.right = right;
             mSvgRect.bottom = bottom;
 
-            // 解析完，赋值给当前显示的主 Rect
+            // 瑙ｆ瀽瀹岋紝璧嬪€肩粰褰撳墠鏄剧ず鐨勪富 Rect
             mCurRect.set(mSvgRect);
             mLastRectF.set(mSvgRect);
 
@@ -721,20 +686,20 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 内部handler
+     * 鍐呴儴handler
      */
     private static class InnerHandler extends Handler {
 
         /**
-         * 解析成功
+         * 瑙ｆ瀽鎴愬姛
          */
         static final int SUCCESS = 1;
         /**
-         * 解析失败
+         * 瑙ｆ瀽澶辫触
          */
         static final int ERROR = 2;
 
-        static final String ERROR_MSG = "地图资源有误，载入失败";
+        static final String ERROR_MSG = "鍦板浘璧勬簮鏈夎锛岃浇鍏ュけ璐?;
 
         private WeakReference<Context> mContext;
         private WeakReference<View> mView;
@@ -764,15 +729,14 @@ public class SvgMapView extends View {
     }
 
     /**
-     * 地图数据项
-     */
+     * 鍦板浘鏁版嵁椤?     */
     private static class ItemData {
 
-        // 路径数据
+        // 璺緞鏁版嵁
         Path path;
-        // 颜色
+        // 棰滆壊
         int color;
-        // 名称
+        // 鍚嶇О
         String title;
 
         ItemData(Path path, int color, String title) {
@@ -784,3 +748,4 @@ public class SvgMapView extends View {
     }
 
 }
+

@@ -1,4 +1,4 @@
-package com.zinc.animation.activity;
+﻿package com.zinc.animation.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -10,10 +10,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PointF;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -44,12 +44,11 @@ import java.util.List;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/24
+ * @date 鍒涘缓鏃堕棿锛?019/1/24
  * @description
  */
 public class TimeInterpolatorActivity extends AppCompatActivity implements TimeInterpolatorAdapter.ClickListener {
-    // 取1000帧
-    private static final int FRAME = 1000;
+    // 鍙?000甯?    private static final int FRAME = 1000;
 
     private TimeInterpolatorView mTimeInterpolatorView;
 
@@ -135,7 +134,7 @@ public class TimeInterpolatorActivity extends AppCompatActivity implements TimeI
                 curPoint.x = x;
                 curPoint.y = y;
 
-                Log.i("zincTest", "onAnimationUpdate: [" + x + "," + y + "】");
+                Log.i("zincTest", "onAnimationUpdate: [" + x + "," + y + "銆?);
 
                 mTimeInterpolatorView.setCurPoint(curPoint);
             }
@@ -148,7 +147,7 @@ public class TimeInterpolatorActivity extends AppCompatActivity implements TimeI
             @Override
             public void onClick(View v) {
                 if (isRunning) {
-                    Toast.makeText(TimeInterpolatorActivity.this, "动画正在进行中，请稍等", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TimeInterpolatorActivity.this, "鍔ㄧ敾姝ｅ湪杩涜涓紝璇风◢绛?, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -180,7 +179,7 @@ public class TimeInterpolatorActivity extends AppCompatActivity implements TimeI
     }
 
     /**
-     * 初始化插值器，需要的可以在这里添加自己的插值器
+     * 鍒濆鍖栨彃鍊煎櫒锛岄渶瑕佺殑鍙互鍦ㄨ繖閲屾坊鍔犺嚜宸辩殑鎻掑€煎櫒
      */
     private void buildInterpolatorList() {
         interpolatorList.clear();
@@ -249,3 +248,4 @@ public class TimeInterpolatorActivity extends AppCompatActivity implements TimeI
     }
 
 }
+

@@ -1,4 +1,4 @@
-package com.zinc.animation.widget;
+﻿package com.zinc.animation.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -7,7 +7,7 @@ import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.content.Context;
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -21,27 +21,27 @@ import java.util.List;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/26
+ * @date 鍒涘缓鏃堕棿锛?019/1/26
  * @description
  */
 public class ShoppingView extends android.support.v7.widget.AppCompatImageView {
 
-    // 缩放动画
+    // 缂╂斁鍔ㄧ敾
     private ObjectAnimator mScaleXAnimator;
     private ObjectAnimator mScaleYAnimator;
-    // 旋转动画
+    // 鏃嬭浆鍔ㄧ敾
     private ObjectAnimator mRotateAnimator;
-    // 移动动画
+    // 绉诲姩鍔ㄧ敾
     private ObjectAnimator mTranslateAnimator;
 
-    // 动画集合
+    // 鍔ㄧ敾闆嗗悎
     private AnimatorSet mAnimatorSet;
 
     private AnimatorListener mListener;
 
-    // 开始坐标，相对于全屏幕包括状态栏
+    // 寮€濮嬪潗鏍囷紝鐩稿浜庡叏灞忓箷鍖呮嫭鐘舵€佹爮
     private final PointF mStartPos = new PointF(0, 0);
-    // 结束坐标，相对于全屏幕包括状态栏
+    // 缁撴潫鍧愭爣锛岀浉瀵逛簬鍏ㄥ睆骞曞寘鎷姸鎬佹爮
     private final PointF mEndPos = new PointF(0, 0);
 
     public ShoppingView(Context context) {
@@ -65,8 +65,7 @@ public class ShoppingView extends android.support.v7.widget.AppCompatImageView {
 
         mAnimatorSet = new AnimatorSet();
 
-        // X、Y 均缩小1倍
-        mScaleYAnimator = ObjectAnimator.ofFloat(this, "scaleY", 1f, 0.8f);
+        // X銆乊 鍧囩缉灏?鍊?        mScaleYAnimator = ObjectAnimator.ofFloat(this, "scaleY", 1f, 0.8f);
         mScaleYAnimator.setDuration(200);
         mScaleYAnimator.setInterpolator(new AccelerateInterpolator());
 
@@ -74,15 +73,14 @@ public class ShoppingView extends android.support.v7.widget.AppCompatImageView {
         mScaleXAnimator.setDuration(200);
         mScaleXAnimator.setInterpolator(new AccelerateInterpolator());
 
-        // 顺时针旋转 35 度
-        mRotateAnimator = ObjectAnimator.ofFloat(this, "rotation", 0, 35);
+        // 椤烘椂閽堟棆杞?35 搴?        mRotateAnimator = ObjectAnimator.ofFloat(this, "rotation", 0, 35);
         mRotateAnimator.setDuration(100);
         mRotateAnimator.setInterpolator(new LinearInterpolator());
 
     }
 
     /**
-     * 设置坐标
+     * 璁剧疆鍧愭爣
      *
      * @param position
      */
@@ -122,8 +120,7 @@ public class ShoppingView extends android.support.v7.widget.AppCompatImageView {
                     mListener.animEnd();
                 }
 
-                // 将自己移除
-                ViewGroup parent = (ViewGroup) ShoppingView.this.getParent();
+                // 灏嗚嚜宸辩Щ闄?                ViewGroup parent = (ViewGroup) ShoppingView.this.getParent();
                 if (parent != null && parent instanceof ViewGroup) {
                     parent.removeView(ShoppingView.this);
                 }
@@ -136,11 +133,11 @@ public class ShoppingView extends android.support.v7.widget.AppCompatImageView {
     }
 
     /**
-     * 动画回调
+     * 鍔ㄧ敾鍥炶皟
      */
     public interface AnimatorListener {
         /**
-         * 动画结束
+         * 鍔ㄧ敾缁撴潫
          */
         void animEnd();
     }

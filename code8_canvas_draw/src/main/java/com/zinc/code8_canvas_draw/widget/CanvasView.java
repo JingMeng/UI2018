@@ -1,11 +1,11 @@
-package com.zinc.code8_canvas_draw.widget;
+﻿package com.zinc.code8_canvas_draw.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +14,7 @@ import com.zinc.code8_canvas_draw.R;
 
 /**
  * author       : zinc
- * time         : 2019/5/9 下午10:10
+ * time         : 2019/5/9 涓嬪崍10:10
  * desc         :
  * version      :
  */

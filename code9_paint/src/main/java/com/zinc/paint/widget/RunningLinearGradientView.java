@@ -1,4 +1,4 @@
-package com.zinc.paint.widget;
+﻿package com.zinc.paint.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,26 +6,24 @@ import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/21
- * @description 流动的渐变效果
- */
+ * @date 鍒涘缓鏃堕棿锛?018/10/21
+ * @description 娴佸姩鐨勬笎鍙樻晥鏋? */
 public class RunningLinearGradientView extends android.support.v7.widget.AppCompatTextView {
 
-    // 一次偏移的量
-    private float DELAY = 20;
+    // 涓€娆″亸绉荤殑閲?    private float DELAY = 20;
 
     private TextPaint paint;
     private Matrix matrix;
 
     private LinearGradient linearGradient;
 
-    // 已经的偏移量
+    // 宸茬粡鐨勫亸绉婚噺
     private float translate;
 
     public RunningLinearGradientView(Context context) {
@@ -51,13 +49,11 @@ public class RunningLinearGradientView extends android.support.v7.widget.AppComp
         paint = getPaint();
         String text = getText().toString();
 
-        // 文字宽度
+        // 鏂囧瓧瀹藉害
         float textWidth = paint.measureText(text);
         Paint.FontMetrics fontMetrics = paint.getFontMetrics();
-        // 文字的总高度
-        float textHeight = fontMetrics.bottom - fontMetrics.top;
-        // 文字的单个高度（即行高度）
-        float textRowHeight = getTextSize();
+        // 鏂囧瓧鐨勬€婚珮搴?        float textHeight = fontMetrics.bottom - fontMetrics.top;
+        // 鏂囧瓧鐨勫崟涓珮搴︼紙鍗宠楂樺害锛?        float textRowHeight = getTextSize();
 
         row = (int) (textHeight / textRowHeight);
 
@@ -100,3 +96,4 @@ public class RunningLinearGradientView extends android.support.v7.widget.AppComp
 
     }
 }
+

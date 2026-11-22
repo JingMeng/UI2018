@@ -1,7 +1,7 @@
-package com.zinc.paint.activity;
+﻿package com.zinc.paint.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.zinc.paint.R;
@@ -9,7 +9,7 @@ import com.zinc.paint.widget.TileModeView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/18
+ * @date 鍒涘缓鏃堕棿锛?018/10/18
  * @description
  */
 public class TileModeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -39,3 +39,4 @@ public class TileModeActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 }
+

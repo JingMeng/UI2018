@@ -1,16 +1,16 @@
-package com.zinc.code8_canvas_draw.activity;
+﻿package com.zinc.code8_canvas_draw.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 
 import com.zinc.code8_canvas_draw.R;
 
 /**
  * author       : zinc
- * time         : 2019/4/22 下午9:59
+ * time         : 2019/4/22 涓嬪崍9:59
  * desc         :
  * version      :
  */
@@ -77,3 +77,4 @@ public class DrawListActivity extends Activity {
     }
 
 }
+

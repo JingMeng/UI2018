@@ -1,16 +1,16 @@
-package com.zinc.code8_canvas_draw.activity;
+﻿package com.zinc.code8_canvas_draw.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 
 import com.zinc.code8_canvas_draw.R;
 
 /**
  * author       : zinc
- * time         : 2019/5/7 下午11:27
+ * time         : 2019/5/7 涓嬪崍11:27
  * desc         :
  * version      :
  */
@@ -57,3 +57,4 @@ public class ControlListActivity extends Activity {
     }
 
 }
+

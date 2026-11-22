@@ -1,7 +1,7 @@
-package com.zinc.code_x2_recycleview.recycler;
+﻿package com.zinc.code_x2_recycleview.recycler;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/2/27
+ * @date 鍒涘缓鏃堕棿锛?019/2/27
  * @description
  */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -21,8 +21,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private final LayoutInflater mInflater;
     private final List<RecyclerBean> mData;
 
-    // 绑定监听器
-    private BindListener mBindListener;
+    // 缁戝畾鐩戝惉鍣?    private BindListener mBindListener;
 
     public RecyclerAdapter(Context context, List<RecyclerBean> data) {
         this.mInflater = LayoutInflater.from(context);
@@ -78,7 +77,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
 
         if (mBindListener != null) {
-            String targetText = "Bind:『" + mData.get(position).getData().toString() + "(Pos:" + position + ")』\n";
+            String targetText = "Bind:銆? + mData.get(position).getData().toString() + "(Pos:" + position + ")銆廫n";
             mBindListener.onBind(targetText);
         }
 
@@ -155,3 +154,4 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
 }
+

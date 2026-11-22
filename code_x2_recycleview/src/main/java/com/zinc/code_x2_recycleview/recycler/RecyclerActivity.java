@@ -1,10 +1,10 @@
-package com.zinc.code_x2_recycleview.recycler;
+﻿package com.zinc.code_x2_recycleview.recycler;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
@@ -22,7 +22,7 @@ import java.util.Random;
  * @author : Jiang zinc
  * @version :
  * @email : 56002982@qq.com
- * @time : 2019/2/28 下午4:48
+ * @time : 2019/2/28 涓嬪崍4:48
  * @desc :
  */
 public class RecyclerActivity extends AppCompatActivity implements RecyclerAdapter.BindListener {
@@ -71,7 +71,7 @@ public class RecyclerActivity extends AppCompatActivity implements RecyclerAdapt
             public void beforeLayout() {
                 try {
                     Field recyclerField =
-                            Class.forName("android.support.v7.widget.RecyclerView")
+                            Class.forName("androidx.recyclerview.widget.RecyclerView")
                                     .getDeclaredField("mRecycler");
                     recyclerField.setAccessible(true);
                     RecyclerView.Recycler recyclerInstance =
@@ -80,8 +80,7 @@ public class RecyclerActivity extends AppCompatActivity implements RecyclerAdapt
                     Class<?> recyclerClass = Class.forName(recyclerField.getType().getName());
                     Field attachedScrapField = recyclerClass.getDeclaredField("mAttachedScrap");
                     attachedScrapField.setAccessible(true);
-                    // 这里的 mAttachedScrap 属性值虽然是 final，但可以被反射修改
-                    attachedScrapField.set(recyclerInstance,
+                    // 杩欓噷鐨?mAttachedScrap 灞炴€у€艰櫧鐒舵槸 final锛屼絾鍙互琚弽灏勪慨鏀?                    attachedScrapField.set(recyclerInstance,
                             new ArrayListWrapper<RecyclerView.ViewHolder>());
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -110,10 +109,9 @@ public class RecyclerActivity extends AppCompatActivity implements RecyclerAdapt
     }
 
     /**
-     * 产生数据
+     * 浜х敓鏁版嵁
      *
-     * @param count     数据量
-     * @param typeCount 数据种类
+     * @param count     鏁版嵁閲?     * @param typeCount 鏁版嵁绉嶇被
      */
     private void createData(int count, int typeCount) {
 
@@ -139,64 +137,52 @@ public class RecyclerActivity extends AppCompatActivity implements RecyclerAdapt
     }
 
     /**
-     * 显示缓存数据
+     * 鏄剧ず缂撳瓨鏁版嵁
      */
     private void showCacheInfo() {
         try {
-            // 获取 Recycler
-            Field recyclerField = Class.forName("android.support.v7.widget.RecyclerView")
+            // 鑾峰彇 Recycler
+            Field recyclerField = Class.forName("androidx.recyclerview.widget.RecyclerView")
                     .getDeclaredField("mRecycler");
             recyclerField.setAccessible(true);
             RecyclerView.Recycler recycler = (RecyclerView.Recycler) recyclerField.get(mRvWrapper);
 
             Class<? extends RecyclerView.Recycler> recyclerClass = recycler.getClass();
-            // 获取 mAttachScrap 属性
-            Field attachScrapFiled = recyclerClass.getDeclaredField("mAttachedScrap");
-            // 获取 mChangedScrap 属性
-            Field changeScrapField = recyclerClass.getDeclaredField("mChangedScrap");
-            // 获取 mCachedViews 属性
-            Field cacheViewField = recyclerClass.getDeclaredField("mCachedViews");
-            // 获取 mRecyclerPool 属性
-            Field recyclePoolField = recyclerClass.getDeclaredField("mRecyclerPool");
-            // 获取 mViewCacheMax 属性
-            Field viewCacheMaxField = recyclerClass.getDeclaredField("mViewCacheMax");
+            // 鑾峰彇 mAttachScrap 灞炴€?            Field attachScrapFiled = recyclerClass.getDeclaredField("mAttachedScrap");
+            // 鑾峰彇 mChangedScrap 灞炴€?            Field changeScrapField = recyclerClass.getDeclaredField("mChangedScrap");
+            // 鑾峰彇 mCachedViews 灞炴€?            Field cacheViewField = recyclerClass.getDeclaredField("mCachedViews");
+            // 鑾峰彇 mRecyclerPool 灞炴€?            Field recyclePoolField = recyclerClass.getDeclaredField("mRecyclerPool");
+            // 鑾峰彇 mViewCacheMax 灞炴€?            Field viewCacheMaxField = recyclerClass.getDeclaredField("mViewCacheMax");
 
-            // 设置为可以访问
-            attachScrapFiled.setAccessible(true);
+            // 璁剧疆涓哄彲浠ヨ闂?            attachScrapFiled.setAccessible(true);
             changeScrapField.setAccessible(true);
             cacheViewField.setAccessible(true);
             recyclePoolField.setAccessible(true);
             viewCacheMaxField.setAccessible(true);
 
-            // 获取 mAttachScrap 属性值
-            ArrayListWrapper<RecyclerView.ViewHolder> attachedScrap =
+            // 鑾峰彇 mAttachScrap 灞炴€у€?            ArrayListWrapper<RecyclerView.ViewHolder> attachedScrap =
                     (ArrayListWrapper<RecyclerView.ViewHolder>) attachScrapFiled.get(recycler);
-            // 获取 mChangedScrap 属性值
-            ArrayList<RecyclerView.ViewHolder> changeScrap =
+            // 鑾峰彇 mChangedScrap 灞炴€у€?            ArrayList<RecyclerView.ViewHolder> changeScrap =
                     (ArrayList<RecyclerView.ViewHolder>) changeScrapField.get(recycler);
-            // 获取 mCachedViews 属性值
-            ArrayList<RecyclerView.ViewHolder> cachedView =
+            // 鑾峰彇 mCachedViews 灞炴€у€?            ArrayList<RecyclerView.ViewHolder> cachedView =
                     (ArrayList<RecyclerView.ViewHolder>) cacheViewField.get(recycler);
-            // 获取 mRecyclerPool 属性值
-            RecyclerView.RecycledViewPool recycledViewPool =
+            // 鑾峰彇 mRecyclerPool 灞炴€у€?            RecyclerView.RecycledViewPool recycledViewPool =
                     (RecyclerView.RecycledViewPool) recyclePoolField.get(recycler);
 
-            // 获取 mViewCacheMax 属性值
-            int viewCacheSize = (int) viewCacheMaxField.get(recycler);
+            // 鑾峰彇 mViewCacheMax 灞炴€у€?            int viewCacheSize = (int) viewCacheMaxField.get(recycler);
 
-            // 获取 RecycleViewPool 中的 mScrap 属性
-            Field scrapField = recycledViewPool.getClass().getDeclaredField("mScrap");
+            // 鑾峰彇 RecycleViewPool 涓殑 mScrap 灞炴€?            Field scrapField = recycledViewPool.getClass().getDeclaredField("mScrap");
             scrapField.setAccessible(true);
             SparseArray poolScrap = (SparseArray) scrapField.get(recycledViewPool);
 
-            String info = "mAttachedScrap（一缓）size is:" + attachedScrap.maxSize + "\n"
+            String info = "mAttachedScrap锛堜竴缂擄級size is:" + attachedScrap.maxSize + "\n"
                     + "================\n"
-                    + "mCachedViews（二缓） max size is:" + viewCacheSize + "\n"
+                    + "mCachedViews锛堜簩缂擄級 max size is:" + viewCacheSize + "\n"
                     + "================\n"
                     + getViewHolderArrInfo("mChangedScrap", changeScrap)
                     + getCacheViewTargetPositionInfo(mRvWrapper,
                     (LinearLayoutManager) mRvWrapper.getLayoutManager())
-                    + getViewHolderArrInfo("mCachedViews(二缓)", cachedView)
+                    + getViewHolderArrInfo("mCachedViews(浜岀紦)", cachedView)
                     + getRVPoolInfo(poolScrap);
 
             mTvCacheLog.setText(info);
@@ -254,16 +240,15 @@ public class RecyclerActivity extends AppCompatActivity implements RecyclerAdapt
     private String getRVPoolInfo(SparseArray poolScrap) {
         StringBuilder result = new StringBuilder();
 
-        result.append("mRecyclerPool(四缓) info: \n");
+        result.append("mRecyclerPool(鍥涚紦) info: \n");
         for (int i = 0; i < poolScrap.size(); i++) {
             Object scrapDataItem = poolScrap.get(i);
             if(scrapDataItem == null){
                 continue;
             }
             try {
-                // 获取该 scrapData 的 mScrapHeap 和 mMaxScrap 属性
-                Class<?> scrapDataClass = Class
-                        .forName("android.support.v7.widget.RecyclerView$RecycledViewPool$ScrapData");
+                // 鑾峰彇璇?scrapData 鐨?mScrapHeap 鍜?mMaxScrap 灞炴€?                Class<?> scrapDataClass = Class
+                        .forName("androidx.recyclerview.widget.RecyclerView$RecycledViewPool$ScrapData");
                 Field scrapHeapField = scrapDataClass.getDeclaredField("mScrapHeap");
                 Field maxScrapField = scrapDataClass.getDeclaredField("mMaxScrap");
                 scrapHeapField.setAccessible(true);
@@ -274,9 +259,9 @@ public class RecyclerActivity extends AppCompatActivity implements RecyclerAdapt
 
                 for (int j = 0; j < item.size(); j++) {
                     if (j == 0) {
-                        result.append("----------第")
+                        result.append("----------绗?)
                                 .append(j)
-                                .append("个-----------\n");
+                                .append("涓?----------\n");
                         result.append("mScrap[")
                                 .append(i)
                                 .append("] max size is:")
@@ -288,7 +273,7 @@ public class RecyclerActivity extends AppCompatActivity implements RecyclerAdapt
 
                     result.append("mScrap[")
                             .append(i)
-                            .append("] 中的 mScrapHeap[")
+                            .append("] 涓殑 mScrapHeap[")
                             .append(j)
                             .append("] info is:")
                             .append(item.get(j))
@@ -317,7 +302,7 @@ public class RecyclerActivity extends AppCompatActivity implements RecyclerAdapt
             Field mLayoutStateField = layoutManager.getClass().getDeclaredField("mLayoutState");
             mLayoutStateField.setAccessible(true);
             Class<?> layoutStateClass =
-                    Class.forName("android.support.v7.widget.LinearLayoutManager$LayoutState");
+                    Class.forName("androidx.recyclerview.widget.LinearLayoutManager$LayoutState");
             Field mCurrentPositionField = layoutStateClass.getDeclaredField("mCurrentPosition");
             mCurrentPositionField.setAccessible(true);
 
@@ -333,3 +318,4 @@ public class RecyclerActivity extends AppCompatActivity implements RecyclerAdapt
         return "";
     }
 }
+

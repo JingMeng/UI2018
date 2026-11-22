@@ -1,11 +1,11 @@
-package com.zinc.code8_canvas_draw.widget.control;
+﻿package com.zinc.code8_canvas_draw.widget.control;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.zinc.code8_canvas_draw.widget.draw.BaseDrawView;
@@ -13,7 +13,7 @@ import com.zinc.lib_base.BaseView;
 
 /**
  * author       : zinc
- * time         : 2019/4/25 下午11:44
+ * time         : 2019/4/25 涓嬪崍11:44
  * desc         :
  * version      :
  */
@@ -68,3 +68,4 @@ public class RotatePointView extends BaseView {
 
 
 }
+

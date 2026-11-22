@@ -1,18 +1,18 @@
-package com.zinc.drawable_gravity;
+﻿package com.zinc.drawable_gravity;
 
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.Gravity;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/29
+ * @date 鍒涘缓鏃堕棿锛?018/10/29
  * @description
  */
 public class RevealDrawable extends Drawable {
@@ -22,10 +22,10 @@ public class RevealDrawable extends Drawable {
 
     private Drawable unselectedDrawable;
     private Drawable selectedDrawable;
-    //方向
+    //鏂瑰悜
     private int orientation;
 
-    // 比率
+    // 姣旂巼
     private float ratio;
 
     private int leftWidth;
@@ -49,17 +49,16 @@ public class RevealDrawable extends Drawable {
     public void draw(@NonNull Canvas canvas) {
 
         Log.i("RevealDrawable", "draw: ");
-        // 在onLevelChange时，bounds中还没有值
-        Rect bounds = getBounds();
+        // 鍦╫nLevelChange鏃讹紝bounds涓繕娌℃湁鍊?        Rect bounds = getBounds();
 
-        if (orientation == HORIZONTAL) {      // 横向
+        if (orientation == HORIZONTAL) {      // 妯悜
 
             leftWidth = (int) (ratio * bounds.width());
             rightWidth = bounds.width() - leftWidth;
             topHeight = bounds.height();
             bottomHeight = bounds.height();
 
-        } else if (orientation == VERTICAL) {  // 纵向
+        } else if (orientation == VERTICAL) {  // 绾靛悜
 
             leftWidth = bounds.width();
             rightWidth = bounds.width();
@@ -128,26 +127,24 @@ public class RevealDrawable extends Drawable {
     }
 
     /**
-     * 当调用了 {@link Drawable#setLevel(int)} 时，会回调这个方法
-     *
-     * @param level 取值范围为 0-10000
+     * 褰撹皟鐢ㄤ簡 {@link Drawable#setLevel(int)} 鏃讹紝浼氬洖璋冭繖涓柟娉?     *
+     * @param level 鍙栧€艰寖鍥翠负 0-10000
      * @return
      */
     @Override
     protected boolean onLevelChange(int level) {
 
-        // 计算比率
+        // 璁＄畻姣旂巼
         ratio = level / 10000f;
 
-        // 刷新自己，会调用draw方法
+        // 鍒锋柊鑷繁锛屼細璋冪敤draw鏂规硶
         invalidateSelf();
 
         return true;
     }
 
     /**
-     * 获取透明度
-     *
+     * 鑾峰彇閫忔槑搴?     *
      * @return
      */
     @Override
@@ -156,3 +153,4 @@ public class RevealDrawable extends Drawable {
     }
 
 }
+

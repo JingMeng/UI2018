@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
+    namespace 'com.zinc.code8_canvas_text_paint'
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
@@ -10,7 +11,7 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -19,6 +20,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    
     }
 
 }
@@ -32,3 +34,5 @@ dependencies {
 
     implementation project(":lib_base")
 }
+
+

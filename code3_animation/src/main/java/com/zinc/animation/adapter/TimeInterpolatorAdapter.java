@@ -1,7 +1,7 @@
-package com.zinc.animation.adapter;
+﻿package com.zinc.animation.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/24
+ * @date 鍒涘缓鏃堕棿锛?019/1/24
  * @description
  */
 public class TimeInterpolatorAdapter extends RecyclerView.Adapter<TimeInterpolatorAdapter.ViewHolder> {
@@ -82,3 +82,4 @@ public class TimeInterpolatorAdapter extends RecyclerView.Adapter<TimeInterpolat
     }
 
 }
+

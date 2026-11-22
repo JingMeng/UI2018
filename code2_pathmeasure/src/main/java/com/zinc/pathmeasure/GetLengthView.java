@@ -1,12 +1,12 @@
-package com.zinc.pathmeasure;
+﻿package com.zinc.pathmeasure;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 
@@ -14,8 +14,8 @@ import com.zinc.lib_base.BaseView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/4
- * @description 测试 {@link PathMeasure#getLength()}
+ * @date 鍒涘缓鏃堕棿锛?019/1/4
+ * @description 娴嬭瘯 {@link PathMeasure#getLength()}
  */
 public class GetLengthView extends BaseView {
 
@@ -67,8 +67,7 @@ public class GetLengthView extends BaseView {
             mNoClosePathMeasure = new PathMeasure(mPath, false);
             float noCloseLength = mNoClosePathMeasure.getLength();
 
-            // 当路径Path变动后，PathMeasure需要重新关联，否则保存的还是之前的path数据。
-            // 所以执行了 mPath.close()后，此处的 noCloseLength2 便为800，而 noCloseLength 还是 600
+            // 褰撹矾寰凱ath鍙樺姩鍚庯紝PathMeasure闇€瑕侀噸鏂板叧鑱旓紝鍚﹀垯淇濆瓨鐨勮繕鏄箣鍓嶇殑path鏁版嵁銆?            // 鎵€浠ユ墽琛屼簡 mPath.close()鍚庯紝姝ゅ鐨?noCloseLength2 渚夸负800锛岃€?noCloseLength 杩樻槸 600
             mPath.close();
             mNoClosePathMeasure2 = new PathMeasure(mPath, false);
             float noCloseLength2 = mNoClosePathMeasure2.getLength();
@@ -94,9 +93,8 @@ public class GetLengthView extends BaseView {
     protected void onDraw(Canvas canvas) {
         drawCoordinate(canvas);
 
-        // 平移至画布中间
-        canvas.translate(mWidth / 2, mHeight / 2);
-        // 画折线路径
-        canvas.drawPath(mPath, mPaint);
+        // 骞崇Щ鑷崇敾甯冧腑闂?        canvas.translate(mWidth / 2, mHeight / 2);
+        // 鐢绘姌绾胯矾寰?        canvas.drawPath(mPath, mPaint);
     }
 }
+

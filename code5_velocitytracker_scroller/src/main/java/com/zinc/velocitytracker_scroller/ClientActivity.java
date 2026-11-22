@@ -1,12 +1,12 @@
-package com.zinc.velocitytracker_scroller;
+﻿package com.zinc.velocitytracker_scroller;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/2/21
+ * @date 鍒涘缓鏃堕棿锛?019/2/21
  * @description
  */
 public class ClientActivity extends AppCompatActivity {
@@ -18,3 +18,4 @@ public class ClientActivity extends AppCompatActivity {
     }
 
 }
+

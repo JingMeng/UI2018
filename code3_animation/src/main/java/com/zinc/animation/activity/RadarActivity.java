@@ -1,9 +1,9 @@
-package com.zinc.animation.activity;
+﻿package com.zinc.animation.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
@@ -19,24 +19,24 @@ import java.util.Random;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/16
+ * @date 鍒涘缓鏃堕棿锛?019/1/16
  * @description
  */
 public class RadarActivity extends AppCompatActivity {
 
-    // 数据最大数
+    // 鏁版嵁鏈€澶ф暟
     private int DATA_MAX = 4;
-    // 平均数最大数
+    // 骞冲潎鏁版渶澶ф暟
     private int BASE_MAX = 3;
-    // 维度最大数
+    // 缁村害鏈€澶ф暟
     private int DIMEN_MAX = 9;
 
-    // 基线数据
+    // 鍩虹嚎鏁版嵁
     private int baseDataCount;
-    // 比较数据
+    // 姣旇緝鏁版嵁
     private int dataCount;
 
-    // 维度
+    // 缁村害
     private int dimenCount;
 
     private List<String> textDataList = new ArrayList<>();
@@ -62,14 +62,14 @@ public class RadarActivity extends AppCompatActivity {
     private final List<RadarChartView.Data> dataList = new ArrayList<>();
 
     static {
-        BASE_COLOR.add(Color.parseColor("#00BFFF"));    // 蓝色
-        BASE_COLOR.add(Color.parseColor("#FFA500"));    // 橙色
-        BASE_COLOR.add(Color.parseColor("#FFB6C1"));    // 粉色
+        BASE_COLOR.add(Color.parseColor("#00BFFF"));    // 钃濊壊
+        BASE_COLOR.add(Color.parseColor("#FFA500"));    // 姗欒壊
+        BASE_COLOR.add(Color.parseColor("#FFB6C1"));    // 绮夎壊
 
-        DATA_COLOR.add(Color.parseColor("#DC143C"));    // 红色
-        DATA_COLOR.add(Color.parseColor("#FFD700"));    // 黄色
-        DATA_COLOR.add(Color.parseColor("#00FF7F"));    // 绿色
-        DATA_COLOR.add(Color.parseColor("#9932CC"));    // 紫色
+        DATA_COLOR.add(Color.parseColor("#DC143C"));    // 绾㈣壊
+        DATA_COLOR.add(Color.parseColor("#FFD700"));    // 榛勮壊
+        DATA_COLOR.add(Color.parseColor("#00FF7F"));    // 缁胯壊
+        DATA_COLOR.add(Color.parseColor("#9932CC"));    // 绱壊
 
     }
 
@@ -219,7 +219,8 @@ public class RadarActivity extends AppCompatActivity {
     private void createTextData() {
         textDataList.clear();
         for (int i = 0; i < dimenCount; ++i) {
-            textDataList.add("第" + i + "维");
+            textDataList.add("绗? + i + "缁?);
         }
     }
 }
+

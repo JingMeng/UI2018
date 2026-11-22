@@ -1,8 +1,8 @@
-package com.zinc.code8_canvas_draw.activity;
+﻿package com.zinc.code8_canvas_draw.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -12,7 +12,7 @@ import com.zinc.code8_canvas_draw.widget.ClockView;
 
 /**
  * author       : zinc
- * time         : 2019/4/21 上午9:29
+ * time         : 2019/4/21 涓婂崍9:29
  * desc         :
  * version      :
  */
@@ -70,3 +70,4 @@ public class ClockActivity extends Activity {
         });
     }
 }
+

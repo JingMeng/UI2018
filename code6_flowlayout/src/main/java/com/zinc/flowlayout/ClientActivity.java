@@ -1,7 +1,7 @@
-package com.zinc.flowlayout;
+﻿package com.zinc.flowlayout;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
@@ -22,15 +22,15 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
 
     static {
         INFO.add("Hello World!");
-        INFO.add("猛猛的小盆友");
-        INFO.add("掘");
-        INFO.add("金金金");
-        INFO.add("PHP是最好的语言");
-        INFO.add("大Android");
+        INFO.add("鐚涚寷鐨勫皬鐩嗗弸");
+        INFO.add("鎺?);
+        INFO.add("閲戦噾閲?);
+        INFO.add("PHP鏄渶濂界殑璇█");
+        INFO.add("澶ndroid");
         INFO.add("IOS");
         INFO.add("JAVA");
         INFO.add("Python");
-        INFO.add("这是一个很长很长很长很长很长很长很长很长超级无敌长的句子");
+        INFO.add("杩欐槸涓€涓緢闀垮緢闀垮緢闀垮緢闀垮緢闀垮緢闀垮緢闀垮緢闀胯秴绾ф棤鏁岄暱鐨勫彞瀛?);
     }
 
     private TagFlowLayout tagFlowLayout;
@@ -98,14 +98,14 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     /**
-     * 创建view
+     * 鍒涘缓view
      */
     private void createData() {
 
-        // 先清除之前的view
+        // 鍏堟竻闄や箣鍓嶇殑view
         tagFlowLayout.removeAllViews();
 
-        // 循环添加view
+        // 寰幆娣诲姞view
         for (int i = 0; i < mDataCount; ++i) {
             int type = mRandom.nextInt(mTypeCount);
             if (type == 0) {
@@ -116,7 +116,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         }
 
 
-        // 刷新
+        // 鍒锋柊
         tagFlowLayout.invalidate();
 
     }
@@ -164,3 +164,4 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 }
+

@@ -1,4 +1,4 @@
-package com.zinc.code8_canvas_clip.widget;
+﻿package com.zinc.code8_canvas_clip.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -7,8 +7,8 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * author       : zinc
- * time         : 2019/4/21 下午8:35
+ * time         : 2019/4/21 涓嬪崍8:35
  * desc         :
  * version      :
  */
@@ -70,7 +70,7 @@ public class ClipOutPathView extends View {
     }
 
     /**
-     * 构建心形
+     * 鏋勫缓蹇冨舰
      */
     private void createHeart(Path path) {
         List<PointF> pointList = new ArrayList<>();
@@ -115,3 +115,4 @@ public class ClipOutPathView extends View {
     }
 
 }
+

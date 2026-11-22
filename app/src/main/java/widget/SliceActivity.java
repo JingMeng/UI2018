@@ -1,4 +1,4 @@
-//package widget;
+﻿//package widget;
 //
 //import android.app.Activity;
 //import android.content.Context;
@@ -6,8 +6,8 @@
 //import android.graphics.Paint;
 //import android.graphics.Path;
 //import android.os.Bundle;
-//import android.support.annotation.Nullable;
-//import android.support.v4.content.ContextCompat;
+//import androidx.annotation.Nullable;
+//import androidx.core.content.ContextCompat;
 //import android.util.AttributeSet;
 //import android.util.Log;
 //import android.view.View;
@@ -16,7 +16,7 @@
 //
 ///**
 // * @author Jiang zinc
-// * @date 创建时间：2018/11/22
+// * @date 鍒涘缓鏃堕棿锛?018/11/22
 // * @description
 // */
 //public class SliceActivity extends Activity {
@@ -37,8 +37,9 @@
 ////        });
 //
 //        LeanView leanView = findViewById(R.id.lean_view);
-//        leanView.setText("已成交");
+//        leanView.setText("宸叉垚浜?);
 //        leanView.setBgColor(ContextCompat.getColor(this, R.color.color_trade_done));
 //
 //    }
 //}
+

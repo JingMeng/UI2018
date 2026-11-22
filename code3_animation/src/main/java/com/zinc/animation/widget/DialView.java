@@ -1,4 +1,4 @@
-package com.zinc.animation.widget;
+﻿package com.zinc.animation.widget;
 
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
@@ -9,7 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -17,41 +17,36 @@ import android.view.View;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/19
- * @description 表盘视图
+ * @date 鍒涘缓鏃堕棿锛?019/1/19
+ * @description 琛ㄧ洏瑙嗗浘
  */
 public class DialView extends View {
 
-    // 表盘的颜色
-    private static final String DEFAULT_DIAL_LINE_COLOR = "#3A5DFE";
-    // 表盘的指针颜色
-    private static final String DEFAULT_POINTER_COLOR = "#FE3171";
-    // 默认画笔宽度
+    // 琛ㄧ洏鐨勯鑹?    private static final String DEFAULT_DIAL_LINE_COLOR = "#3A5DFE";
+    // 琛ㄧ洏鐨勬寚閽堥鑹?    private static final String DEFAULT_POINTER_COLOR = "#FE3171";
+    // 榛樿鐢荤瑪瀹藉害
     private static final float LINE_WIDTH = dpToPx(5f);
-    // 线的间隔，每根线相隔 10 度
-    private static final float LINE_INTERVAL = 10;
-    // 线的条数
+    // 绾跨殑闂撮殧锛屾瘡鏍圭嚎鐩搁殧 10 搴?    private static final float LINE_INTERVAL = 10;
+    // 绾跨殑鏉℃暟
     private static final int DEFAULT_LINE_COUNT = 5;
-    // 动画时长
+    // 鍔ㄧ敾鏃堕暱
     private static final int DURATION = 2500;
 
-    // 表盘颜色
+    // 琛ㄧ洏棰滆壊
     private int mDialLineColor;
-    // 指针颜色
+    // 鎸囬拡棰滆壊
     private int mPointerColor;
 
-    // 宽
-    private float mWidth;
+    // 瀹?    private float mWidth;
 
-    // 线的个数
+    // 绾跨殑涓暟
     private int mLineCount;
 
-    // 每个项的角度
+    // 姣忎釜椤圭殑瑙掑害
     private float mEachAngle;
 
-    // 宽度的比例
-    private float mPointerCircleWidthRatio = 6;
-    // 指针长度比例
+    // 瀹藉害鐨勬瘮渚?    private float mPointerCircleWidthRatio = 6;
+    // 鎸囬拡闀垮害姣斾緥
     private float mPointerLengthRatio = 4;
 
     private float mPointerCircleRadius;
@@ -67,10 +62,10 @@ public class DialView extends View {
 
     private ObjectAnimator mAnimator;
 
-    // 当前的项
+    // 褰撳墠鐨勯」
     private int mValue = 4;
 
-    // 当前旋转角度
+    // 褰撳墠鏃嬭浆瑙掑害
     private float mRotateAngle;
 
     public DialView(Context context) {
@@ -111,28 +106,24 @@ public class DialView extends View {
     }
 
     /**
-     * 设置 线的颜色
+     * 璁剧疆 绾跨殑棰滆壊
      *
-     * @param dialLineColor 线的颜色
+     * @param dialLineColor 绾跨殑棰滆壊
      */
     public void setDialLineColor(int dialLineColor) {
         this.mDialLineColor = dialLineColor;
     }
 
     /**
-     * 设置 指针的颜色
-     *
-     * @param pointerColor 指针的颜色
-     */
+     * 璁剧疆 鎸囬拡鐨勯鑹?     *
+     * @param pointerColor 鎸囬拡鐨勯鑹?     */
     public void setPointerColor(int pointerColor) {
         this.mPointerColor = pointerColor;
     }
 
     /**
-     * 设置线条的数量
-     *
-     * @param lineCount 线数量
-     */
+     * 璁剧疆绾挎潯鐨勬暟閲?     *
+     * @param lineCount 绾挎暟閲?     */
     public void setLineCount(int lineCount) {
         this.mLineCount = lineCount + 1;
         mEachAngle = 360 / mLineCount - LINE_INTERVAL;
@@ -160,7 +151,7 @@ public class DialView extends View {
     }
 
     /**
-     * 重置
+     * 閲嶇疆
      */
     public void reset() {
         if (mAnimator != null) {
@@ -211,9 +202,8 @@ public class DialView extends View {
     }
 
     /**
-     * 画指针
-     *
-     * @param canvas 画布
+     * 鐢绘寚閽?     *
+     * @param canvas 鐢诲竷
      */
     private void drawPointer(Canvas canvas) {
         canvas.save();
@@ -229,9 +219,9 @@ public class DialView extends View {
     }
 
     /**
-     * 画表盘线
+     * 鐢昏〃鐩樼嚎
      *
-     * @param canvas 画布
+     * @param canvas 鐢诲竷
      */
     private void drawDialLine(Canvas canvas) {
         mLinePaint.setColor(mDialLineColor);
@@ -239,8 +229,7 @@ public class DialView extends View {
     }
 
     /**
-     * 构建 指标 的路径
-     */
+     * 鏋勫缓 鎸囨爣 鐨勮矾寰?     */
     private void createLinePath() {
 
         mLinePath.reset();
@@ -275,25 +264,22 @@ public class DialView extends View {
     }
 
     /**
-     * 转换 sp 至 px
+     * 杞崲 sp 鑷?px
      *
-     * @param spValue sp值
-     * @return px值
-     */
+     * @param spValue sp鍊?     * @return px鍊?     */
     protected static int spToPx(float spValue) {
         final float fontScale = Resources.getSystem().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 
     /**
-     * 转换 dp 至 px
+     * 杞崲 dp 鑷?px
      *
-     * @param dpValue dp值
-     * @return px值
-     */
+     * @param dpValue dp鍊?     * @return px鍊?     */
     protected static int dpToPx(float dpValue) {
         DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
         return (int) (dpValue * metrics.density + 0.5f);
     }
 
 }
+

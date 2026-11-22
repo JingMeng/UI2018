@@ -1,14 +1,14 @@
-package com.zinc.code8_canvas_draw.widget.draw;
+﻿package com.zinc.code8_canvas_draw.widget.draw;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 /**
  * author       : zinc
- * time         : 2019/4/22 上午9:23
- * desc         : 画圆
+ * time         : 2019/4/22 涓婂崍9:23
+ * desc         : 鐢诲渾
  * version      : 1.2.0
  */
 public class CircleView extends BaseDrawView {
@@ -40,3 +40,4 @@ public class CircleView extends BaseDrawView {
 
     }
 }
+

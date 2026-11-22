@@ -1,6 +1,7 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zinc.velocitytracker_scroller" >
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
     <application>
         <activity android:name="com.zinc.velocitytracker_scroller.BarActivity"/>
     </application>
 </manifest>
+

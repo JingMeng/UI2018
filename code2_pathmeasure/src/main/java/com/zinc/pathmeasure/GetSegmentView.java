@@ -1,27 +1,24 @@
-package com.zinc.pathmeasure;
+﻿package com.zinc.pathmeasure;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 
 import com.zinc.lib_base.BaseView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/2
- * @description 测试 {@link android.graphics.PathMeasure#getSegment(float, float, Path, boolean)} api
+ * @date 鍒涘缓鏃堕棿锛?019/1/2
+ * @description 娴嬭瘯 {@link android.graphics.PathMeasure#getSegment(float, float, Path, boolean)} api
  */
 public class GetSegmentView extends BaseView {
 
-    // 测试 getSegment方法 的属性
-    private Path mPath;   // 进行截取的路径
-    private Path mDst;      // 存放截取的路径
-    private PathMeasure mGetSegmentPathMeasure;
+    // 娴嬭瘯 getSegment鏂规硶 鐨勫睘鎬?    private Path mPath;   // 杩涜鎴彇鐨勮矾寰?    private Path mDst;      // 瀛樻斁鎴彇鐨勮矾寰?    private PathMeasure mGetSegmentPathMeasure;
 
     private Paint mPaint;
 
@@ -53,7 +50,7 @@ public class GetSegmentView extends BaseView {
         mPaint.setStyle(Paint.Style.STROKE);
 
         mGetSegmentPathMeasure = new PathMeasure();
-        // 顺时针画 半径为400px的圆
+        // 椤烘椂閽堢敾 鍗婂緞涓?00px鐨勫渾
         mPath.addCircle(0, 0, 200, Path.Direction.CW);
         mGetSegmentPathMeasure.setPath(mPath, false);
     }
@@ -67,11 +64,9 @@ public class GetSegmentView extends BaseView {
     protected void onDraw(Canvas canvas) {
         drawCoordinate(canvas);
 
-        // 平移至画布中间
-        canvas.translate(mWidth / 2, mHeight / 2);
+        // 骞崇Щ鑷崇敾甯冧腑闂?        canvas.translate(mWidth / 2, mHeight / 2);
 
-        // 重置dst，清空之前路径
-        mDst.reset();
+        // 閲嶇疆dst锛屾竻绌轰箣鍓嶈矾寰?        mDst.reset();
 
         mDst.moveTo(0, 0);
         mDst.lineTo(100, 100);
@@ -90,3 +85,4 @@ public class GetSegmentView extends BaseView {
     }
 
 }
+

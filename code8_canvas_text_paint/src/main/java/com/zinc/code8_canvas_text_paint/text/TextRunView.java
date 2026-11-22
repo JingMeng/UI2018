@@ -1,20 +1,20 @@
-package com.zinc.code8_canvas_text_paint.text;
+﻿package com.zinc.code8_canvas_text_paint.text;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 /**
  * author       : zinc
- * time         : 2019/4/22 下午5:05
+ * time         : 2019/4/22 涓嬪崍5:05
  * desc         :
  * version      :
  */
 public class TextRunView extends BaseDrawView {
 
-    private static final String CONTENT_S = "عرفي تحكي عربي";
+    private static final String CONTENT_S = "毓乇賮賷 鬲丨賰賷 毓乇亘賷";
 
     private static final char[] CONTENT = CONTENT_S.toCharArray();
 
@@ -72,3 +72,4 @@ public class TextRunView extends BaseDrawView {
     }
 
 }
+

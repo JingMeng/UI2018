@@ -1,4 +1,4 @@
-package com.zinc.xfermode.widget;
+﻿package com.zinc.xfermode.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,7 +9,7 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
@@ -17,7 +17,7 @@ import com.zinc.lib_base.UIUtils;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/2/14
+ * @date 鍒涘缓鏃堕棿锛?019/2/14
  * @description
  */
 public class ScratchCardImageView extends android.support.v7.widget.AppCompatImageView {
@@ -30,7 +30,7 @@ public class ScratchCardImageView extends android.support.v7.widget.AppCompatIma
 
     private PorterDuffXfermode mXfermode;
 
-    // 涂层图像
+    // 娑傚眰鍥惧儚
     private Bitmap mCoatingLayerBitmap;
 
     private Canvas mCanvas;
@@ -43,8 +43,7 @@ public class ScratchCardImageView extends android.support.v7.widget.AppCompatIma
     private boolean isInit = false;
 
     /**
-     * 用于计算是否已经到达全部显现的阈值
-     */
+     * 鐢ㄤ簬璁＄畻鏄惁宸茬粡鍒拌揪鍏ㄩ儴鏄剧幇鐨勯槇鍊?     */
     private Runnable calculatePixelsRunnable = new Runnable() {
         @Override
         public void run() {
@@ -97,7 +96,7 @@ public class ScratchCardImageView extends android.support.v7.widget.AppCompatIma
         mPaint.setColor(Color.parseColor(CARD_COLOR));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(UIUtils.dip2px(context, 10));
-        mPaint.setStrokeJoin(Paint.Join.ROUND);//设置圆角
+        mPaint.setStrokeJoin(Paint.Join.ROUND);//璁剧疆鍦嗚
 
         mPath = new Path();
 

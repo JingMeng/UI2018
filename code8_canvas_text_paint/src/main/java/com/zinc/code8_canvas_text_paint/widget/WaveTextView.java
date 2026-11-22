@@ -1,12 +1,12 @@
-package com.zinc.code8_canvas_text_paint.widget;
+﻿package com.zinc.code8_canvas_text_paint.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
@@ -17,7 +17,7 @@ import com.zinc.lib_base.UIUtils;
 
 /**
  * author       : zinc
- * time         : 2019/5/15 下午11:07
+ * time         : 2019/5/15 涓嬪崍11:07
  * desc         :
  * version      :
  */
@@ -108,17 +108,16 @@ public class WaveTextView extends BaseView {
 
         canvas.drawColor(mBgColor);
 
-        // 绘制网格线
-        if (mIsShowLine) {
+        // 缁樺埗缃戞牸绾?        if (mIsShowLine) {
             drawCoordinate(canvas);
         }
 
-        // 空内容就不绘制了
+        // 绌哄唴瀹瑰氨涓嶇粯鍒朵簡
         if (TextUtils.isEmpty(mContent)) {
             return;
         }
 
-        // 构建路径
+        // 鏋勫缓璺緞
         mPath.reset();
         for (int i = 0; i < POINT_COUNT; ++i) {
 
@@ -133,12 +132,12 @@ public class WaveTextView extends BaseView {
 
         }
 
-        // 移至中心
+        // 绉昏嚦涓績
         canvas.translate(getWidth() / 2, getHeight() / 2);
-        // 将字体放中间
+        // 灏嗗瓧浣撴斁涓棿
         canvas.translate(mLength / LENGTH_TIMES / 2, 0);
 
-        // 是否显示path
+        // 鏄惁鏄剧ずpath
         if (mIsShowLine) {
             mPaint.setColor(mLineColor);
             mPaint.setStrokeWidth(mLineWidth);
@@ -151,15 +150,13 @@ public class WaveTextView extends BaseView {
             mPaint.setStyle(Paint.Style.FILL);
         }
 
-        // 在路径上画文字
-        canvas.drawTextOnPath(mContent, mPath, 0, 0, mPaint);
+        // 鍦ㄨ矾寰勪笂鐢绘枃瀛?        canvas.drawTextOnPath(mContent, mPath, 0, 0, mPaint);
 
     }
 
     /**
-     * 计算 y 轴值
-     * <p>
-     * 三角函数：A*sin(w*x+m)+k
+     * 璁＄畻 y 杞村€?     * <p>
+     * 涓夎鍑芥暟锛欰*sin(w*x+m)+k
      */
     private float calculateY(float x) {
         double a = Math.pow(4 / (4 + Math.pow(4 * x / mLength, 4)), 2.5f) * mA;
@@ -167,15 +164,13 @@ public class WaveTextView extends BaseView {
     }
 
     /**
-     * 是否显示提示线
-     */
+     * 鏄惁鏄剧ず鎻愮ず绾?     */
     public void setIsShowLine(boolean isShowLine) {
         this.mIsShowLine = isShowLine;
     }
 
     /**
-     * 开始动画
-     */
+     * 寮€濮嬪姩鐢?     */
     public void start() {
         if (mAnimator == null) {
             return;
@@ -188,3 +183,4 @@ public class WaveTextView extends BaseView {
     }
 
 }
+

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace 'com.zinc.ui2018'
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
@@ -11,16 +12,16 @@ android {
         versionName rootProject.ext.versionName
 
         applicationId "com.zinc.ui2018"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
 
         release {
             storeFile file("../cer/ui2018.jks")
-            storePassword RELEASE_STORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
+            storePassword project.findProperty('RELEASE_STORE_PASSWORD')
+            keyAlias project.findProperty('RELEASE_KEY_ALIAS')
+            keyPassword project.findProperty('RELEASE_KEY_PASSWORD')
         }
 
     }
@@ -31,6 +32,7 @@ android {
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    
     }
 }
 
@@ -58,3 +60,7 @@ dependencies {
 
     implementation project(":lib_base")
 }
+
+
+
+

@@ -1,9 +1,9 @@
-package com.zinc.paint;
+﻿package com.zinc.paint;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.zinc.paint.activity.GradientHeartActivity;
@@ -14,7 +14,7 @@ import com.zinc.paint.activity.TileModeActivity;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/22
+ * @date 鍒涘缓鏃堕棿锛?018/10/22
  * @description
  */
 public class ClientActivity extends AppCompatActivity {
@@ -61,3 +61,4 @@ public class ClientActivity extends AppCompatActivity {
 
     }
 }
+

@@ -1,8 +1,8 @@
-package com.zinc.animation.activity;
+﻿package com.zinc.animation.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -12,13 +12,12 @@ import com.zinc.animation.widget.DialView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/19
+ * @date 鍒涘缓鏃堕棿锛?019/1/19
  * @description
  */
 public class DialActivity extends AppCompatActivity {
 
-    // 最多五段
-    private static final int LINE_MAX = 5;
+    // 鏈€澶氫簲娈?    private static final int LINE_MAX = 5;
 
     private DialView dialView;
 
@@ -118,3 +117,4 @@ public class DialActivity extends AppCompatActivity {
     }
 
 }
+

@@ -1,10 +1,10 @@
-package com.zinc.xfermode.activity;
+﻿package com.zinc.xfermode.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.ImageView;
 
 import com.zinc.xfermode.R;
@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/22
+ * @date 鍒涘缓鏃堕棿锛?018/10/22
  * @description
  */
 public class ZincXFerModeActivity extends AppCompatActivity implements XFerModeInfo, XFerModeAdapter.XFerModeListener {
@@ -136,3 +136,4 @@ public class ZincXFerModeActivity extends AppCompatActivity implements XFerModeI
         mAdapter.notifyDataSetChanged();
     }
 }
+

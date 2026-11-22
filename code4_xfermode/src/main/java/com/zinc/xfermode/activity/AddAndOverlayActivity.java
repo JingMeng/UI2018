@@ -1,4 +1,4 @@
-package com.zinc.xfermode.activity;
+﻿package com.zinc.xfermode.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -6,8 +6,8 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Xfermode;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.zinc.xfermode.R;
@@ -15,7 +15,7 @@ import com.zinc.xfermode.widget.ItemXFerModeView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/2/19
+ * @date 鍒涘缓鏃堕棿锛?019/2/19
  * @description
  */
 public class AddAndOverlayActivity extends AppCompatActivity {
@@ -68,3 +68,4 @@ public class AddAndOverlayActivity extends AppCompatActivity {
         srcBitmap.recycle();
     }
 }
+

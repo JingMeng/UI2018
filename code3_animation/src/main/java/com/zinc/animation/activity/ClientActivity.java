@@ -1,16 +1,16 @@
-package com.zinc.animation.activity;
+﻿package com.zinc.animation.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.zinc.animation.R;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/17
+ * @date 鍒涘缓鏃堕棿锛?019/1/17
  * @description
  */
 public class ClientActivity extends AppCompatActivity {
@@ -42,3 +42,4 @@ public class ClientActivity extends AppCompatActivity {
     }
 
 }
+

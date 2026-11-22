@@ -1,4 +1,4 @@
-package com.zinc.paint.widget;
+﻿package com.zinc.paint.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,7 +13,7 @@ import android.graphics.PorterDuff;
 import android.graphics.RadialGradient;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -21,8 +21,8 @@ import com.zinc.paint.R;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/21
- * @description 心形渐变
+ * @date 鍒涘缓鏃堕棿锛?018/10/21
+ * @description 蹇冨舰娓愬彉
  */
 public class GradientHeartView extends View {
 
@@ -104,3 +104,4 @@ public class GradientHeartView extends View {
 
     }
 }
+

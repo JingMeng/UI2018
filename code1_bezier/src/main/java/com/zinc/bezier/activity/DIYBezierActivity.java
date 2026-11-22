@@ -1,9 +1,9 @@
-package com.zinc.bezier.activity;
+﻿package com.zinc.bezier.activity;
 
 import android.content.Context;
 import android.graphics.PointF;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -17,9 +17,8 @@ import java.util.List;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/9
- * @description 带动画过程的贝塞尔
- */
+ * @date 鍒涘缓鏃堕棿锛?019/1/9
+ * @description 甯﹀姩鐢昏繃绋嬬殑璐濆灏? */
 public class DIYBezierActivity extends AppCompatActivity {
 
     private DIYBezierView diyBezierView;
@@ -40,13 +39,13 @@ public class DIYBezierActivity extends AppCompatActivity {
         rgStatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.status_free) {                // 自由变换
+                if (checkedId == R.id.status_free) {                // 鑷敱鍙樻崲
                     diyBezierView.setStatus(DIYBezierView.Status.FREE);
-                } else if (checkedId == R.id.status_mirror_diff) {  // 镜像异向
+                } else if (checkedId == R.id.status_mirror_diff) {  // 闀滃儚寮傚悜
                     diyBezierView.setStatus(DIYBezierView.Status.MIRROR_DIFF);
-                } else if (checkedId == R.id.status_three) {        // 三点拽动
+                } else if (checkedId == R.id.status_three) {        // 涓夌偣鎷藉姩
                     diyBezierView.setStatus(DIYBezierView.Status.THREE);
-                } else if (checkedId == R.id.status_mirror_same) {  // 镜像同向
+                } else if (checkedId == R.id.status_mirror_same) {  // 闀滃儚鍚屽悜
                     diyBezierView.setStatus(DIYBezierView.Status.MIRROR_SAME);
                 }
             }
@@ -71,9 +70,9 @@ public class DIYBezierActivity extends AppCompatActivity {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\n");
         for (int i = 0; i < controlPointList.size(); ++i) {
-            stringBuilder.append("第")
+            stringBuilder.append("绗?)
                     .append(i)
-                    .append("个点坐标(单位dp)：[")
+                    .append("涓偣鍧愭爣(鍗曚綅dp)锛歔")
                     .append(px2dip(this, controlPointList.get(i).x))
                     .append(", ")
                     .append(px2dip(this, controlPointList.get(i).y))
@@ -81,7 +80,7 @@ public class DIYBezierActivity extends AppCompatActivity {
                     .append("\n");
         }
 
-        Log.i("DIY Bezier", "控制点日志: " + stringBuilder.toString());
+        Log.i("DIY Bezier", "鎺у埗鐐规棩蹇? " + stringBuilder.toString());
 
     }
 
@@ -90,3 +89,4 @@ public class DIYBezierActivity extends AppCompatActivity {
         return (int) (pxValue / density + 0.5f);
     }
 }
+

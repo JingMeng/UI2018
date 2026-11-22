@@ -1,19 +1,18 @@
-package com.zinc.code8_canvas_text_paint.text;
+﻿package com.zinc.code8_canvas_text_paint.text;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 /**
  * author       : zinc
- * time         : 2019/4/22 上午9:23
- * desc         : 画矩阵
- * version      :
+ * time         : 2019/4/22 涓婂崍9:23
+ * desc         : 鐢荤煩闃? * version      :
  */
 public class TextView extends BaseDrawView {
 
-    private static final String CONTENT = "zinc 猛猛的小盆友";
+    private static final String CONTENT = "zinc 鐚涚寷鐨勫皬鐩嗗弸";
 
     private static final CharSequence SEQ = "https://blog.csdn.net/weixin_37625173";
 
@@ -61,3 +60,4 @@ public class TextView extends BaseDrawView {
 
     }
 }
+

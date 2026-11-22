@@ -1,8 +1,8 @@
-package com.zinc.pathmeasure.activity;
+﻿package com.zinc.pathmeasure.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.zinc.pathmeasure.BoatWaveView;
@@ -10,9 +10,8 @@ import com.zinc.pathmeasure.R;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/4
- * @description 乘风破浪的小船
- */
+ * @date 鍒涘缓鏃堕棿锛?019/1/4
+ * @description 涔橀鐮存氮鐨勫皬鑸? */
 public class BoatLoadingActivity extends AppCompatActivity {
 
     BoatWaveView mBoatWaveView;
@@ -33,3 +32,4 @@ public class BoatLoadingActivity extends AppCompatActivity {
     }
 
 }
+

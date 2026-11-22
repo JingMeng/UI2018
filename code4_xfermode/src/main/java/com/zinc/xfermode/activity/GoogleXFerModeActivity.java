@@ -1,14 +1,14 @@
-package com.zinc.xfermode.activity;
+﻿package com.zinc.xfermode.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.zinc.xfermode.widget.GoogleXFerModeView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/22
+ * @date 鍒涘缓鏃堕棿锛?018/10/22
  * @description
  */
 public class GoogleXFerModeActivity extends AppCompatActivity {
@@ -19,3 +19,4 @@ public class GoogleXFerModeActivity extends AppCompatActivity {
         setContentView(new GoogleXFerModeView(this));
     }
 }
+

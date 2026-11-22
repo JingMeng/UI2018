@@ -1,9 +1,9 @@
-package com.zinc.code8_canvas_draw.widget.draw;
+﻿package com.zinc.code8_canvas_draw.widget.draw;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -11,7 +11,7 @@ import com.zinc.lib_base.BaseView;
 
 /**
  * author       : zinc
- * time         : 2019/5/4 上午11:41
+ * time         : 2019/5/4 涓婂崍11:41
  * desc         :
  * version      : 1.2.0
  */
@@ -47,3 +47,4 @@ public class LinesView extends BaseDrawView {
     }
 
 }
+

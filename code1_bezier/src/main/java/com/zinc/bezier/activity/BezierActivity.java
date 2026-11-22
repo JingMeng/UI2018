@@ -1,9 +1,9 @@
-package com.zinc.bezier.activity;
+﻿package com.zinc.bezier.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -14,7 +14,7 @@ import com.zinc.bezier.R;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/10/30
+ * @date 鍒涘缓鏃堕棿锛?018/10/30
  * @description
  */
 public class BezierActivity extends AppCompatActivity implements View.OnClickListener {
@@ -25,13 +25,12 @@ public class BezierActivity extends AppCompatActivity implements View.OnClickLis
 
     private BezierDialog dialog;
 
-    // 是否显示降阶线
-    private boolean isShowReduceOrderLine = true;
-    // 是否循环播放
+    // 鏄惁鏄剧ず闄嶉樁绾?    private boolean isShowReduceOrderLine = true;
+    // 鏄惁寰幆鎾斁
     private boolean isLoopPlay = false;
-    // 阶数（默认五阶）
+    // 闃舵暟锛堥粯璁や簲闃讹級
     private int order = 5;
-    // 速率（默认10个点的跳过播放）
+    // 閫熺巼锛堥粯璁?0涓偣鐨勮烦杩囨挱鏀撅級
     private int rate = 10;
 
     @Override
@@ -60,7 +59,7 @@ public class BezierActivity extends AppCompatActivity implements View.OnClickLis
         int i = v.getId();
         if (i == R.id.iv_setting) {
             if (bezierView.getState() == BezierView.RUNNING) {
-                Toast.makeText(this, "动画播放中，请稍等...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "鍔ㄧ敾鎾斁涓紝璇风◢绛?..", Toast.LENGTH_SHORT).show();
                 return;
             }
             dialog.setShowReduceOrderLine(isShowReduceOrderLine);
@@ -70,11 +69,9 @@ public class BezierActivity extends AppCompatActivity implements View.OnClickLis
             dialog.show(getSupportFragmentManager(), "BezierActivity");
         } else if (i == R.id.iv_play) {
 
-            if (bezierView.getState() == BezierView.RUNNING) {    // 运行中
-                ivPlay.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.icons_play));
+            if (bezierView.getState() == BezierView.RUNNING) {    // 杩愯涓?                ivPlay.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.icons_play));
                 bezierView.pause();
-            } else if (bezierView.getState() == BezierView.STOP) { // 已暂停
-                ivPlay.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.icons_pause));
+            } else if (bezierView.getState() == BezierView.STOP) { // 宸叉殏鍋?                ivPlay.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.icons_pause));
                 bezierView.pause();
             } else {
                 ivPlay.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.icons_pause));
@@ -110,3 +107,4 @@ public class BezierActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 }
+

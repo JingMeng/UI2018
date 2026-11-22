@@ -4,10 +4,10 @@ buildscript {
     
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.3'
+        classpath 'com.android.tools.build:gradle:8.2.1'
         
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -18,17 +18,17 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
 ext {
-    // app 版本信息
+    // app ??????
     versionName = '1.3.0'
     versionCode = 1300
     minSdkVersion = 19
-    targetSdkVersion = 27
-    compileSdkVersion = 27
+    targetSdkVersion = 34
+    compileSdkVersion = 34
 
     appcompatV7 = '27.1.1'
     recycleView = '27.1.1'
@@ -37,4 +37,9 @@ ext {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+tasks.withType(JavaCompile).configureEach {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }

@@ -1,4 +1,4 @@
-package com.zinc.xfermode.widget;
+﻿package com.zinc.xfermode.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,13 +9,13 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Xfermode;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/12/26
+ * @date 鍒涘缓鏃堕棿锛?018/12/26
  * @description
  */
 public class ItemXFerModeView extends View {
@@ -26,7 +26,7 @@ public class ItemXFerModeView extends View {
     private Bitmap dstBitmap;
     private Bitmap srcBitmap;
 
-    // 背景
+    // 鑳屾櫙
     private Shader itemBackground;
 
     private Paint mBitmapPaint;
@@ -127,3 +127,4 @@ public class ItemXFerModeView extends View {
 
     }
 }
+

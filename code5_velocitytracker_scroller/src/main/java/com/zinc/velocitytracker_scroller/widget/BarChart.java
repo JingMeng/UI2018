@@ -1,4 +1,4 @@
-package com.zinc.velocitytracker_scroller.widget;
+﻿package com.zinc.velocitytracker_scroller.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -21,134 +21,121 @@ import java.util.List;
 /**
  * author : zinc
  * email : 56002982@qq.com
- * time : 2019/3/1 下午5:04
- * desc : 带滑动效果的柱形图
- * version :
+ * time : 2019/3/1 涓嬪崍5:04
+ * desc : 甯︽粦鍔ㄦ晥鏋滅殑鏌卞舰鍥? * version :
  */
 public class BarChart extends View {
 
     private static final String TAG = "BarChart";
     /**
-     * 内圆的颜色
-     */
+     * 鍐呭渾鐨勯鑹?     */
     private static final String INNER_DOT_COLOR = "#99E35B5B";
     /**
-     * 外圆的颜色
-     */
+     * 澶栧渾鐨勯鑹?     */
     private static final String OUTER_DOT_COLOR = "#28E35B5B";
     /**
-     * 柱的颜色
+     * 鏌辩殑棰滆壊
      */
     private static final String BAR_COLOR = "#bb434343";
     /**
-     * 文字颜色
+     * 鏂囧瓧棰滆壊
      */
     private static final String TEXT_COLOR = "#64C5C5C5";
     /**
-     * 动画时长
+     * 鍔ㄧ敾鏃堕暱
      */
     private static final int ANIM_DURATION = 2000;
 
     /**
-     * 柱子的数据
-     */
+     * 鏌卞瓙鐨勬暟鎹?     */
     private List<BarInfo> mBarInfoList = new ArrayList<>();
     /**
-     * 描述字体的大小
-     */
+     * 鎻忚堪瀛椾綋鐨勫ぇ灏?     */
     private float mDescTextSize;
     /**
-     * 点的内半径
-     */
+     * 鐐圭殑鍐呭崐寰?     */
     private float mDotInnerRadius;
     /**
-     * 点的外半径
-     */
+     * 鐐圭殑澶栧崐寰?     */
     private float mDotOuterRadius;
     /**
-     * 底部边距
+     * 搴曢儴杈硅窛
      */
     private float mBottomSpacing;
     /**
-     * 柱与文字的距离
-     */
+     * 鏌变笌鏂囧瓧鐨勮窛绂?     */
     private float mBarTextSpacing;
     /**
-     * 柱子与柱子的间隔
+     * 鏌卞瓙涓庢煴瀛愮殑闂撮殧
      */
     private float mBarInterval;
     /**
-     * 柱子与上边距的距离
-     */
+     * 鏌卞瓙涓庝笂杈硅窛鐨勮窛绂?     */
     private float mTopSpacing;
     /**
-     * 柱子的高度
-     */
+     * 鏌卞瓙鐨勯珮搴?     */
     private float mBarHeight;
     /**
-     * 每根柱子的宽度
-     */
+     * 姣忔牴鏌卞瓙鐨勫搴?     */
     private float mBarWidth;
     /**
-     * 有数据的画布宽
-     */
+     * 鏈夋暟鎹殑鐢诲竷瀹?     */
     private float mCanvasWidth;
     /**
-     * 用户可见的视图宽
+     * 鐢ㄦ埛鍙鐨勮鍥惧
      */
     private float mViewWidth;
     /**
-     * 柱子路径
+     * 鏌卞瓙璺緞
      */
     private Path mBarPath;
     /**
-     * 画笔
+     * 鐢荤瑪
      */
     private Paint mPaint;
     /**
-     * 当前动画的进度
-     */
+     * 褰撳墠鍔ㄧ敾鐨勮繘搴?     */
     private float mAnimRate = 0;
     /**
-     * 柱子颜色
+     * 鏌卞瓙棰滆壊
      */
     private int mBarColor;
     /**
-     * 内圆颜色
+     * 鍐呭渾棰滆壊
      */
     private int mInnerDotColor;
     /**
-     * 外圆颜色
+     * 澶栧渾棰滆壊
      */
     private int mOuterDotColor;
     /**
-     * 字体大小
+     * 瀛椾綋澶у皬
      */
     private int mTextColor;
     /**
-     * 最后触碰的x坐标
+     * 鏈€鍚庤Е纰扮殑x鍧愭爣
      */
     private float mLastTouchX;
     /**
-     * 动画
+     * 鍔ㄧ敾
      */
     private ValueAnimator mAnim;
 
     /**
-     * 滑动速度追踪
+     * 婊戝姩閫熷害杩借釜
      */
     private VelocityTracker mVelocityTracker;
     /**
-     * 滑动的最大速度
+     * 婊戝姩鐨勬渶澶ч€熷害
      */
     private int mMaximumVelocity;
     /**
-     * 滑动的最小速度
+     * 婊戝姩鐨勬渶灏忛€熷害
      */
     private int mMinimumVelocity;
 
     /**
-     * 滑动线程
+     * 婊戝姩绾跨▼
      */
     private FlingRunnable mFling;
 
@@ -205,7 +192,7 @@ public class BarChart extends View {
     }
 
     /**
-     * 设置动画数据
+     * 璁剧疆鍔ㄧ敾鏁版嵁
      *
      * @param barInfoList
      */
@@ -214,32 +201,31 @@ public class BarChart extends View {
         this.mBarInfoList.addAll(barInfoList);
         this.mCanvasWidth = (this.mBarInfoList.size() + 1) * this.mBarInterval;
 
-        // 停止正在执行的动画
-        if (mAnim != null && mAnim.isRunning()) {
+        // 鍋滄姝ｅ湪鎵ц鐨勫姩鐢?        if (mAnim != null && mAnim.isRunning()) {
             mAnim.cancel();
         }
 
-        // 停止滚动
+        // 鍋滄婊氬姩
         if (mFling != null) {
             mFling.stop();
         }
 
-        // 重置动画进度
+        // 閲嶇疆鍔ㄧ敾杩涘害
         mAnimRate = 0;
 
-        // 滚回最开始的坐标
+        // 婊氬洖鏈€寮€濮嬬殑鍧愭爣
         scrollTo(0, 0);
 
-        // 提交刷新
+        // 鎻愪氦鍒锋柊
         postInvalidate();
     }
 
     /**
-     * 启动动画
+     * 鍚姩鍔ㄧ敾
      */
     public void start() {
         if (mBarInfoList == null || mBarInfoList.size() == 0) {
-            Log.e(TAG, "启动动画前，请先设置数据");
+            Log.e(TAG, "鍚姩鍔ㄧ敾鍓嶏紝璇峰厛璁剧疆鏁版嵁");
             return;
         }
 
@@ -255,7 +241,7 @@ public class BarChart extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        // 柱子的高度 = 控件高度 - 上内边距 - 下内边距 - 字体大小 - 字体与柱子的间距
+        // 鏌卞瓙鐨勯珮搴?= 鎺т欢楂樺害 - 涓婂唴杈硅窛 - 涓嬪唴杈硅窛 - 瀛椾綋澶у皬 - 瀛椾綋涓庢煴瀛愮殑闂磋窛
         this.mBarHeight = h - mTopSpacing - mBottomSpacing - mDescTextSize - mBarTextSpacing;
         this.mViewWidth = w;
     }
@@ -270,16 +256,14 @@ public class BarChart extends View {
     }
 
     /**
-     * 控制屏幕不越界
-     *
+     * 鎺у埗灞忓箷涓嶈秺鐣?     *
      * @param event
      * @return
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        // 当数据的长度不足以滑动时，不做滑动处理
-        if (mCanvasWidth < mViewWidth) {
+        // 褰撴暟鎹殑闀垮害涓嶈冻浠ユ粦鍔ㄦ椂锛屼笉鍋氭粦鍔ㄥ鐞?        if (mCanvasWidth < mViewWidth) {
             return true;
         }
 
@@ -293,25 +277,22 @@ public class BarChart extends View {
 
             mFling.stop();
         } else if (MotionEvent.ACTION_MOVE == event.getAction()) {
-            // 滑动的距离
-            float scrollLengthX = event.getX() - mLastTouchX;
-            // getScrollX() 小于0，说明画布右移了
-            // getScrollX() 大于0，说明画布左移了
+            // 婊戝姩鐨勮窛绂?            float scrollLengthX = event.getX() - mLastTouchX;
+            // getScrollX() 灏忎簬0锛岃鏄庣敾甯冨彸绉讳簡
+            // getScrollX() 澶т簬0锛岃鏄庣敾甯冨乏绉讳簡
             float endX = getScrollX() - scrollLengthX;
 
-            if (scrollLengthX > 0) {    // 画布往右移动 -->
+            if (scrollLengthX > 0) {    // 鐢诲竷寰€鍙崇Щ鍔?-->
 
-                // 注意：这里的等号不能去除，否则会有闪动
-                if (endX <= 0) {
+                // 娉ㄦ剰锛氳繖閲岀殑绛夊彿涓嶈兘鍘婚櫎锛屽惁鍒欎細鏈夐棯鍔?                if (endX <= 0) {
                     scrollTo(0, 0);
                 } else {
                     scrollBy((int) -scrollLengthX, 0);
                 }
 
-            } else if (scrollLengthX < 0) {                    // 画布往左移动  <--
+            } else if (scrollLengthX < 0) {                    // 鐢诲竷寰€宸︾Щ鍔? <--
 
-                if (endX >= mCanvasWidth - mViewWidth) {     // 需要考虑是否右越界
-                    scrollTo((int) (mCanvasWidth - mViewWidth), 0);
+                if (endX >= mCanvasWidth - mViewWidth) {     // 闇€瑕佽€冭檻鏄惁鍙宠秺鐣?                    scrollTo((int) (mCanvasWidth - mViewWidth), 0);
                 } else {
                     scrollBy((int) -scrollLengthX, 0);
                 }
@@ -319,14 +300,13 @@ public class BarChart extends View {
             }
             mLastTouchX = event.getX();
         } else if (MotionEvent.ACTION_UP == event.getAction()) {
-            // 计算当前速度， 1000表示每秒像素数等
+            // 璁＄畻褰撳墠閫熷害锛?1000琛ㄧず姣忕鍍忕礌鏁扮瓑
             mVelocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
 
-            // 获取横向速度
+            // 鑾峰彇妯悜閫熷害
             int velocityX = (int) mVelocityTracker.getXVelocity();
 
-            // 速度要大于最小的速度值，才开始滑动
-            if (Math.abs(velocityX) > mMinimumVelocity) {
+            // 閫熷害瑕佸ぇ浜庢渶灏忕殑閫熷害鍊硷紝鎵嶅紑濮嬫粦鍔?            if (Math.abs(velocityX) > mMinimumVelocity) {
 
                 int initX = getScrollX();
 
@@ -348,7 +328,7 @@ public class BarChart extends View {
     }
 
     /**
-     * 画柱
+     * 鐢绘煴
      *
      * @param canvas
      */
@@ -372,7 +352,7 @@ public class BarChart extends View {
     }
 
     /**
-     * 画数据点
+     * 鐢绘暟鎹偣
      *
      * @param canvas
      */
@@ -389,12 +369,10 @@ public class BarChart extends View {
 
                 float curBarDotY = (float) (mBarHeight * (1 - barInfo.percent * mAnimRate) + mTopSpacing);
 
-                // 画外圆
-                mPaint.setColor(mOuterDotColor);
+                // 鐢诲鍦?                mPaint.setColor(mOuterDotColor);
                 canvas.drawCircle(x, curBarDotY, mDotOuterRadius, mPaint);
 
-                // 画内圆
-                mPaint.setColor(mInnerDotColor);
+                // 鐢诲唴鍦?                mPaint.setColor(mInnerDotColor);
                 canvas.drawCircle(x, curBarDotY, mDotInnerRadius, mPaint);
             }
 
@@ -402,8 +380,7 @@ public class BarChart extends View {
     }
 
     /**
-     * 画文字
-     *
+     * 鐢绘枃瀛?     *
      * @param canvas
      */
     private void drawText(Canvas canvas) {
@@ -425,11 +402,9 @@ public class BarChart extends View {
     }
 
     /**
-     * 是否在可视的范围内
-     *
+     * 鏄惁鍦ㄥ彲瑙嗙殑鑼冨洿鍐?     *
      * @param x
-     * @return true：在可视的范围内；false：不在可视的范围内
-     */
+     * @return true锛氬湪鍙鐨勮寖鍥村唴锛沠alse锛氫笉鍦ㄥ彲瑙嗙殑鑼冨洿鍐?     */
     private boolean isInVisibleArea(float x) {
         float dx = x - getScrollX();
 
@@ -444,18 +419,16 @@ public class BarChart extends View {
     /**
      * author : Jiang zinc
      * email : 56002982@qq.com
-     * time : 2019/3/1 下午5:08
-     * desc : 柱形图的数据
+     * time : 2019/3/1 涓嬪崍5:08
+     * desc : 鏌卞舰鍥剧殑鏁版嵁
      * version :
      */
     public static final class BarInfo {
         /**
-         * 该柱的描述
-         */
+         * 璇ユ煴鐨勬弿杩?         */
         private String desc;
         /**
-         * 该柱的占比
-         */
+         * 璇ユ煴鐨勫崰姣?         */
         private double percent;
 
         public BarInfo(String desc, double percent) {
@@ -465,7 +438,7 @@ public class BarChart extends View {
     }
 
     /**
-     * 滚动线程
+     * 婊氬姩绾跨▼
      */
     private class FlingRunnable implements Runnable {
 
@@ -489,12 +462,12 @@ public class BarChart extends View {
             this.mMinX = minX;
             this.mMaxX = maxX;
 
-            // 先停止上一次的滚动
+            // 鍏堝仠姝笂涓€娆＄殑婊氬姩
             if (!mScroller.isFinished()) {
                 mScroller.abortAnimation();
             }
 
-            // 开始 fling
+            // 寮€濮?fling
             mScroller.fling(initX, 0, velocityX,
                     0, 0, maxX, 0, 0);
             post(this);
@@ -503,13 +476,12 @@ public class BarChart extends View {
         @Override
         public void run() {
 
-            // 如果已经结束，就不再进行
+            // 濡傛灉宸茬粡缁撴潫锛屽氨涓嶅啀杩涜
             if (!mScroller.computeScrollOffset()) {
                 return;
             }
 
-            // 计算偏移量
-            int currX = mScroller.getCurrX();
+            // 璁＄畻鍋忕Щ閲?            int currX = mScroller.getCurrX();
             int diffX = mInitX - currX;
 
             Log.i(TAG, "run: [currX: " + currX + "]\n"
@@ -520,18 +492,17 @@ public class BarChart extends View {
                     + "[velocityX: " + mVelocityX + "]\n"
             );
 
-            // 用于记录是否超出边界，如果已经超出边界，则不再进行回调，即使滚动还没有完成
-            boolean isEnd = false;
+            // 鐢ㄤ簬璁板綍鏄惁瓒呭嚭杈圭晫锛屽鏋滃凡缁忚秴鍑鸿竟鐣岋紝鍒欎笉鍐嶈繘琛屽洖璋冿紝鍗充娇婊氬姩杩樻病鏈夊畬鎴?            boolean isEnd = false;
 
             if (diffX != 0) {
 
-                // 超出右边界，进行修正
+                // 瓒呭嚭鍙宠竟鐣岋紝杩涜淇
                 if (getScrollX() + diffX >= mCanvasWidth - mViewWidth) {
                     diffX = (int) (mCanvasWidth - mViewWidth - getScrollX());
                     isEnd = true;
                 }
 
-                // 超出左边界，进行修正
+                // 瓒呭嚭宸﹁竟鐣岋紝杩涜淇
                 if (getScrollX() <= 0) {
                     diffX = -getScrollX();
                     isEnd = true;
@@ -549,7 +520,7 @@ public class BarChart extends View {
         }
 
         /**
-         * 进行停止
+         * 杩涜鍋滄
          */
         void stop() {
             if (!mScroller.isFinished()) {
@@ -558,3 +529,4 @@ public class BarChart extends View {
         }
     }
 }
+

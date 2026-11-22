@@ -1,11 +1,11 @@
-package com.zinc.code8_canvas_draw.widget.draw;
+﻿package com.zinc.code8_canvas_draw.widget.draw;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ import java.util.List;
 
 /**
  * author       : zinc
- * time         : 2019/4/22 上午9:23
- * desc         : 画点
+ * time         : 2019/4/22 涓婂崍9:23
+ * desc         : 鐢荤偣
  * version      :
  */
 public class PathView extends BaseDrawView {
@@ -50,7 +50,7 @@ public class PathView extends BaseDrawView {
     }
 
     /**
-     * 构建心形
+     * 鏋勫缓蹇冨舰
      */
     private void createHeart(Path path) {
         List<PointF> pointList = new ArrayList<>();
@@ -90,3 +90,4 @@ public class PathView extends BaseDrawView {
 
     }
 }
+

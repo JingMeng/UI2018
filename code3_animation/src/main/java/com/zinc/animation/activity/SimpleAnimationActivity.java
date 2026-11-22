@@ -1,4 +1,4 @@
-package com.zinc.animation.activity;
+﻿package com.zinc.animation.activity;
 
 import android.animation.Animator;
 import android.animation.FloatEvaluator;
@@ -8,15 +8,14 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/14
- * @description 属性动画源码分析
- */
+ * @date 鍒涘缓鏃堕棿锛?019/1/14
+ * @description 灞炴€у姩鐢绘簮鐮佸垎鏋? */
 public class SimpleAnimationActivity extends Activity {
 
     private static final String TAG = "SimpleAnimationActivity";
@@ -27,18 +26,18 @@ public class SimpleAnimationActivity extends Activity {
 
         ZincView view = new ZincView(this);
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(view, "zinc", 0f, 2f, 5f);
-        // 时长
+        // 鏃堕暱
         objectAnimator.setDuration(5000);
-        // 插值器
+        // 鎻掑€煎櫒
         objectAnimator.setInterpolator(new TimeInterpolator() {
             @Override
             public float getInterpolation(float input) {
                 return input;
             }
         });
-        // 估值器
+        // 浼板€煎櫒
         objectAnimator.setEvaluator(new FloatEvaluator());
-        // 更新回调
+        // 鏇存柊鍥炶皟
         objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -47,7 +46,7 @@ public class SimpleAnimationActivity extends Activity {
                 Log.i(TAG, "onAnimationUpdate: " + animation.getAnimatedFraction());
             }
         });
-        // 生命周期回调
+        // 鐢熷懡鍛ㄦ湡鍥炶皟
         objectAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -69,8 +68,7 @@ public class SimpleAnimationActivity extends Activity {
                 Log.i(TAG, "onAnimationRepeat: ");
             }
         });
-        // 开启
-        objectAnimator.start();
+        // 寮€鍚?        objectAnimator.start();
 
     }
 
@@ -87,3 +85,4 @@ public class SimpleAnimationActivity extends Activity {
     }
 
 }
+

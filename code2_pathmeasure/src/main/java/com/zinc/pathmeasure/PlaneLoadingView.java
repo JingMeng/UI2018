@@ -1,4 +1,4 @@
-package com.zinc.pathmeasure;
+﻿package com.zinc.pathmeasure;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.animation.LinearInterpolator;
@@ -19,32 +19,30 @@ import com.zinc.lib_base.BaseView;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2018/11/5
+ * @date 鍒涘缓鏃堕棿锛?018/11/5
  * @description
  */
 public class PlaneLoadingView extends BaseView {
 
     private static final float DELAY = 0.005f;
 
-    // PathMeasure 测量过程中的坐标
+    // PathMeasure 娴嬮噺杩囩▼涓殑鍧愭爣
     private float mPos[];
-    // PathMeasure 测量过程中的正切
+    // PathMeasure 娴嬮噺杩囩▼涓殑姝ｅ垏
     private float mTan[];
 
-    // 圈的画笔
+    // 鍦堢殑鐢荤瑪
     private Paint mCirclePaint;
 
-    // 箭头图片
+    // 绠ご鍥剧墖
     private Bitmap mArrowBitmap;
 
-    // 圆路径
-    private Path mCirclePath;
+    // 鍦嗚矾寰?    private Path mCirclePath;
 
-    // 路径测量
+    // 璺緞娴嬮噺
     private PathMeasure mPathMeasure;
 
-    // 当前移动值
-    private float mCurrentValue = 0;
+    // 褰撳墠绉诲姩鍊?    private float mCurrentValue = 0;
 
     private Matrix mMatrix;
 
@@ -63,47 +61,43 @@ public class PlaneLoadingView extends BaseView {
     }
 
     protected void init(Context context) {
-        // 初始化 画笔 [抗锯齿、不填充、红色、线条2px]
+        // 鍒濆鍖?鐢荤瑪 [鎶楅敮榻裤€佷笉濉厖銆佺孩鑹层€佺嚎鏉?px]
         mCirclePaint = new Paint();
         mCirclePaint.setAntiAlias(true);
         mCirclePaint.setStyle(Paint.Style.STROKE);
         mCirclePaint.setColor(Color.RED);
         mCirclePaint.setStrokeWidth(2);
 
-        // 获取图片
+        // 鑾峰彇鍥剧墖
         mArrowBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.arrow, null);
 
-        // 初始化 圆路径 [圆心(0,0)、半径200px、顺时针画]
+        // 鍒濆鍖?鍦嗚矾寰?[鍦嗗績(0,0)銆佸崐寰?00px銆侀『鏃堕拡鐢籡
         mCirclePath = new Path();
         mCirclePath.addCircle(0, 0, 200, Path.Direction.CW);
 
-        // 初始化 装载 坐标 和 正余弦 的数组
-        mPos = new float[2];
+        // 鍒濆鍖?瑁呰浇 鍧愭爣 鍜?姝ｄ綑寮?鐨勬暟缁?        mPos = new float[2];
         mTan = new float[2];
 
-        // 初始化 PathMeasure 并且关联 圆路径
-        mPathMeasure = new PathMeasure();
+        // 鍒濆鍖?PathMeasure 骞朵笖鍏宠仈 鍦嗚矾寰?        mPathMeasure = new PathMeasure();
         mPathMeasure.setPath(mCirclePath, false);
 
-        // 初始化矩阵
-        mMatrix = new Matrix();
+        // 鍒濆鍖栫煩闃?        mMatrix = new Matrix();
 
-        // 初始化 估值器 [区间0-1、时长5秒、线性增长、无限次循环]
+        // 鍒濆鍖?浼板€煎櫒 [鍖洪棿0-1銆佹椂闀?绉掋€佺嚎鎬у闀裤€佹棤闄愭寰幆]
         valueAnimator = ValueAnimator.ofFloat(0, 1f);
         valueAnimator.setDuration(5000);
-        // 匀速增长
-        valueAnimator.setInterpolator(new LinearInterpolator());
+        // 鍖€閫熷闀?        valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                // 第一种做法：通过自己控制，是箭头在原来的位置继续运行
+                // 绗竴绉嶅仛娉曪細閫氳繃鑷繁鎺у埗锛屾槸绠ご鍦ㄥ師鏉ョ殑浣嶇疆缁х画杩愯
                 mCurrentValue += DELAY;
                 if (mCurrentValue >= 1) {
                     mCurrentValue -= 1;
                 }
 
-                // 第二种做法：直接获取可以通过估值器，改变其变动规律
+                // 绗簩绉嶅仛娉曪細鐩存帴鑾峰彇鍙互閫氳繃浼板€煎櫒锛屾敼鍙樺叾鍙樺姩瑙勫緥
 //                mCurrentValue = (float) animation.getAnimatedValue();
 
                 invalidate();
@@ -113,19 +107,18 @@ public class PlaneLoadingView extends BaseView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        // 画网格和坐标轴
-        drawCoordinate(canvas);
+        // 鐢荤綉鏍煎拰鍧愭爣杞?        drawCoordinate(canvas);
 
-        // 移至canvas中间
+        // 绉昏嚦canvas涓棿
         canvas.translate(mWidth / 2, mHeight / 2);
 
-        // 画圆路径
+        // 鐢诲渾璺緞
         canvas.drawPath(mCirclePath, mCirclePaint);
 
-        // 测量 pos(坐标) 和 tan(正切)
+        // 娴嬮噺 pos(鍧愭爣) 鍜?tan(姝ｅ垏)
         mPathMeasure.getPosTan(mPathMeasure.getLength() * mCurrentValue, mPos, mTan);
 
-        // 计算角度
+        // 璁＄畻瑙掑害
         float degree = (float) (Math.atan2(mTan[1], mTan[0]) * 180 / Math.PI);
 
         Log.i("PlaneLoadingView_1", "------------pos[0] = " + mPos[0] + "; pos[1] = " + mPos[1]);
@@ -133,21 +126,19 @@ public class PlaneLoadingView extends BaseView {
         Log.i("PlaneLoadingView_3", "path length = " + mPathMeasure.getLength() * mCurrentValue);
         Log.i("PlaneLoadingView_4", "degree = " + degree);
 
-        // 重置矩阵
+        // 閲嶇疆鐭╅樀
         mMatrix.reset();
-        // 设置旋转角度
+        // 璁剧疆鏃嬭浆瑙掑害
         mMatrix.postRotate(degree, mArrowBitmap.getWidth() / 2, mArrowBitmap.getHeight() / 2);
-        // 设置偏移量
-        mMatrix.postTranslate(mPos[0] - mArrowBitmap.getWidth() / 2,
+        // 璁剧疆鍋忕Щ閲?        mMatrix.postTranslate(mPos[0] - mArrowBitmap.getWidth() / 2,
                 mPos[1] - mArrowBitmap.getHeight() / 2);
 
-        // 画原点
-        canvas.drawCircle(0, 0, 3, mCirclePaint);
+        // 鐢诲師鐐?        canvas.drawCircle(0, 0, 3, mCirclePaint);
 
-        // 画箭头，使用矩阵旋转
+        // 鐢荤澶达紝浣跨敤鐭╅樀鏃嬭浆
         canvas.drawBitmap(mArrowBitmap, mMatrix, mCirclePaint);
 
-        // 画在 箭头 图标的中心点
+        // 鐢诲湪 绠ご 鍥炬爣鐨勪腑蹇冪偣
         canvas.drawCircle(mPos[0], mPos[1], 3, mCirclePaint);
 
     }
@@ -161,3 +152,4 @@ public class PlaneLoadingView extends BaseView {
     }
 
 }
+

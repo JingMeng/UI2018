@@ -1,4 +1,4 @@
-package com.zinc.animation.widget;
+﻿package com.zinc.animation.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -7,7 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -17,66 +17,56 @@ import java.util.List;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/24
- * @description 插值器的坐标显示
- */
+ * @date 鍒涘缓鏃堕棿锛?019/1/24
+ * @description 鎻掑€煎櫒鐨勫潗鏍囨樉绀? */
 public class TimeInterpolatorView extends View {
 
-    // 外边距
-    private static final int PADDING = dpToPx(5f);
-    // 字体大小
+    // 澶栬竟璺?    private static final int PADDING = dpToPx(5f);
+    // 瀛椾綋澶у皬
     private static final int TEXT_SIZE = dpToPx(8f);
-    // 点的半径
+    // 鐐圭殑鍗婂緞
     private static final int CUR_POINT_RADIUS = dpToPx(4.5f);
 
-    // X、Y 轴色
+    // X銆乊 杞磋壊
     private static final int COORDINATION_LINE_COLOR = Color.BLACK;
-    // 网格线色
+    // 缃戞牸绾胯壊
     private static final int GRID_LINE_COLOR = Color.LTGRAY;
-    // 数据线色
+    // 鏁版嵁绾胯壊
     private static final int DATA_LINE_COLOR = Color.parseColor("#DB001B");
-    // 当前点的色
-    private static final int CUR_POINT_COLOR = Color.parseColor("#DC143C");
-    // 默认的最低点
+    // 褰撳墠鐐圭殑鑹?    private static final int CUR_POINT_COLOR = Color.parseColor("#DC143C");
+    // 榛樿鐨勬渶浣庣偣
     private static final PointF DEFAULT_MIN_POINT = new PointF(0, 0);
-    // 默认的最高点
+    // 榛樿鐨勬渶楂樼偣
     private static final PointF DEFAULT_MAX_POINT = new PointF(0, 1);
-    // 10个间隔
-    private static final int GRID_INTERVAL_COUNT = 10;
-    // 每个间隔的跨幅
-    private static final float GRID_INTERVAL_LENGTH = 0.1f;
+    // 10涓棿闅?    private static final int GRID_INTERVAL_COUNT = 10;
+    // 姣忎釜闂撮殧鐨勮法骞?    private static final float GRID_INTERVAL_LENGTH = 0.1f;
 
-    // 速率的数据
-    private final List<PointF> mLineDataList = new ArrayList<>();
+    // 閫熺巼鐨勬暟鎹?    private final List<PointF> mLineDataList = new ArrayList<>();
 
-    // 坐标的画笔
-    private Paint mLinePaint;
-    // 速率的轨迹
-    private Path mDataPath = new Path();
-    // 字体画笔
+    // 鍧愭爣鐨勭敾绗?    private Paint mLinePaint;
+    // 閫熺巼鐨勮建杩?    private Path mDataPath = new Path();
+    // 瀛椾綋鐢荤瑪
     private Paint mTextPaint;
-    // 点的笔
-    private Paint mPointPaint;
+    // 鐐圭殑绗?    private Paint mPointPaint;
 
-    // 数据的最低点
+    // 鏁版嵁鐨勬渶浣庣偣
     private PointF mMinPoint = DEFAULT_MIN_POINT;
-    // 数据的最高点
+    // 鏁版嵁鐨勬渶楂樼偣
     private PointF mMaxPoint = DEFAULT_MAX_POINT;
 
-    // 视图的宽
+    // 瑙嗗浘鐨勫
     private float mViewWidth;
-    // 视图的高
+    // 瑙嗗浘鐨勯珮
     private float mViewHeight;
-    // 坐标的宽
+    // 鍧愭爣鐨勫
     private float mWidth;
 
-    // 坐标中每个下标 的宽度
-    private float mEachItemWidth;
+    // 鍧愭爣涓瘡涓笅鏍?鐨勫搴?    private float mEachItemWidth;
 
     private int mPositiveCount;
     private int mNegativeCount;
 
-    // 当前的点
+    // 褰撳墠鐨勭偣
     private PointF mCurPoint;
 
     public TimeInterpolatorView(Context context) {
@@ -109,7 +99,7 @@ public class TimeInterpolatorView extends View {
     }
 
     /**
-     * 设置当前移动的点
+     * 璁剧疆褰撳墠绉诲姩鐨勭偣
      *
      * @param curPoint
      */
@@ -124,16 +114,16 @@ public class TimeInterpolatorView extends View {
 
         mMinPoint = DEFAULT_MIN_POINT;
         mMaxPoint = DEFAULT_MAX_POINT;
-        // 构建 路径，并选出最高和最低的point
+        // 鏋勫缓 璺緞锛屽苟閫夊嚭鏈€楂樺拰鏈€浣庣殑point
         for (int i = 0; i < mLineDataList.size(); i++) {
             PointF curPoint = mLineDataList.get(i);
 
-            // 选最低点
+            // 閫夋渶浣庣偣
             if (curPoint.y < mMinPoint.y) {
                 mMinPoint = curPoint;
             }
 
-            // 选最高点
+            // 閫夋渶楂樼偣
             if (curPoint.y > mMaxPoint.y) {
                 mMaxPoint = curPoint;
             }
@@ -152,24 +142,19 @@ public class TimeInterpolatorView extends View {
         mViewWidth = w;
         mViewHeight = h;
 
-        // 需要减去 padding 的宽度 和 字体的大小
-        mWidth = Math.min(w, h) - 2 * PADDING - TEXT_SIZE;
+        // 闇€瑕佸噺鍘?padding 鐨勫搴?鍜?瀛椾綋鐨勫ぇ灏?        mWidth = Math.min(w, h) - 2 * PADDING - TEXT_SIZE;
 
         calculateEachItemWidth();
     }
 
     /**
-     * 计算每个格子的大小
-     */
+     * 璁＄畻姣忎釜鏍煎瓙鐨勫ぇ灏?     */
     private void calculateEachItemWidth() {
 
-        // 获取 y正半轴 的分割个数
-        mPositiveCount = (int) Math.abs(Math.ceil(mMaxPoint.y / GRID_INTERVAL_LENGTH));
-        // 获取 y负半轴 的分割个数
-        mNegativeCount = (int) Math.abs(Math.floor(mMinPoint.y / GRID_INTERVAL_LENGTH));
+        // 鑾峰彇 y姝ｅ崐杞?鐨勫垎鍓蹭釜鏁?        mPositiveCount = (int) Math.abs(Math.ceil(mMaxPoint.y / GRID_INTERVAL_LENGTH));
+        // 鑾峰彇 y璐熷崐杞?鐨勫垎鍓蹭釜鏁?        mNegativeCount = (int) Math.abs(Math.floor(mMinPoint.y / GRID_INTERVAL_LENGTH));
 
-        // 计算需要分割的数量，最少十个
-        int intervalCount = mPositiveCount + mNegativeCount;
+        // 璁＄畻闇€瑕佸垎鍓茬殑鏁伴噺锛屾渶灏戝崄涓?        int intervalCount = mPositiveCount + mNegativeCount;
         intervalCount = Math.max(intervalCount, GRID_INTERVAL_COUNT);
 
         mEachItemWidth = mWidth / intervalCount;
@@ -179,34 +164,30 @@ public class TimeInterpolatorView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 
-        // 构建轨迹
+        // 鏋勫缓杞ㄨ抗
         buildDataPath();
 
         canvas.save();
 
-        // 移至原点
+        // 绉昏嚦鍘熺偣
         moveToTheOrigin(canvas);
 
-        // 画坐标
-        drawCoordination(canvas);
-        // 画网格
-        drawGrid(canvas);
+        // 鐢诲潗鏍?        drawCoordination(canvas);
+        // 鐢荤綉鏍?        drawGrid(canvas);
 
-        // 画数据线
+        // 鐢绘暟鎹嚎
         drawDataLine(canvas);
 
-        // 画下标
-        drawText(canvas);
+        // 鐢讳笅鏍?        drawText(canvas);
 
-        // 画当前的点
-        drawPoint(canvas);
+        // 鐢诲綋鍓嶇殑鐐?        drawPoint(canvas);
 
         canvas.restore();
 
     }
 
     /**
-     * 画点
+     * 鐢荤偣
      *
      * @param canvas
      */
@@ -223,8 +204,7 @@ public class TimeInterpolatorView extends View {
     }
 
     /**
-     * 画下标
-     *
+     * 鐢讳笅鏍?     *
      * @param canvas
      */
     private void drawText(Canvas canvas) {
@@ -266,7 +246,7 @@ public class TimeInterpolatorView extends View {
     }
 
     /**
-     * 画网格线
+     * 鐢荤綉鏍肩嚎
      *
      * @param canvas
      */
@@ -274,7 +254,7 @@ public class TimeInterpolatorView extends View {
         mLinePaint.setStrokeWidth(dpToPx(0.5f));
         mLinePaint.setColor(GRID_LINE_COLOR);
 
-        // 画y正轴横线
+        // 鐢粂姝ｈ酱妯嚎
         for (int i = 1; i <= mPositiveCount; ++i) {
             canvas.drawLine(0,
                     -i * mEachItemWidth,
@@ -283,7 +263,7 @@ public class TimeInterpolatorView extends View {
                     mLinePaint);
         }
 
-        // 画y负轴横线
+        // 鐢粂璐熻酱妯嚎
         for (int i = 1; i <= mNegativeCount; ++i) {
             canvas.drawLine(0,
                     i * mEachItemWidth,
@@ -292,7 +272,7 @@ public class TimeInterpolatorView extends View {
                     mLinePaint);
         }
 
-        // 画x正轴竖线
+        // 鐢粁姝ｈ酱绔栫嚎
         for (int i = 1; i <= GRID_INTERVAL_COUNT; ++i) {
             canvas.drawLine(i * mEachItemWidth,
                     -mPositiveCount * mEachItemWidth,
@@ -305,7 +285,7 @@ public class TimeInterpolatorView extends View {
     }
 
     /**
-     * 画数据线
+     * 鐢绘暟鎹嚎
      *
      * @param canvas
      */
@@ -319,8 +299,7 @@ public class TimeInterpolatorView extends View {
     }
 
     /**
-     * 画 x、y 轴
-     *
+     * 鐢?x銆亂 杞?     *
      * @param canvas
      */
     private void drawCoordination(Canvas canvas) {
@@ -328,15 +307,13 @@ public class TimeInterpolatorView extends View {
         mLinePaint.setStrokeWidth(dpToPx(1f));
         mLinePaint.setColor(COORDINATION_LINE_COLOR);
 
-        // 画 y 轴
-        canvas.drawLine(0,
+        // 鐢?y 杞?        canvas.drawLine(0,
                 -mPositiveCount * mEachItemWidth,
                 0,
                 mNegativeCount * mEachItemWidth,
                 mLinePaint);
 
-        // 画 x 轴
-        canvas.drawLine(0,
+        // 鐢?x 杞?        canvas.drawLine(0,
                 0,
                 GRID_INTERVAL_COUNT * mEachItemWidth,
                 0,
@@ -345,12 +322,12 @@ public class TimeInterpolatorView extends View {
     }
 
     /**
-     * 构建数据路径
+     * 鏋勫缓鏁版嵁璺緞
      */
     private void buildDataPath() {
         mDataPath.reset();
         float width = mEachItemWidth * GRID_INTERVAL_COUNT;
-        // 构建 路径，并选出最高和最低的point
+        // 鏋勫缓 璺緞锛屽苟閫夊嚭鏈€楂樺拰鏈€浣庣殑point
         for (int i = 0; i < mLineDataList.size(); i++) {
             PointF curPoint = mLineDataList.get(i);
             if (i == 0) {
@@ -362,13 +339,13 @@ public class TimeInterpolatorView extends View {
     }
 
     /**
-     * 将画布移至 原点
+     * 灏嗙敾甯冪Щ鑷?鍘熺偣
      */
     private void moveToTheOrigin(Canvas canvas) {
 
         float verHeight = mEachItemWidth * mPositiveCount;
 
-        // 计算 横向移动距离
+        // 璁＄畻 妯悜绉诲姩璺濈
         float horPadding = mViewWidth - mEachItemWidth * GRID_INTERVAL_COUNT - 2 * PADDING;
         float verPadding = mViewHeight - mEachItemWidth * (mPositiveCount + mNegativeCount) - 2 * PADDING - TEXT_SIZE / 2;
 
@@ -377,32 +354,31 @@ public class TimeInterpolatorView extends View {
     }
 
     /**
-     * 转换 dp 至 px
+     * 杞崲 dp 鑷?px
      *
-     * @param dpValue dp值
-     * @return px值
-     */
+     * @param dpValue dp鍊?     * @return px鍊?     */
     protected static int dpToPx(float dpValue) {
         DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
         return (int) (dpValue * metrics.density + 0.5f);
     }
 
     /**
-     * 获取视图的宽
+     * 鑾峰彇瑙嗗浘鐨勫
      *
-     * @return 视图宽 - 左右的内边距
+     * @return 瑙嗗浘瀹?- 宸﹀彸鐨勫唴杈硅窛
      */
     private float getViewEnableWidth() {
         return mViewWidth - PADDING * 2;
     }
 
     /**
-     * 获取视图的高
+     * 鑾峰彇瑙嗗浘鐨勯珮
      *
-     * @return 视图高 - 上下的内边距
+     * @return 瑙嗗浘楂?- 涓婁笅鐨勫唴杈硅窛
      */
     private float getViewEnableHeight() {
         return mViewHeight - PADDING * 2;
     }
 
 }
+

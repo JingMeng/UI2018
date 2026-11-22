@@ -1,17 +1,16 @@
-package com.zinc.code8_canvas_draw.widget.draw;
+﻿package com.zinc.code8_canvas_draw.widget.draw;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 /**
  * author       : zinc
- * time         : 2019/4/22 上午9:23
- * desc         : 画矩阵
- * version      :
+ * time         : 2019/4/22 涓婂崍9:23
+ * desc         : 鐢荤煩闃? * version      :
  */
 public class RectView extends BaseDrawView {
 
@@ -37,7 +36,7 @@ public class RectView extends BaseDrawView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        // ======================= 圆角矩形 =========================
+        // ======================= 鍦嗚鐭╁舰 =========================
         canvas.save();
         canvas.translate(0, -mRectF.height() * 3 / 2 - 100);
 
@@ -49,7 +48,7 @@ public class RectView extends BaseDrawView {
         }
         canvas.restore();
 
-        // ======================= 直角矩形 =========================
+        // ======================= 鐩磋鐭╁舰 =========================
         canvas.save();
 
         setPaint(mColor1, mLineWidth);
@@ -57,7 +56,7 @@ public class RectView extends BaseDrawView {
         
         canvas.restore();
 
-        // ======================= 圆角矩形 =========================
+        // ======================= 鍦嗚鐭╁舰 =========================
         canvas.save();
         canvas.translate(0, mRectF.height() * 3 / 2 + 100);
 
@@ -68,3 +67,4 @@ public class RectView extends BaseDrawView {
 
     }
 }
+

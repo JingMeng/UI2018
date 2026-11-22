@@ -1,5 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zinc.svg">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application>
         <activity android:name="com.zinc.svg.SvgMapActivity" />
@@ -9,3 +9,4 @@
     </application>
 
 </manifest>
+

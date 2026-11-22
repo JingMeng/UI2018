@@ -1,16 +1,16 @@
-package com.zinc.code8_canvas_clip.activity;
+﻿package com.zinc.code8_canvas_clip.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 
 import com.zinc.code8_canvas_clip.R;
 
 /**
  * author       : zinc
- * time         : 2019/4/26 下午12:53
+ * time         : 2019/4/26 涓嬪崍12:53
  * desc         :
  * version      :
  */
@@ -38,3 +38,4 @@ public class ClientActivity extends Activity {
         startActivity(new Intent(this, ClipOpListActivity.class));
     }
 }
+

@@ -1,14 +1,14 @@
-package com.zinc.xfermode.activity;
+﻿package com.zinc.xfermode.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.zinc.xfermode.R;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/2/18
+ * @date 鍒涘缓鏃堕棿锛?019/2/18
  * @description
  */
 public class HeartActivity extends AppCompatActivity {
@@ -20,3 +20,4 @@ public class HeartActivity extends AppCompatActivity {
     }
 
 }
+

@@ -1,4 +1,4 @@
-package com.zinc.xfermode.widget;
+﻿package com.zinc.xfermode.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Xfermode;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -19,7 +19,7 @@ import com.zinc.xfermode.R;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/2/19
+ * @date 鍒涘缓鏃堕棿锛?019/2/19
  * @description
  */
 public class PingPongView extends View {
@@ -70,16 +70,16 @@ public class PingPongView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        //清空bitmap
+        //娓呯┖bitmap
         mSrcCanvas.drawColor(Color.RED, PorterDuff.Mode.CLEAR);
-        //画上矩形
+        //鐢讳笂鐭╁舰
         mSrcCanvas.drawRect(mPingPongBmp.getWidth() - dx,
                 0,
                 mPingPongBmp.getWidth(),
                 mPingPongBmp.getHeight(),
                 mPaint);
 
-        //模式合成
+        //妯″紡鍚堟垚
         int layerId = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);
 
         canvas.drawBitmap(mPingPongBmp, 0, 0, mPaint);

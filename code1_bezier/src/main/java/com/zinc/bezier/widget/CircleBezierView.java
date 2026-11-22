@@ -1,4 +1,4 @@
-package com.zinc.bezier.widget;
+﻿package com.zinc.bezier.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
@@ -17,36 +17,32 @@ import java.util.List;
 
 /**
  * @author Jiang zinc
- * @date 创建时间：2019/1/9
- * @description 用贝塞尔曲线绘制圆的过程
+ * @date 鍒涘缓鏃堕棿锛?019/1/9
+ * @description 鐢ㄨ礉濉炲皵鏇茬嚎缁樺埗鍦嗙殑杩囩▼
  */
 public class CircleBezierView extends BaseView {
 
-    // 圆的中心点
-    private PointF mCenterPoint;
-    // 圆半径
-    private float mRadius;
+    // 鍦嗙殑涓績鐐?    private PointF mCenterPoint;
+    // 鍦嗗崐寰?    private float mRadius;
 
-    // 控制点列表，顺序为：右上、右下、左下、左上
-    private List<PointF> mControlPointList;
+    // 鎺у埗鐐瑰垪琛紝椤哄簭涓猴細鍙充笂銆佸彸涓嬨€佸乏涓嬨€佸乏涓?    private List<PointF> mControlPointList;
 
-    // 控制点占半径的比例
-    private float mRatio;
+    // 鎺у埗鐐瑰崰鍗婂緞鐨勬瘮渚?    private float mRatio;
 
-    // 圆的路径
+    // 鍦嗙殑璺緞
     private Path mPath;
 
-    // 绘制贝塞尔曲线的画笔
+    // 缁樺埗璐濆灏旀洸绾跨殑鐢荤瑪
     private Paint mPaint;
-    // 绘制圆的画笔
+    // 缁樺埗鍦嗙殑鐢荤瑪
     private Paint mCirclePaint;
-    // 绘制控制线的画笔
+    // 缁樺埗鎺у埗绾跨殑鐢荤瑪
     private Paint mLinePaint;
 
-    // 控制线的颜色
+    // 鎺у埗绾跨殑棰滆壊
     private int[] mLineColor;
 
-    // 线的宽度
+    // 绾跨殑瀹藉害
     private int LINE_WIDTH;
 
     public CircleBezierView(Context context) {
@@ -62,9 +58,9 @@ public class CircleBezierView extends BaseView {
     }
 
     /**
-     * 设置比例
+     * 璁剧疆姣斾緥
      *
-     * @param ratio 比例，0-1
+     * @param ratio 姣斾緥锛?-1
      */
     public void setRatio(float ratio) {
         this.mRatio = ratio;
@@ -99,10 +95,10 @@ public class CircleBezierView extends BaseView {
         mRatio = 0.55f;
 
         mLineColor = new int[4];
-        mLineColor[0] = Color.parseColor("#f4ea2a");    //黄色
-        mLineColor[1] = Color.parseColor("#1afa29");    //绿色
-        mLineColor[2] = Color.parseColor("#efb336");    //橙色
-        mLineColor[3] = Color.parseColor("#e89abe");    //粉色
+        mLineColor[0] = Color.parseColor("#f4ea2a");    //榛勮壊
+        mLineColor[1] = Color.parseColor("#1afa29");    //缁胯壊
+        mLineColor[2] = Color.parseColor("#efb336");    //姗欒壊
+        mLineColor[3] = Color.parseColor("#e89abe");    //绮夎壊
 
         mLinePaint = new Paint();
         mLinePaint.setAntiAlias(true);
@@ -139,15 +135,12 @@ public class CircleBezierView extends BaseView {
                     mControlPointList.get(endPointIndex).x, mControlPointList.get(endPointIndex).y);
         }
 
-        // 绘制贝塞尔曲线
-        canvas.drawPath(mPath, mPaint);
+        // 缁樺埗璐濆灏旀洸绾?        canvas.drawPath(mPath, mPaint);
 
-        // 绘制圆
-        canvas.drawCircle(mCenterPoint.x, mCenterPoint.y, mRadius, mCirclePaint);
+        // 缁樺埗鍦?        canvas.drawCircle(mCenterPoint.x, mCenterPoint.y, mRadius, mCirclePaint);
 
-        // 绘制控制线
-        for (int i = 0; i < mControlPointList.size(); ++i) {
-            // 设置颜色
+        // 缁樺埗鎺у埗绾?        for (int i = 0; i < mControlPointList.size(); ++i) {
+            // 璁剧疆棰滆壊
             mLinePaint.setColor(mLineColor[i / 3]);
 
             int endPointIndex = (i == mControlPointList.size() - 1) ? 0 : i + 1;
@@ -167,29 +160,27 @@ public class CircleBezierView extends BaseView {
     }
 
     /**
-     * 计算圆的控制点
-     */
+     * 璁＄畻鍦嗙殑鎺у埗鐐?     */
     private void calculateControlPoint() {
-        // 计算 中间控制点到端点的距离
-        float controlWidth = mRatio * mRadius;
+        // 璁＄畻 涓棿鎺у埗鐐瑰埌绔偣鐨勮窛绂?        float controlWidth = mRatio * mRadius;
 
         mControlPointList.clear();
 
-        // 右上
+        // 鍙充笂
         mControlPointList.add(new PointF(0, -mRadius));
         mControlPointList.add(new PointF(controlWidth, -mRadius));
         mControlPointList.add(new PointF(mRadius, -controlWidth));
 
-        // 右下
+        // 鍙充笅
         mControlPointList.add(new PointF(mRadius, 0));
         mControlPointList.add(new PointF(mRadius, controlWidth));
         mControlPointList.add(new PointF(controlWidth, mRadius));
 
-        // 左下
+        // 宸︿笅
         mControlPointList.add(new PointF(0, mRadius));
         mControlPointList.add(new PointF(-controlWidth, mRadius));
         mControlPointList.add(new PointF(-mRadius, controlWidth));
-        // 左上
+        // 宸︿笂
         mControlPointList.add(new PointF(-mRadius, 0));
         mControlPointList.add(new PointF(-mRadius, -controlWidth));
         mControlPointList.add(new PointF(-controlWidth, -mRadius));
@@ -197,3 +188,4 @@ public class CircleBezierView extends BaseView {
     }
 
 }
+

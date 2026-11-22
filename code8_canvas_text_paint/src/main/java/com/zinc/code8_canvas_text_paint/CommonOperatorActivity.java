@@ -1,8 +1,8 @@
-package com.zinc.code8_canvas_text_paint;
+﻿package com.zinc.code8_canvas_text_paint;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -13,9 +13,8 @@ import com.zinc.code8_canvas_text_paint.text.TextView;
 
 /**
  * author       : zinc
- * time         : 2019/4/22 下午9:58
- * desc         : 普通操作
- * version      :
+ * time         : 2019/4/22 涓嬪崍9:58
+ * desc         : 鏅€氭搷浣? * version      :
  */
 public class CommonOperatorActivity extends Activity {
 
@@ -57,3 +56,4 @@ public class CommonOperatorActivity extends Activity {
 
     }
 }
+

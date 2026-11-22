@@ -1,4 +1,4 @@
-package com.zinc.code8_canvas_draw.widget.draw;
+﻿package com.zinc.code8_canvas_draw.widget.draw;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -7,16 +7,15 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PorterDuff;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.zinc.code8_canvas_draw.R;
 
 /**
  * author       : zinc
- * time         : 2019/4/22 上午9:23
- * desc         : 画背景
- * version      : 1.2.0
+ * time         : 2019/4/22 涓婂崍9:23
+ * desc         : 鐢昏儗鏅? * version      : 1.2.0
  */
 public class BackgroundView extends BaseDrawView {
 
@@ -55,3 +54,4 @@ public class BackgroundView extends BaseDrawView {
 
     }
 }
+

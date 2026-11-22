@@ -1,14 +1,14 @@
-package com.zinc.code8_canvas_clip.activity;
+﻿package com.zinc.code8_canvas_clip.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.zinc.code8_canvas_clip.widget.ClipOpView;
 
 /**
  * author       : zinc
- * time         : 2019/4/26 下午12:35
+ * time         : 2019/4/26 涓嬪崍12:35
  * desc         :
  * version      :
  */
@@ -29,3 +29,4 @@ public class ClipOpContentActivity extends Activity {
 
     }
 }
+
